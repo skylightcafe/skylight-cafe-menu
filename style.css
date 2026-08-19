@@ -8,458 +8,790 @@ footer{text-align:center;padding:28px 15px;color:#cdbda9;border-top:1px solid #4
 @media(max-width:680px){.grid{grid-template-columns:1fr}.wide{grid-column:auto}.card li{font-size:13px}.logo{width:min(280px,82vw)}.hero-actions a{font-size:12px}.section>h2{font-size:31px}}
 @media(min-width:681px){.grid .wide{max-width:760px;margin:auto;width:100%}} */
 
+/* 
+
 
 
 @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Montserrat:wght@400;500;600;700&display=swap');
 
-:root{
-  --gold:#c89b5b;
-  --gold-light:#e1bd82;
-  --cream:#f7f0e3;
-  --ink:#191613;
-  --card:#fffaf1;
-  --muted:#756a5c;
-  --border:rgba(200,155,91,.55);
+:root {
+  --gold: #c89b5b;
+  --gold-light: #e1bd82;
+  --cream: #f7f0e3;
+  --ink: #191613;
+  --card: #fffaf1;
+  --muted: #756a5c;
+  --border: rgba(200, 155, 91, 0.55);
 }
 
-*{box-sizing:border-box}
-html{scroll-behavior:smooth;scroll-padding-top:105px}
-body{
-  margin:0;
-  background:#171513;
-  color:var(--ink);
-  font-family:Montserrat,Arial,sans-serif;
-  overflow-x:hidden;
+* {
+  box-sizing: border-box;
 }
 
-.bg{
-  position:fixed;
-  inset:0;
-  background:radial-gradient(circle at 20% 10%,#4a3928 0,#171513 35%,#0d0c0b 100%);
-  z-index:-2;
-}
-.bg:after{
-  content:"";
-  position:absolute;
-  inset:0;
-  background-image:radial-gradient(rgba(200,155,91,.12) 1px,transparent 1px);
-  background-size:24px 24px;
-  opacity:.35;
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 105px;
 }
 
-/* ---------- HEADER ---------- */
-.hero{
-  padding:16px 14px 16px;
-  text-align:center;
-  color:var(--cream);
-  background:linear-gradient(180deg,rgba(10,9,8,.97),rgba(25,21,17,.94));
-  border-bottom:1px solid rgba(200,155,91,.45);
+body {
+  margin: 0;
+  background: #171513;
+  color: var(--ink);
+  font-family: Montserrat, Arial, sans-serif;
+  overflow-x: hidden;
 }
 
-.logo{
-  width:min(270px,72vw);
-  max-height:270px;
-  object-fit:contain;
-  height:auto;
-  display:block;
-  margin:0 auto 3px;
-  border-radius:18px;
-  mix-blend-mode:screen;
-  filter:sepia(.2) saturate(.8);
-}
+/* ================= BACKGROUND ================= */
 
-.tagline{
-  letter-spacing:2.5px;
-  font-size:10px;
-  color:#d6b27d;
-}
-
-.hero-actions{
-  display:flex;
-  justify-content:center;
-  gap:8px;
-  flex-wrap:wrap;
-  margin-top:11px;
-}
-
-.hero-actions a,.call{
-  color:#1a140e;
-  background:linear-gradient(135deg,#d9aa61,#bd8c48);
-  text-decoration:none;
-  padding:9px 14px;
-  border-radius:999px;
-  font-weight:700;
-  font-size:12px;
-  box-shadow:0 5px 14px rgba(0,0,0,.22);
-}
-
-.hero-actions a:active,.call:active{
-  transform:translateY(1px);
-}
-
-/* ---------- CATEGORY NAV ---------- */
-.nav{
-  position:sticky;
-  top:0;
-  z-index:20;
-  display:flex;
-  gap:7px;
-  overflow-x:auto;
-  overflow-y:hidden;
-  padding:8px 10px;
-  background:rgba(12,11,10,.97);
-  border-bottom:1px solid #5b442c;
-  scrollbar-width:none;
-  -webkit-overflow-scrolling:touch;
-}
-
-.nav::-webkit-scrollbar{display:none}
-
-.nav a{
-  flex:0 0 auto;
-  white-space:nowrap;
-  color:#f5e9d7;
-  text-decoration:none;
-  border:1px solid #665039;
-  background:rgba(255,255,255,.02);
-  padding:7px 11px;
-  border-radius:999px;
-  font-size:11px;
-  font-weight:500;
-}
-
-.nav a:hover,.nav a:active{
-  background:#3a2b1e;
-  border-color:var(--gold);
-}
-
-/* ---------- MAIN ---------- */
-main{
-  max-width:1100px;
-  margin:auto;
-  padding:12px 14px 45px;
-}
-
-.welcome{
-  text-align:center;
-  color:var(--cream);
-  padding:18px 10px 25px;
-}
-
-.eyebrow{
-  font-size:10px;
-  letter-spacing:3.5px;
-  color:var(--gold);
-  font-weight:700;
-}
-
-.welcome h1{
-  font:700 clamp(32px,8vw,60px) "Cormorant Garamond",serif;
-  margin:5px 0;
-}
-
-.welcome p{
-  color:#d4c8b8;
-  margin:0;
-  font-size:14px;
-}
-
-/* ---------- SECTIONS ---------- */
-.section{
-  margin:20px 0 30px;
-  scroll-margin-top:58px;
-}
-
-.section>h2{
-  font:700 34px "Cormorant Garamond",serif;
-  color:#f5e9d7;
-  margin:0 0 12px;
-  padding-bottom:7px;
-  border-bottom:1px solid #6a5034;
-}
-
-.price-note{
-  text-align:right;
-  color:#d6b27d;
-  font-size:11px;
-  margin-top:-6px;
-  margin-bottom:7px;
-}
-
-.grid{
-  display:grid;
-  grid-template-columns:repeat(2,minmax(0,1fr));
-  gap:11px;
-}
-
-.card{
-  background:linear-gradient(145deg,#fffaf1,#f1e4ce);
-  border:1px solid rgba(200,155,91,.7);
-  border-radius:15px;
-  padding:13px;
-  box-shadow:0 9px 22px rgba(0,0,0,.20);
-}
-
-.card h3{
-  font:700 24px "Cormorant Garamond",serif;
-  margin:0 0 6px;
-  color:#6f4823;
-}
-
-.card ul{
-  list-style:none;
-  padding:0;
-  margin:0;
-}
-
-.card li{
-  display:flex;
-  justify-content:space-between;
-  align-items:flex-start;
-  gap:10px;
-  padding:7px 0;
-  border-bottom:1px dashed #d2c1a5;
-  font-size:13px;
-  line-height:1.35;
-}
-
-.card li:last-child{border-bottom:0}
-
-.card li b{
-  flex:0 0 auto;
-  white-space:nowrap;
-  color:#7a4d1e;
-}
-
-.wide{
-  grid-column:1/-1;
-}
-
-/* ---------- BIRTHDAY ---------- */
-.birthday{
-  min-height:300px;
-  margin-top:8px;
-  border-radius:22px;
-  overflow:hidden;
+.bg {
+  position: fixed;
+  inset: 0;
   background:
-    radial-gradient(circle at 50% 25%,rgba(210,158,82,.22),transparent 35%),
-    linear-gradient(135deg,#6b4727,#23180f 60%,#0e0c09);
-  border:1px solid #b8884d;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  text-align:center;
-  box-shadow:0 14px 40px rgba(0,0,0,.35);
+    radial-gradient(
+      circle at 20% 10%,
+      #4a3928 0,
+      #171513 35%,
+      #0d0c0b 100%
+    );
+  z-index: -2;
 }
 
-.birthday-overlay{
-  padding:35px 18px;
-  color:var(--cream);
+.bg:after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image:
+    radial-gradient(
+      rgba(200, 155, 91, 0.12) 1px,
+      transparent 1px
+    );
+  background-size: 24px 24px;
+  opacity: 0.35;
 }
 
-.birthday h2{
-  font:700 clamp(36px,9vw,62px) "Cormorant Garamond",serif;
-  margin:8px 0;
+
+/* ================= HEADER ================= */
+
+.hero {
+  padding: 16px 14px 16px;
+  text-align: center;
+  color: var(--cream);
+  background:
+    linear-gradient(
+      180deg,
+      rgba(10, 9, 8, 0.97),
+      rgba(25, 21, 17, 0.94)
+    );
+  border-bottom: 1px solid rgba(200, 155, 91, 0.45);
 }
 
-.birthday p{
-  font-size:16px;
-  margin:0 0 20px;
-  color:#e3d6c4;
+.logo {
+  width: min(270px, 72vw);
+  max-height: 270px;
+  object-fit: contain;
+  height: auto;
+  display: block;
+  margin: 0 auto 3px;
+  border-radius: 18px;
+  mix-blend-mode: screen;
+  filter: sepia(0.2) saturate(0.8);
 }
 
-/* ---------- FOOTER ---------- */
-footer{
-  text-align:center;
-  padding:26px 15px;
-  color:#cdbda9;
-  border-top:1px solid #493725;
-  font-size:12px;
+.tagline {
+  letter-spacing: 2.5px;
+  font-size: 10px;
+  color: #d6b27d;
 }
 
-footer strong{
-  font:700 25px "Cormorant Garamond",serif;
-  color:#e6c58f;
+.hero-actions {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-top: 11px;
 }
 
-/* ---------- MOBILE ---------- */
-@media(max-width:680px){
-
-  html{
-    scroll-padding-top:116px;
-  }
-
-  .hero{
-    padding:10px 10px 12px;
-  }
-
-  .logo{
-    width:min(205px,58vw);
-    max-height:205px;
-    margin-bottom:2px;
-  }
-
-  .tagline{
-    font-size:8px;
-    letter-spacing:2px;
-  }
-
-  .hero-actions{
-    gap:7px;
-    margin-top:9px;
-  }
-
-  .hero-actions a{
-    padding:8px 11px;
-    font-size:10.5px;
-  }
-
-  /*
-    Four compact rows/columns instead of a partially hidden
-    horizontal menu on small screens.
-  */
-  .nav{
-    display:grid;
-    grid-template-columns:repeat(4,minmax(0,1fr));
-    gap:5px;
-    padding:7px 7px;
-  }
-
-  .nav a{
-    text-align:center;
-    padding:7px 3px;
-    font-size:9.5px;
-    overflow:hidden;
-    text-overflow:ellipsis;
-  }
-
-  main{
-    padding:10px 10px 35px;
-  }
-
-  .welcome{
-    padding:15px 6px 20px;
-  }
-
-  .eyebrow{
-    font-size:9px;
-    letter-spacing:3px;
-  }
-
-  .welcome h1{
-    font-size:36px;
-    line-height:.98;
-    margin:5px 0 8px;
-  }
-
-  .welcome p{
-    font-size:12px;
-    line-height:1.4;
-  }
-
-  .section{
-    margin:17px 0 25px;
-    scroll-margin-top:120px;
-  }
-
-  .section>h2{
-    font-size:29px;
-    margin-bottom:9px;
-    padding-bottom:6px;
-  }
-
-  .price-note{
-    font-size:10px;
-    margin-bottom:6px;
-  }
-
-  .grid{
-    grid-template-columns:1fr;
-    gap:9px;
-  }
-
-  .wide{
-    grid-column:auto;
-  }
-
-  .card{
-    border-radius:13px;
-    padding:11px 12px;
-  }
-
-  .card h3{
-    font-size:23px;
-    margin-bottom:4px;
-  }
-
-  .card li{
-    padding:6.5px 0;
-    font-size:12px;
-    line-height:1.35;
-  }
-
-  .birthday{
-    min-height:255px;
-    border-radius:18px;
-  }
-
-  .birthday-overlay{
-    padding:28px 14px;
-  }
-
-  .birthday h2{
-    font-size:39px;
-    line-height:1;
-  }
-
-  .birthday p{
-    font-size:14px;
-  }
-
-  .call{
-    padding:9px 15px;
-    font-size:12px;
-  }
-
-  footer{
-    padding:22px 12px;
-  }
-
-  footer strong{
-    font-size:23px;
-  }
+.hero-actions a,
+.call {
+  color: #1a140e;
+  background:
+    linear-gradient(
+      135deg,
+      #d9aa61,
+      #bd8c48
+    );
+  text-decoration: none;
+  padding: 9px 14px;
+  border-radius: 999px;
+  font-weight: 700;
+  font-size: 12px;
+  box-shadow: 0 5px 14px rgba(0, 0, 0, 0.22);
 }
 
-/* ---------- VERY SMALL PHONES ---------- */
-@media(max-width:380px){
-
-  .logo{
-    width:180px;
-    max-height:180px;
-  }
-
-  .nav{
-    grid-template-columns:repeat(4,minmax(0,1fr));
-  }
-
-  .nav a{
-    font-size:8.5px;
-  }
-
-  .welcome h1{
-    font-size:32px;
-  }
-
-  .card li{
-    font-size:11.5px;
-  }
+.hero-actions a:active,
+.call:active {
+  transform: translateY(1px);
 }
 
-/* ---------- DESKTOP ---------- */
-@media(min-width:681px){
-  .grid .wide{
-    max-width:760px;
-    margin:auto;
-    width:100%;
+
+/* ================= CATEGORY NAVIGATION ================= */
+
+.nav {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+
+  display: flex;
+  gap: 8px;
+
+  overflow-x: auto;
+  overflow-y: hidden;
+
+  padding: 9px 10px;
+
+  background: rgba(12, 11, 10, 0.98);
+  border-bottom: 1px solid #5b442c;
+
+  scrollbar-width: none;
+
+  -webkit-overflow-scrolling: touch;
+
+  scroll-behavior: smooth;
+}
+
+.nav::-webkit-scrollbar {
+  display: none;
+}
+
+.nav a {
+  flex: 0 0 auto;
+
+  white-space: nowrap;
+
+  color: #f5e9d7;
+
+  text-decoration: none;
+
+  border: 1px solid #665039;
+
+  background: rgba(255, 255, 255, 0.03);
+
+  padding: 8px 13px;
+
+  border-radius: 999px;
+
+  font-size: 12px;
+
+  font-weight: 500;
+
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease,
+    color 0.2s ease;
+}
+
+.nav a:hover,
+.nav a:active {
+  background: #3a2b1e;
+  border-color: var(--gold);
+  color: #fff4e3;
+}
+
+
+/* ================= MAIN ================= */
+
+main {
+  max-width: 1100px;
+  margin: auto;
+  padding: 12px 14px 45px;
+}
+
+
+/* ================= WELCOME ================= */
+
+.welcome {
+  text-align: center;
+  color: var(--cream);
+  padding: 18px 10px 25px;
+}
+
+.eyebrow {
+  font-size: 10px;
+  letter-spacing: 3.5px;
+  color: var(--gold);
+  font-weight: 700;
+}
+
+.welcome h1 {
+  font:
+    700 clamp(32px, 8vw, 60px)
+    "Cormorant Garamond",
+    serif;
+
+  margin: 5px 0;
+}
+
+.welcome p {
+  color: #d4c8b8;
+  margin: 0;
+  font-size: 14px;
+}
+
+
+/* ================= SECTIONS ================= */
+
+.section {
+  margin: 20px 0 30px;
+  scroll-margin-top: 58px;
+}
+
+.section > h2 {
+  font:
+    700 34px
+    "Cormorant Garamond",
+    serif;
+
+  color: #f5e9d7;
+
+  margin: 0 0 12px;
+
+  padding-bottom: 7px;
+
+  border-bottom: 1px solid #6a5034;
+}
+
+.price-note {
+  text-align: right;
+  color: #d6b27d;
+  font-size: 11px;
+
+  margin-top: -6px;
+  margin-bottom: 7px;
+}
+
+
+/* ================= MENU GRID ================= */
+
+.grid {
+  display: grid;
+
+  grid-template-columns:
+    repeat(
+      2,
+      minmax(0, 1fr)
+    );
+
+  gap: 11px;
+}
+
+
+/* ================= MENU CARD ================= */
+
+.card {
+  background:
+    linear-gradient(
+      145deg,
+      #fffaf1,
+      #f1e4ce
+    );
+
+  border:
+    1px solid
+    rgba(200, 155, 91, 0.7);
+
+  border-radius: 15px;
+
+  padding: 13px;
+
+  box-shadow:
+    0 9px 22px
+    rgba(0, 0, 0, 0.20);
+}
+
+.card h3 {
+  font:
+    700 24px
+    "Cormorant Garamond",
+    serif;
+
+  margin: 0 0 6px;
+
+  color: #6f4823;
+}
+
+.card ul {
+  list-style: none;
+
+  padding: 0;
+  margin: 0;
+}
+
+.card li {
+  display: flex;
+
+  justify-content: space-between;
+
+  align-items: flex-start;
+
+  gap: 10px;
+
+  padding: 7px 0;
+
+  border-bottom:
+    1px dashed
+    #d2c1a5;
+
+  font-size: 13px;
+
+  line-height: 1.35;
+}
+
+.card li:last-child {
+  border-bottom: 0;
+}
+
+.card li b {
+  flex: 0 0 auto;
+
+  white-space: nowrap;
+
+  color: #7a4d1e;
+}
+
+.card small {
+  font-size: 11px;
+  color: #756a5c;
+}
+
+.wide {
+  grid-column: 1 / -1;
+}
+
+
+/* ================= BIRTHDAY HALL ================= */
+
+.birthday {
+  min-height: 300px;
+
+  margin-top: 8px;
+
+  border-radius: 22px;
+
+  overflow: hidden;
+
+  background:
+    radial-gradient(
+      circle at 50% 25%,
+      rgba(210, 158, 82, 0.22),
+      transparent 35%
+    ),
+    linear-gradient(
+      135deg,
+      #6b4727,
+      #23180f 60%,
+      #0e0c09
+    );
+
+  border: 1px solid #b8884d;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  text-align: center;
+
+  box-shadow:
+    0 14px 40px
+    rgba(0, 0, 0, 0.35);
+}
+
+.birthday-overlay {
+  padding: 35px 18px;
+
+  color: var(--cream);
+}
+
+.birthday h2 {
+  font:
+    700 clamp(36px, 9vw, 62px)
+    "Cormorant Garamond",
+    serif;
+
+  margin: 8px 0;
+}
+
+.birthday p {
+  font-size: 16px;
+
+  margin: 0 0 20px;
+
+  color: #e3d6c4;
+}
+
+
+/* ================= BIRTHDAY BUTTONS ================= */
+
+.birthday-actions {
+  display: flex;
+
+  justify-content: center;
+
+  align-items: center;
+
+  gap: 10px;
+
+  flex-wrap: wrap;
+}
+
+.birthday-actions .call,
+.birthday-actions .whatsapp {
+  display: inline-block;
+
+  color: #1a140e;
+
+  text-decoration: none;
+
+  padding: 10px 16px;
+
+  border-radius: 999px;
+
+  font-weight: 700;
+
+  font-size: 12px;
+
+  box-shadow:
+    0 5px 14px
+    rgba(0, 0, 0, 0.22);
+
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.birthday-actions .call {
+  background:
+    linear-gradient(
+      135deg,
+      #d9aa61,
+      #bd8c48
+    );
+}
+
+.birthday-actions .whatsapp {
+  background:
+    linear-gradient(
+      135deg,
+      #7bdc8b,
+      #48b95d
+    );
+}
+
+.birthday-actions .call:hover,
+.birthday-actions .whatsapp:hover {
+  transform: translateY(-2px);
+
+  box-shadow:
+    0 7px 18px
+    rgba(0, 0, 0, 0.28);
+}
+
+
+/* ================= FOOTER ================= */
+
+footer {
+  text-align: center;
+
+  padding: 26px 15px;
+
+  color: #cdbda9;
+
+  border-top: 1px solid #493725;
+
+  font-size: 12px;
+}
+
+footer strong {
+  font:
+    700 25px
+    "Cormorant Garamond",
+    serif;
+
+  color: #e6c58f;
+}
+
+footer .call {
+  display: inline-block;
+}
+
+
+/* ========================================================= */
+/* ======================= MOBILE ========================== */
+/* ========================================================= */
+
+@media (max-width: 680px) {
+
+  html {
+    scroll-padding-top: 116px;
   }
+
+
+  /* ---------- HEADER ---------- */
+
+  .hero {
+    padding: 10px 10px 12px;
+  }
+
+  .logo {
+    width: min(205px, 58vw);
+
+    max-height: 205px;
+
+    margin-bottom: 2px;
+  }
+
+  .tagline {
+    font-size: 8px;
+
+    letter-spacing: 2px;
+  }
+
+  .hero-actions {
+    gap: 7px;
+
+    margin-top: 9px;
+  }
+
+  .hero-actions a {
+    padding: 8px 11px;
+
+    font-size: 10.5px;
+  }
+
+
+  /* ---------- MOBILE NAVIGATION ---------- */
+
+  .nav {
+    display: flex;
+
+    gap: 7px;
+
+    padding: 8px 9px;
+
+    overflow-x: auto;
+    overflow-y: hidden;
+
+    scroll-snap-type: x proximity;
+
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .nav a {
+    flex: 0 0 auto;
+
+    padding: 8px 12px;
+
+    font-size: 11px;
+
+    scroll-snap-align: start;
+  }
+
+
+  /* ---------- MAIN ---------- */
+
+  main {
+    padding: 10px 10px 35px;
+  }
+
+
+  /* ---------- WELCOME ---------- */
+
+  .welcome {
+    padding: 15px 6px 20px;
+  }
+
+  .eyebrow {
+    font-size: 9px;
+
+    letter-spacing: 3px;
+  }
+
+  .welcome h1 {
+    font-size: 36px;
+
+    line-height: 0.98;
+
+    margin: 5px 0 8px;
+  }
+
+  .welcome p {
+    font-size: 12px;
+
+    line-height: 1.4;
+  }
+
+
+  /* ---------- SECTIONS ---------- */
+
+  .section {
+    margin: 17px 0 25px;
+
+    scroll-margin-top: 120px;
+  }
+
+  .section > h2 {
+    font-size: 29px;
+
+    margin-bottom: 9px;
+
+    padding-bottom: 6px;
+  }
+
+  .price-note {
+    font-size: 10px;
+
+    margin-bottom: 6px;
+  }
+
+
+  /* ---------- MENU GRID ---------- */
+
+  .grid {
+    grid-template-columns: 1fr;
+
+    gap: 9px;
+  }
+
+  .wide {
+    grid-column: auto;
+  }
+
+
+  /* ---------- MENU CARDS ---------- */
+
+  .card {
+    border-radius: 13px;
+
+    padding: 11px 12px;
+  }
+
+  .card h3 {
+    font-size: 23px;
+
+    margin-bottom: 4px;
+  }
+
+  .card li {
+    padding: 6.5px 0;
+
+    font-size: 12px;
+
+    line-height: 1.35;
+  }
+
+  .card small {
+    font-size: 10px;
+  }
+
+
+  /* ---------- BIRTHDAY ---------- */
+
+  .birthday {
+    min-height: 275px;
+
+    border-radius: 18px;
+  }
+
+  .birthday-overlay {
+    padding: 28px 14px;
+  }
+
+  .birthday h2 {
+    font-size: 39px;
+
+    line-height: 1;
+  }
+
+  .birthday p {
+    font-size: 14px;
+  }
+
+
+  /* ---------- BIRTHDAY BUTTONS ---------- */
+
+  .birthday-actions {
+    flex-direction: column;
+
+    width: 100%;
+
+    gap: 8px;
+  }
+
+  .birthday-actions .call,
+  .birthday-actions .whatsapp {
+    width: min(250px, 90%);
+
+    text-align: center;
+
+    padding: 10px 14px;
+  }
+
+
+  /* ---------- FOOTER ---------- */
+
+  footer {
+    padding: 22px 12px;
+  }
+
+  footer strong {
+    font-size: 23px;
+  }
+
+}
+
+
+/* ========================================================= */
+/* ================= VERY SMALL PHONES ===================== */
+/* ========================================================= */
+
+@media (max-width: 380px) {
+
+  .logo {
+    width: 180px;
+
+    max-height: 180px;
+  }
+
+  .nav a {
+    font-size: 10px;
+
+    padding: 7px 10px;
+  }
+
+  .welcome h1 {
+    font-size: 32px;
+  }
+
+  .card li {
+    font-size: 11.5px;
+  }
+
+}
+
+
+/* ========================================================= */
+/* ======================= DESKTOP ========================== */
+/* ========================================================= */
+
+@media (min-width: 681px) {
+
+  .grid .wide {
+    max-width: 760px;
+
+    margin: auto;
+
+    width: 100%;
+  }
+
 }
