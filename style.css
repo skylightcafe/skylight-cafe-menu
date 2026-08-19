@@ -1,53 +1,9 @@
-* { box-sizing: border-box; }
-body {
-  margin: 0;
-  font-family: Georgia, "Times New Roman", serif;
-  background: linear-gradient(135deg, #efe4d2, #cdbb9d);
-  color: #2d2117;
-}
-.page { max-width: 900px; margin: 0 auto; padding: 18px; }
-.hero {
-  text-align: center;
-  padding: 28px 16px 22px;
-  border-radius: 22px;
-  background: rgba(255,250,240,.92);
-  box-shadow: 0 8px 30px rgba(0,0,0,.15);
-}
-.logo-mark { font-size: clamp(36px, 9vw, 72px); letter-spacing: 7px; }
-.subtitle { font-size: clamp(20px, 4vw, 34px); letter-spacing: 4px; }
-.hero p { margin: 12px 0 0; font-family: Arial, sans-serif; letter-spacing: 2px; }
-.card {
-  margin-top: 18px;
-  padding: 14px;
-  background: rgba(255,250,240,.94);
-  border-radius: 22px;
-  box-shadow: 0 8px 30px rgba(0,0,0,.15);
-}
-.card h1 { text-align: center; margin: 8px 0 18px; font-size: 30px; }
-.card img {
-  display: block;
-  width: 100%;
-  height: auto;
-  margin: 0 auto 14px;
-  border-radius: 10px;
-}
-.contact {
-  margin-top: 18px;
-  padding: 24px 18px;
-  text-align: center;
-  border-radius: 22px;
-  background: rgba(255,250,240,.94);
-  box-shadow: 0 8px 30px rgba(0,0,0,.15);
-}
-.contact h2 { margin-top: 0; }
-.buttons { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
-.buttons a {
-  display: inline-block;
-  padding: 12px 18px;
-  border-radius: 999px;
-  background: #6d4b2d;
-  color: white;
-  text-decoration: none;
-  font-family: Arial, sans-serif;
-}
-.note { font: 14px Arial, sans-serif; opacity: .7; margin-bottom: 0; }
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Montserrat:wght@400;500;600;700&display=swap');
+:root{--gold:#c89b5b;--cream:#f7f0e3;--ink:#191613;--card:#fffaf1;--muted:#756a5c}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:#171513;color:var(--ink);font-family:Montserrat,Arial,sans-serif}.bg{position:fixed;inset:0;background:radial-gradient(circle at 20% 10%,#4a3928 0,#171513 35%,#0d0c0b 100%);z-index:-2}.bg:after{content:"";position:absolute;inset:0;background-image:radial-gradient(rgba(200,155,91,.12) 1px,transparent 1px);background-size:24px 24px;opacity:.35}
+.hero{padding:22px 14px 18px;text-align:center;color:var(--cream);background:linear-gradient(180deg,rgba(10,9,8,.96),rgba(25,21,17,.92));border-bottom:1px solid rgba(200,155,91,.45)}.logo{width:min(330px,78vw);height:auto;display:block;margin:0 auto 5px;border-radius:18px;mix-blend-mode:screen;filter:sepia(.2) saturate(.8)}.tagline{letter-spacing:3px;font-size:11px;color:#d6b27d}.hero-actions{display:flex;justify-content:center;gap:10px;flex-wrap:wrap;margin-top:15px}.hero-actions a,.call{color:#1a140e;background:var(--gold);text-decoration:none;padding:10px 15px;border-radius:999px;font-weight:700;font-size:13px}.nav{position:sticky;top:0;z-index:5;display:flex;gap:8px;overflow:auto;padding:10px;background:rgba(12,11,10,.96);border-bottom:1px solid #5b442c}.nav a{white-space:nowrap;color:#f5e9d7;text-decoration:none;border:1px solid #665039;padding:8px 12px;border-radius:999px;font-size:12px}.nav a:hover{background:#3a2b1e}
+main{max-width:1100px;margin:auto;padding:18px 14px 50px}.welcome{text-align:center;color:var(--cream);padding:22px 10px 30px}.eyebrow{font-size:11px;letter-spacing:4px;color:var(--gold);font-weight:700}.welcome h1{font:700 clamp(34px,8vw,60px) "Cormorant Garamond",serif;margin:6px 0}.welcome p{color:#d4c8b8;margin:0}.section{margin:22px 0 34px;scroll-margin-top:62px}.section>h2{font:700 34px "Cormorant Garamond",serif;color:#f5e9d7;margin:0 0 14px;padding-bottom:8px;border-bottom:1px solid #6a5034}.price-note{text-align:right;color:#d6b27d;font-size:12px;margin-top:-8px;margin-bottom:8px}.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.card{background:linear-gradient(145deg,#fffaf1,#f1e4ce);border:1px solid rgba(200,155,91,.7);border-radius:16px;padding:14px;box-shadow:0 10px 25px rgba(0,0,0,.22)}.card h3{font:700 25px "Cormorant Garamond",serif;margin:0 0 7px;color:#6f4823}.card ul{list-style:none;padding:0;margin:0}.card li{display:flex;justify-content:space-between;gap:12px;padding:8px 0;border-bottom:1px dashed #d2c1a5;font-size:13px;line-height:1.35}.card li:last-child{border-bottom:0}.card b{white-space:nowrap;color:#7a4d1e}.wide{grid-column:1/-1}
+.birthday{min-height:320px;border-radius:24px;overflow:hidden;background:linear-gradient(135deg,#6b4727,#23180f 60%,#0e0c09);border:1px solid #b8884d;display:flex;align-items:center;justify-content:center;text-align:center;box-shadow:0 14px 40px rgba(0,0,0,.35)}.birthday-overlay{padding:40px 20px;color:var(--cream)}.birthday h2{font:700 clamp(38px,9vw,62px) "Cormorant Garamond",serif;margin:8px 0}.birthday p{font-size:17px;margin:0 0 22px;color:#e3d6c4}.call{display:inline-block}
+footer{text-align:center;padding:28px 15px;color:#cdbda9;border-top:1px solid #493725;font-size:12px}footer strong{font:700 25px "Cormorant Garamond",serif;color:#e6c58f}
+@media(max-width:680px){.grid{grid-template-columns:1fr}.wide{grid-column:auto}.card li{font-size:13px}.logo{width:min(280px,82vw)}.hero-actions a{font-size:12px}.section>h2{font-size:31px}}
+@media(min-width:681px){.grid .wide{max-width:760px;margin:auto;width:100%}}
