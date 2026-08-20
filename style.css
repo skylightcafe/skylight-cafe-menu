@@ -1536,3 +1536,80 @@ footer .call {
     }
 
 }
+
+
+/* =====================================================
+   FOOTER GET DIRECTIONS BUTTON
+===================================================== */
+
+footer .call {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 10px 18px;
+
+    margin: 5px 0 8px;
+
+    border-radius: 999px;
+
+    background: linear-gradient(
+        135deg,
+        #d9aa61,
+        #bd8c48
+    );
+
+    color: #1a140e;
+
+    text-decoration: none;
+
+    font-size: 12px;
+    font-weight: 700;
+
+    border: 0;
+
+    box-shadow:
+        0 5px 14px rgba(0,0,0,.22);
+
+    transition:
+        transform .2s ease,
+        box-shadow .2s ease;
+}
+
+footer .call:hover {
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 8px 18px rgba(0,0,0,.30);
+}
+
+.footer-location-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 10px 18px;
+    margin: 5px 0 8px;
+
+    border-radius: 999px;
+
+    background: linear-gradient(
+        135deg,
+        #d9aa61,
+        #bd8c48
+    );
+
+    color: #1a140e;
+
+    text-decoration: none;
+
+    font-size: 12px;
+    font-weight: 700;
+
+    box-shadow:
+        0 5px 14px rgba(0,0,0,.22);
+}
+
+.footer-location-button:hover {
+    transform: translateY(-2px);
+}
