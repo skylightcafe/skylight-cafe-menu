@@ -8,18 +8,12 @@
 ===================================================== */
 
 :root {
-
     --gold: #c89b5b;
     --gold-light: #e1bd82;
-
     --cream: #f7f0e3;
-
     --ink: #191613;
-
     --card: #fffaf1;
-
     --muted: #756a5c;
-
 }
 
 
@@ -33,35 +27,17 @@
 
 
 html {
-
-    /*
-     * JavaScript controls smooth movement.
-     * Keeping this auto prevents browser/native
-     * scrolling from fighting JavaScript.
-     */
-
     scroll-behavior: auto;
-
     scroll-padding-top: 110px;
-
 }
 
 
 body {
-
     margin: 0;
-
     background: #171513;
-
     color: var(--ink);
-
-    font-family:
-        Montserrat,
-        Arial,
-        sans-serif;
-
+    font-family: Montserrat, Arial, sans-serif;
     overflow-x: hidden;
-
 }
 
 
@@ -70,11 +46,8 @@ body {
 ===================================================== */
 
 .bg {
-
     position: fixed;
-
     inset: 0;
-
     background:
         radial-gradient(
             circle at 20% 10%,
@@ -82,18 +55,13 @@ body {
             #171513 35%,
             #0d0c0b 100%
         );
-
     z-index: -2;
-
 }
 
 
 .bg::after {
-
     content: "";
-
     position: absolute;
-
     inset: 0;
 
     background-image:
@@ -103,9 +71,7 @@ body {
         );
 
     background-size: 24px 24px;
-
     opacity: .35;
-
 }
 
 
@@ -114,14 +80,8 @@ body {
 ===================================================== */
 
 .hero {
-
-    padding:
-        16px
-        14px
-        16px;
-
+    padding: 16px 14px;
     text-align: center;
-
     color: var(--cream);
 
     background:
@@ -134,81 +94,48 @@ body {
     border-bottom:
         1px solid
         rgba(200,155,91,.45);
-
 }
 
 
 .logo {
+    width: min(270px, 72vw);
+    max-height: 270px;
 
-    width:
-        min(270px,72vw);
+    object-fit: contain;
+    display: block;
+    margin: 0 auto 3px;
 
-    max-height:
-        270px;
+    border-radius: 18px;
 
-    object-fit:
-        contain;
-
-    display:
-        block;
-
-    margin:
-        0 auto 3px;
-
-    border-radius:
-        18px;
-
-    mix-blend-mode:
-        screen;
+    mix-blend-mode: screen;
 
     filter:
         sepia(.2)
         saturate(.8);
-
 }
 
 
 .tagline {
-
-    letter-spacing:
-        2.5px;
-
-    font-size:
-        10px;
-
-    color:
-        #d6b27d;
-
+    letter-spacing: 2.5px;
+    font-size: 10px;
+    color: #d6b27d;
 }
 
 
 .hero-actions {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
-    display:
-        flex;
+    gap: 8px;
+    flex-wrap: wrap;
 
-    justify-content:
-        center;
-
-    align-items:
-        center;
-
-    gap:
-        8px;
-
-    flex-wrap:
-        wrap;
-
-    margin-top:
-        11px;
-
+    margin-top: 11px;
 }
 
 
 .hero-actions a {
-
-    color:
-        #1a140e;
+    color: #1a140e;
 
     background:
         linear-gradient(
@@ -217,42 +144,30 @@ body {
             #bd8c48
         );
 
-    text-decoration:
-        none;
+    text-decoration: none;
 
-    padding:
-        9px 14px;
+    padding: 9px 14px;
 
-    border-radius:
-        999px;
+    border-radius: 999px;
 
-    font-weight:
-        700;
-
-    font-size:
-        12px;
+    font-weight: 700;
+    font-size: 12px;
 
     box-shadow:
         0 5px 14px
         rgba(0,0,0,.22);
-
 }
 
 
 /* =====================================================
-   STICKY NAV
+   STICKY NAVIGATION
 ===================================================== */
 
 .nav-wrapper {
+    position: sticky;
+    top: 0;
 
-    position:
-        sticky;
-
-    top:
-        0;
-
-    z-index:
-        20;
+    z-index: 20;
 
     background:
         rgba(12,11,10,.98);
@@ -260,42 +175,28 @@ body {
     border-bottom:
         1px solid
         #5b442c;
-
 }
 
 
 .nav {
+    display: flex;
 
-    display:
-        flex;
+    gap: 8px;
 
-    gap:
-        8px;
+    overflow-x: auto;
+    overflow-y: hidden;
 
-    overflow-x:
-        auto;
+    padding: 9px 10px;
 
-    overflow-y:
-        hidden;
+    scrollbar-width: none;
 
-    padding:
-        9px 10px;
+    -webkit-overflow-scrolling: touch;
 
-    scrollbar-width:
-        none;
+    scroll-behavior: smooth;
 
-    -webkit-overflow-scrolling:
-        touch;
+    overscroll-behavior-x: contain;
 
-    scroll-behavior:
-        smooth;
-
-    overscroll-behavior-x:
-        contain;
-
-    touch-action:
-        pan-x;
-
+    touch-action: pan-x;
 }
 
 
@@ -305,18 +206,13 @@ body {
 
 
 .nav a {
+    flex: 0 0 auto;
 
-    flex:
-        0 0 auto;
+    white-space: nowrap;
 
-    white-space:
-        nowrap;
+    color: #f5e9d7;
 
-    color:
-        #f5e9d7;
-
-    text-decoration:
-        none;
+    text-decoration: none;
 
     border:
         1px solid
@@ -325,29 +221,22 @@ body {
     background:
         rgba(255,255,255,.03);
 
-    padding:
-        8px 13px;
+    padding: 8px 13px;
 
-    border-radius:
-        999px;
+    border-radius: 999px;
 
-    font-size:
-        12px;
-
-    font-weight:
-        500;
+    font-size: 12px;
+    font-weight: 500;
 
     transition:
         background .2s ease,
         color .2s ease,
         border-color .2s ease,
         transform .15s ease;
-
 }
 
 
 .nav a.active {
-
     background:
         linear-gradient(
             135deg,
@@ -355,117 +244,73 @@ body {
             #bd8c48
         );
 
-    color:
-        #1a140e;
+    color: #1a140e;
 
     border-color:
         #e1bd82;
 
-    font-weight:
-        700;
+    font-weight: 700;
 
     box-shadow:
         0 3px 10px
         rgba(0,0,0,.25);
-
 }
 
 
 .nav a:active {
-
-    transform:
-        scale(.96);
-
+    transform: scale(.96);
 }
 
 
 /* =====================================================
-   MOBILE NAV DOTS
+   NAVIGATION DOTS
 ===================================================== */
 
 .nav-indicator {
+    display: none;
 
-    display:
-        none;
+    align-items: center;
+    justify-content: center;
 
-    align-items:
-        center;
+    gap: 7px;
 
-    justify-content:
-        center;
-
-    gap:
-        7px;
-
-    height:
-        17px;
-
-    padding-bottom:
-        5px;
-
+    height: 17px;
+    padding-bottom: 5px;
 }
 
 
 .nav-dots {
-
-    display:
-        flex;
-
-    align-items:
-        center;
-
-    justify-content:
-        center;
-
-    gap:
-        4px;
-
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
 }
 
 
 .nav-dot {
+    width: 5px;
+    height: 5px;
 
-    width:
-        5px;
+    border-radius: 50%;
 
-    height:
-        5px;
-
-    border-radius:
-        50%;
-
-    background:
-        #665039;
+    background: #665039;
 
     transition:
         width .2s ease,
         background .2s ease;
-
 }
 
 
 .nav-dot.active {
-
-    width:
-        14px;
-
-    border-radius:
-        10px;
-
-    background:
-        #c89b5b;
-
+    width: 14px;
+    border-radius: 10px;
+    background: #c89b5b;
 }
 
 
 .nav-arrow {
-
-    color:
-        #c89b5b;
-
-    font-size:
-        14px;
-
+    color: #c89b5b;
+    font-size: 14px;
 }
 
 
@@ -474,16 +319,9 @@ body {
 ===================================================== */
 
 main {
-
-    max-width:
-        1100px;
-
-    margin:
-        auto;
-
-    padding:
-        12px 14px 45px;
-
+    max-width: 1100px;
+    margin: auto;
+    padding: 12px 14px 45px;
 }
 
 
@@ -492,134 +330,92 @@ main {
 ===================================================== */
 
 .welcome {
+    text-align: center;
 
-    text-align:
-        center;
-
-    color:
-        var(--cream);
+    color: var(--cream);
 
     padding:
         18px 10px 25px;
-
 }
 
 
 .eyebrow {
+    font-size: 10px;
 
-    font-size:
-        10px;
+    letter-spacing: 3.5px;
 
-    letter-spacing:
-        3.5px;
+    color: var(--gold);
 
-    color:
-        var(--gold);
-
-    font-weight:
-        700;
-
+    font-weight: 700;
 }
 
 
 .welcome h1 {
-
     font:
         700
-        clamp(32px,8vw,60px)
+        clamp(32px, 8vw, 60px)
         "Cormorant Garamond",
         serif;
 
-    margin:
-        5px 0;
-
+    margin: 5px 0;
 }
 
 
 .welcome p {
-
-    color:
-        #d4c8b8;
-
-    margin:
-        0;
-
-    font-size:
-        14px;
-
+    color: #d4c8b8;
+    margin: 0;
+    font-size: 14px;
 }
 
 
 .welcome-hint {
+    margin-top: 16px;
 
-    margin-top:
-        16px;
+    color: #c89b5b;
 
-    color:
-        #c89b5b;
-
-    font-size:
-        11px;
-
-    letter-spacing:
-        .4px;
-
+    font-size: 11px;
 }
 
 
 /* =====================================================
-   SECTION
+   SECTIONS
 ===================================================== */
 
 .section {
+    margin: 20px 0 30px;
 
-    margin:
-        20px 0 30px;
-
-    scroll-margin-top:
-        85px;
-
+    scroll-margin-top: 85px;
 }
 
 
 .section > h2 {
-
     font:
         700
         34px
         "Cormorant Garamond",
         serif;
 
-    color:
-        #f5e9d7;
+    color: #f5e9d7;
 
-    margin:
-        0 0 12px;
+    margin: 0 0 12px;
 
-    padding-bottom:
-        7px;
+    padding-bottom: 7px;
 
     border-bottom:
         1px solid
         #6a5034;
-
 }
 
 
 .price-note {
+    text-align: right;
 
-    text-align:
-        right;
+    color: #d6b27d;
 
-    color:
-        #d6b27d;
-
-    font-size:
-        11px;
+    font-size: 11px;
 
     margin:
         -6px 0 7px;
-
 }
 
 
@@ -628,80 +424,54 @@ main {
 ===================================================== */
 
 .section-heading-center {
+    text-align: center;
 
-    text-align:
-        center;
+    color: var(--cream);
 
-    color:
-        var(--cream);
-
-    margin-bottom:
-        15px;
-
+    margin-bottom: 15px;
 }
 
 
 .section-heading-center h2 {
-
     font:
         700
         38px
         "Cormorant Garamond",
         serif;
 
-    margin:
-        4px 0;
+    margin: 4px 0;
 
-    color:
-        #f5e9d7;
-
+    color: #f5e9d7;
 }
 
 
 .section-heading-center p {
+    margin: 0;
 
-    margin:
-        0;
+    color: #d4c8b8;
 
-    color:
-        #d4c8b8;
-
-    font-size:
-        13px;
-
+    font-size: 13px;
 }
 
 
 .specials-grid {
-
-    display:
-        grid;
+    display: grid;
 
     grid-template-columns:
-        repeat(
-            2,
-            minmax(0,1fr)
-        );
+        repeat(2, minmax(0, 1fr));
 
-    gap:
-        12px;
-
+    gap: 12px;
 }
 
 
 .special-card {
+    display: flex;
 
-    display:
-        flex;
+    align-items: center;
 
-    align-items:
-        center;
+    gap: 13px;
 
-    gap:
-        13px;
-
-    padding:
-        14px;
+    padding: 14px;
 
     background:
         linear-gradient(
@@ -714,73 +484,49 @@ main {
         1px solid
         rgba(200,155,91,.75);
 
-    border-radius:
-        16px;
+    border-radius: 16px;
 
     box-shadow:
         0 9px 22px
-        rgba(0,0,0,.2);
-
+        rgba(0,0,0,.20);
 }
 
 
 .special-icon {
+    width: 52px;
+    height: 52px;
 
-    width:
-        52px;
+    flex: 0 0 52px;
 
-    height:
-        52px;
+    display: flex;
 
-    flex:
-        0 0 52px;
+    align-items: center;
+    justify-content: center;
 
-    display:
-        flex;
+    background: #ead6b4;
 
-    align-items:
-        center;
+    border-radius: 50%;
 
-    justify-content:
-        center;
-
-    background:
-        #ead6b4;
-
-    border-radius:
-        50%;
-
-    font-size:
-        26px;
-
+    font-size: 26px;
 }
 
 
 .special-card h3 {
-
     font:
         700
         22px
         "Cormorant Garamond",
         serif;
 
-    color:
-        #6f4823;
+    color: #6f4823;
 
-    margin:
-        5px 0 2px;
-
+    margin: 5px 0 2px;
 }
 
 
 .special-card strong {
-
-    color:
-        #7a4d1e;
-
-    font-size:
-        14px;
-
+    color: #7a4d1e;
+    font-size: 14px;
 }
 
 
@@ -789,88 +535,58 @@ main {
 ===================================================== */
 
 .badge {
+    display: inline-block;
 
-    display:
-        inline-block;
+    padding: 3px 7px;
 
-    padding:
-        3px 7px;
+    border-radius: 999px;
 
-    border-radius:
-        999px;
+    font-size: 8px;
+    font-weight: 700;
 
-    font-size:
-        8px;
+    white-space: nowrap;
 
-    font-weight:
-        700;
-
-    white-space:
-        nowrap;
-
-    vertical-align:
-        middle;
-
+    vertical-align: middle;
 }
 
 
 .special-badge {
+    color: #704817;
 
-    color:
-        #704817;
-
-    background:
-        #ead09e;
+    background: #ead09e;
 
     border:
         1px solid
         #c89b5b;
-
 }
 
 
 .popular-badge {
+    color: #7a3e1b;
 
-    color:
-        #7a3e1b;
-
-    background:
-        #f1c9a4;
+    background: #f1c9a4;
 
     border:
         1px solid
         #d99b6b;
-
 }
 
 
 /* =====================================================
-   GRID
+   MENU GRID
 ===================================================== */
 
 .grid {
-
-    display:
-        grid;
+    display: grid;
 
     grid-template-columns:
-        repeat(
-            2,
-            minmax(0,1fr)
-        );
+        repeat(2, minmax(0, 1fr));
 
-    gap:
-        11px;
-
+    gap: 11px;
 }
 
 
-/* =====================================================
-   CARD
-===================================================== */
-
 .card {
-
     background:
         linear-gradient(
             145deg,
@@ -882,138 +598,95 @@ main {
         1px solid
         rgba(200,155,91,.7);
 
-    border-radius:
-        15px;
+    border-radius: 15px;
 
-    padding:
-        13px;
+    padding: 13px;
 
     box-shadow:
         0 9px 22px
         rgba(0,0,0,.20);
-
 }
 
 
 .card h3 {
-
     font:
         700
         24px
         "Cormorant Garamond",
         serif;
 
-    margin:
-        0 0 6px;
+    margin: 0 0 6px;
 
-    color:
-        #6f4823;
-
+    color: #6f4823;
 }
 
 
 .card ul {
+    list-style: none;
 
-    list-style:
-        none;
-
-    padding:
-        0;
-
-    margin:
-        0;
-
+    padding: 0;
+    margin: 0;
 }
 
 
 .card li {
+    display: flex;
 
-    display:
-        flex;
+    justify-content: space-between;
 
-    justify-content:
-        space-between;
+    align-items: flex-start;
 
-    align-items:
-        flex-start;
+    gap: 10px;
 
-    gap:
-        10px;
-
-    padding:
-        7px 0;
+    padding: 7px 0;
 
     border-bottom:
         1px dashed
         #d2c1a5;
 
-    font-size:
-        13px;
+    font-size: 13px;
 
-    line-height:
-        1.35;
-
+    line-height: 1.35;
 }
 
 
 .card li:last-child {
-
-    border-bottom:
-        0;
-
+    border-bottom: 0;
 }
 
 
 .card li b {
+    flex: 0 0 auto;
 
-    flex:
-        0 0 auto;
+    white-space: nowrap;
 
-    white-space:
-        nowrap;
-
-    color:
-        #7a4d1e;
-
+    color: #7a4d1e;
 }
 
 
 .card small {
-
-    font-size:
-        11px;
-
-    color:
-        #756a5c;
-
+    font-size: 11px;
+    color: #756a5c;
 }
 
 
 .wide {
-
-    grid-column:
-        1 / -1;
-
+    grid-column: 1 / -1;
 }
 
 
 /* =====================================================
-   BIRTHDAY
+   BIRTHDAY HALL
 ===================================================== */
 
 .birthday {
+    min-height: 360px;
 
-    min-height:
-        360px;
+    margin-top: 8px;
 
-    margin-top:
-        8px;
+    border-radius: 22px;
 
-    border-radius:
-        22px;
-
-    overflow:
-        hidden;
+    overflow: hidden;
 
     background:
         radial-gradient(
@@ -1032,174 +705,161 @@ main {
         1px solid
         #b8884d;
 
-    display:
-        flex;
+    display: flex;
 
-    align-items:
-        center;
+    align-items: center;
 
-    justify-content:
-        center;
+    justify-content: center;
 
-    text-align:
-        center;
+    text-align: center;
 
     box-shadow:
         0 14px 40px
         rgba(0,0,0,.35);
-
 }
 
 
 .birthday-overlay {
+    width: 100%;
 
     padding:
         35px 18px;
 
-    color:
-        var(--cream);
+    color: var(--cream);
 
+    text-align: center;
 }
 
 
 .birthday h2 {
-
     font:
         700
-        clamp(36px,9vw,62px)
+        clamp(36px, 9vw, 62px)
         "Cormorant Garamond",
         serif;
 
-    margin:
-        8px 0;
-
+    margin: 8px 0;
 }
 
 
 .birthday p {
+    font-size: 16px;
 
-    font-size:
-        16px;
+    margin: 0 0 18px;
 
-    margin:
-        0 0 18px;
-
-    color:
-        #e3d6c4;
-
+    color: #e3d6c4;
 }
 
 
-.birthday-photo-placeholder {
+/* =====================================================
+   BIRTHDAY PHOTO PLACEHOLDER
+===================================================== */
 
+.birthday-photo-placeholder {
     width:
-        min(560px,90vw);
+        min(560px, 90%);
 
     margin:
         10px auto 20px;
 
-    padding:
-        18px;
+    padding: 18px;
 
     border:
         1px dashed
         rgba(225,189,130,.55);
 
-    border-radius:
-        14px;
+    border-radius: 14px;
 
     background:
         rgba(0,0,0,.20);
-
 }
 
 
 .birthday-photo-placeholder span {
-
-    font-size:
-        34px;
-
+    font-size: 34px;
 }
 
 
 .birthday-photo-placeholder p {
+    margin: 5px 0 0;
 
-    margin:
-        5px 0 0;
+    font-size: 11px;
 
-    font-size:
-        11px;
-
-    color:
-        #d9c6aa;
-
+    color: #d9c6aa;
 }
 
 
+/* =====================================================
+   BIRTHDAY BUTTONS
+===================================================== */
+
 .birthday-actions {
+    display: flex;
 
-    display:
-        flex;
+    align-items: center;
 
-    justify-content:
-        center;
+    justify-content: center;
 
-    gap:
-        10px;
+    flex-wrap: wrap;
 
-    flex-wrap:
-        wrap;
+    gap: 12px;
 
+    width: 100%;
+
+    margin:
+        20px auto 0;
+
+    text-align: center;
 }
 
 
 .birthday-actions a {
+    display: inline-flex;
 
-    display:
-        inline-block;
+    align-items: center;
 
-    color:
-        #1a140e;
+    justify-content: center;
 
-    text-decoration:
-        none;
+    min-width: 160px;
 
     padding:
-        10px 16px;
+        11px 18px;
 
-    border-radius:
-        999px;
+    border-radius: 999px;
 
-    font-weight:
-        700;
+    color: #1a140e;
 
-    font-size:
-        12px;
+    text-decoration: none;
 
+    font-size: 12px;
+
+    font-weight: 700;
+
+    text-align: center;
+
+    line-height: 1.2;
+
+    box-sizing: border-box;
 }
 
 
 .birthday-actions .call {
-
     background:
         linear-gradient(
             135deg,
             #d9aa61,
             #bd8c48
         );
-
 }
 
 
 .birthday-actions .whatsapp {
-
     background:
         linear-gradient(
             135deg,
             #7bdc8b,
             #48b95d
         );
-
 }
 
 
@@ -1208,18 +868,15 @@ main {
 ===================================================== */
 
 .visit-section {
-
     margin:
         35px 0 25px;
 
     padding:
         30px 20px;
 
-    text-align:
-        center;
+    text-align: center;
 
-    color:
-        var(--cream);
+    color: var(--cream);
 
     background:
         linear-gradient(
@@ -1232,14 +889,11 @@ main {
         1px solid
         rgba(200,155,91,.45);
 
-    border-radius:
-        20px;
-
+    border-radius: 20px;
 }
 
 
 .visit-section h2 {
-
     font:
         700
         38px
@@ -1248,37 +902,27 @@ main {
 
     margin:
         5px 0;
-
 }
 
 
 .visit-section p {
+    margin: 5px 0;
 
-    margin:
-        5px 0;
+    color: #d4c8b8;
 
-    color:
-        #d4c8b8;
-
-    font-size:
-        13px;
-
+    font-size: 13px;
 }
 
 
 .location-button {
+    display: inline-block;
 
-    display:
-        inline-block;
-
-    margin-top:
-        15px;
+    margin-top: 15px;
 
     padding:
         11px 18px;
 
-    border-radius:
-        999px;
+    border-radius: 999px;
 
     background:
         linear-gradient(
@@ -1287,41 +931,30 @@ main {
             #bd8c48
         );
 
-    color:
-        #1a140e;
+    color: #1a140e;
 
-    text-decoration:
-        none;
+    text-decoration: none;
 
-    font-size:
-        12px;
+    font-size: 12px;
 
-    font-weight:
-        700;
-
+    font-weight: 700;
 }
 
 
 /* =====================================================
-   HOURS
+   OPENING HOURS
 ===================================================== */
 
 .hours-section {
+    margin: 25px 0;
 
-    margin:
-        25px 0;
+    text-align: center;
 
-    text-align:
-        center;
-
-    color:
-        var(--cream);
-
+    color: var(--cream);
 }
 
 
 .hours-section h2 {
-
     font:
         700
         38px
@@ -1330,23 +963,17 @@ main {
 
     margin:
         5px 0 14px;
-
 }
 
 
 .hours-card {
+    max-width: 500px;
 
-    max-width:
-        500px;
+    margin: auto;
 
-    margin:
-        auto;
+    padding: 16px;
 
-    padding:
-        16px;
-
-    border-radius:
-        15px;
+    border-radius: 15px;
 
     background:
         linear-gradient(
@@ -1359,34 +986,23 @@ main {
         1px solid
         rgba(200,155,91,.7);
 
-    color:
-        #6f4823;
-
+    color: #6f4823;
 }
 
 
 .hours-card div {
+    display: flex;
 
-    display:
-        flex;
+    justify-content: space-between;
 
-    justify-content:
-        space-between;
-
-    gap:
-        15px;
-
+    gap: 15px;
 }
 
 
 .hours-card strong {
+    color: #7a4d1e;
 
-    color:
-        #7a4d1e;
-
-    font-size:
-        12px;
-
+    font-size: 12px;
 }
 
 
@@ -1395,18 +1011,14 @@ main {
 ===================================================== */
 
 .review-section {
-
-    margin:
-        30px 0;
+    margin: 30px 0;
 
     padding:
         30px 18px;
 
-    text-align:
-        center;
+    text-align: center;
 
-    color:
-        var(--cream);
+    color: var(--cream);
 
     background:
         linear-gradient(
@@ -1419,14 +1031,11 @@ main {
         1px solid
         rgba(200,155,91,.45);
 
-    border-radius:
-        20px;
-
+    border-radius: 20px;
 }
 
 
 .review-section h2 {
-
     font:
         700
         38px
@@ -1435,40 +1044,30 @@ main {
 
     margin:
         5px 0 8px;
-
 }
 
 
 .review-section p {
-
-    max-width:
-        500px;
+    max-width: 500px;
 
     margin:
         0 auto 18px;
 
-    color:
-        #d4c8b8;
+    color: #d4c8b8;
 
-    font-size:
-        13px;
+    font-size: 13px;
 
-    line-height:
-        1.5;
-
+    line-height: 1.5;
 }
 
 
 .review-button {
-
-    display:
-        inline-block;
+    display: inline-block;
 
     padding:
         11px 18px;
 
-    border-radius:
-        999px;
+    border-radius: 999px;
 
     background:
         linear-gradient(
@@ -1477,18 +1076,13 @@ main {
             #bd8c48
         );
 
-    color:
-        #1a140e;
+    color: #1a140e;
 
-    text-decoration:
-        none;
+    text-decoration: none;
 
-    font-size:
-        12px;
+    font-size: 12px;
 
-    font-weight:
-        700;
-
+    font-weight: 700;
 }
 
 
@@ -1497,36 +1091,22 @@ main {
 ===================================================== */
 
 .floating-whatsapp {
+    position: fixed;
 
-    position:
-        fixed;
+    right: 18px;
+    bottom: 18px;
 
-    right:
-        18px;
+    z-index: 100;
 
-    bottom:
-        18px;
+    width: 56px;
+    height: 56px;
 
-    z-index:
-        100;
+    display: flex;
 
-    width:
-        56px;
+    align-items: center;
+    justify-content: center;
 
-    height:
-        56px;
-
-    display:
-        flex;
-
-    align-items:
-        center;
-
-    justify-content:
-        center;
-
-    border-radius:
-        50%;
+    border-radius: 50%;
 
     background:
         linear-gradient(
@@ -1535,14 +1115,11 @@ main {
             #35a94c
         );
 
-    color:
-        white;
+    color: white;
 
-    text-decoration:
-        none;
+    text-decoration: none;
 
-    font-size:
-        26px;
+    font-size: 26px;
 
     box-shadow:
         0 8px 24px
@@ -1551,7 +1128,6 @@ main {
     border:
         2px solid
         rgba(255,255,255,.75);
-
 }
 
 
@@ -1560,45 +1136,34 @@ main {
 ===================================================== */
 
 footer {
-
-    text-align:
-        center;
+    text-align: center;
 
     padding:
         26px 15px;
 
-    color:
-        #cdbda9;
+    color: #cdbda9;
 
     border-top:
         1px solid
         #493725;
 
-    font-size:
-        12px;
-
+    font-size: 12px;
 }
 
 
 footer strong {
-
     font:
         700
         25px
         "Cormorant Garamond",
         serif;
 
-    color:
-        #e6c58f;
-
+    color: #e6c58f;
 }
 
 
 footer .call {
-
-    display:
-        inline-block;
-
+    display: inline-block;
 }
 
 
@@ -1606,7 +1171,7 @@ footer .call {
    MOBILE
 ===================================================== */
 
-@media (max-width:680px) {
+@media (max-width: 680px) {
 
     html {
         scroll-padding-top: 116px;
@@ -1614,380 +1179,295 @@ footer .call {
 
 
     .hero {
-
         padding:
             10px
             10px
             12px;
-
     }
 
 
     .logo {
-
         width:
-            min(205px,58vw);
+            min(205px, 58vw);
 
-        max-height:
-            205px;
-
+        max-height: 205px;
     }
 
 
     .tagline {
+        font-size: 8px;
 
-        font-size:
-            8px;
-
-        letter-spacing:
-            2px;
-
+        letter-spacing: 2px;
     }
 
 
     .hero-actions {
+        gap: 7px;
 
-        gap:
-            7px;
-
-        margin-top:
-            9px;
-
+        margin-top: 9px;
     }
 
 
     .hero-actions a {
-
         padding:
             8px 11px;
 
-        font-size:
-            10.5px;
-
+        font-size: 10.5px;
     }
 
 
     .nav {
-
-        gap:
-            7px;
+        gap: 7px;
 
         padding:
             8px 9px 6px;
-
     }
 
 
     .nav a {
-
-        font-size:
-            11px;
+        font-size: 11px;
 
         padding:
             8px 12px;
-
     }
 
 
     .nav-indicator {
-
-        display:
-            flex;
-
+        display: flex;
     }
 
 
     main {
-
         padding:
-            10px 10px 35px;
-
+            10px
+            10px
+            35px;
     }
 
 
     .welcome {
-
         padding:
-            15px 6px 20px;
-
+            15px
+            6px
+            20px;
     }
 
 
     .welcome h1 {
+        font-size: 36px;
 
-        font-size:
-            36px;
-
-        line-height:
-            .98;
-
+        line-height: .98;
     }
 
 
     .welcome p {
-
-        font-size:
-            12px;
-
+        font-size: 12px;
     }
 
 
     .welcome-hint {
-
-        font-size:
-            10px;
-
+        font-size: 10px;
     }
 
 
     .section {
-
         margin:
-            17px 0 25px;
+            17px 0
+            25px;
 
         scroll-margin-top:
             120px;
-
     }
 
 
     .section > h2 {
-
-        font-size:
-            29px;
-
+        font-size: 29px;
     }
 
 
     .specials-grid {
+        grid-template-columns: 1fr;
 
-        grid-template-columns:
-            1fr;
-
-        gap:
-            9px;
-
+        gap: 9px;
     }
 
 
     .section-heading-center h2 {
-
-        font-size:
-            31px;
-
+        font-size: 31px;
     }
 
 
     .special-card {
-
-        padding:
-            12px;
-
+        padding: 12px;
     }
 
 
     .special-icon {
+        width: 46px;
+        height: 46px;
 
-        width:
-            46px;
+        flex-basis: 46px;
 
-        height:
-            46px;
-
-        flex-basis:
-            46px;
-
-        font-size:
-            22px;
-
+        font-size: 22px;
     }
 
 
     .special-card h3 {
-
-        font-size:
-            21px;
-
+        font-size: 21px;
     }
 
 
     .grid {
+        grid-template-columns: 1fr;
 
-        grid-template-columns:
-            1fr;
-
-        gap:
-            9px;
-
+        gap: 9px;
     }
 
 
     .wide {
-
-        grid-column:
-            auto;
-
+        grid-column: auto;
     }
 
 
     .card {
-
-        border-radius:
-            13px;
+        border-radius: 13px;
 
         padding:
             11px 12px;
-
     }
 
 
     .card h3 {
-
-        font-size:
-            23px;
-
+        font-size: 23px;
     }
 
 
     .card li {
-
         padding:
             6.5px 0;
 
-        font-size:
-            12px;
-
+        font-size: 12px;
     }
 
 
+    /* ================================================
+       BIRTHDAY MOBILE BUTTON FIX
+    ================================================ */
+
     .birthday {
+        min-height: 330px;
 
-        min-height:
-            330px;
-
-        border-radius:
-            18px;
-
+        border-radius: 18px;
     }
 
 
     .birthday-overlay {
+        width: 100%;
 
         padding:
             28px 14px;
 
+        text-align: center;
     }
 
 
     .birthday h2 {
+        font-size: 39px;
 
-        font-size:
-            39px;
-
-        line-height:
-            1;
-
+        line-height: 1;
     }
 
 
     .birthday p {
+        font-size: 14px;
+    }
 
-        font-size:
-            14px;
 
+    .birthday-photo-placeholder {
+        width: 90%;
     }
 
 
     .birthday-actions {
+        display: flex;
 
-        flex-direction:
-            column;
+        flex-direction: column;
 
-        width:
-            100%;
+        align-items: center;
 
+        justify-content: center;
+
+        width: 100%;
+
+        margin:
+            20px auto 0;
+
+        gap: 10px;
     }
 
 
     .birthday-actions a {
+        display: flex;
+
+        align-items: center;
+
+        justify-content: center;
 
         width:
-            min(250px,90%);
+            min(280px, 90%);
 
-        text-align:
-            center;
+        min-width: 0;
 
+        margin:
+            0 auto;
+
+        text-align: center;
     }
 
 
     .visit-section {
-
         padding:
             24px 14px;
-
     }
 
 
     .visit-section h2 {
-
-        font-size:
-            31px;
-
+        font-size: 31px;
     }
 
 
     .hours-card {
-
-        padding:
-            13px;
-
+        padding: 13px;
     }
 
 
     .hours-card div {
+        flex-direction: column;
 
-        flex-direction:
-            column;
-
-        gap:
-            5px;
-
+        gap: 5px;
     }
 
 
     .review-section {
-
         padding:
             24px 14px;
-
     }
 
 
     .review-section h2 {
-
-        font-size:
-            31px;
-
+        font-size: 31px;
     }
 
 
     .floating-whatsapp {
+        right: 14px;
 
-        right:
-            14px;
+        bottom: 14px;
 
-        bottom:
-            14px;
+        width: 52px;
+        height: 52px;
 
-        width:
-            52px;
-
-        height:
-            52px;
-
-        font-size:
-            24px;
-
+        font-size: 24px;
     }
 
 }
@@ -1997,43 +1477,35 @@ footer .call {
    VERY SMALL PHONES
 ===================================================== */
 
-@media (max-width:380px) {
+@media (max-width: 380px) {
 
     .logo {
+        width: 180px;
 
-        width:
-            180px;
-
-        max-height:
-            180px;
-
+        max-height: 180px;
     }
 
 
     .nav a {
-
-        font-size:
-            10px;
+        font-size: 10px;
 
         padding:
             7px 10px;
-
     }
 
 
     .welcome h1 {
-
-        font-size:
-            32px;
-
+        font-size: 32px;
     }
 
 
     .card li {
+        font-size: 11.5px;
+    }
 
-        font-size:
-            11.5px;
 
+    .birthday-actions a {
+        width: 90%;
     }
 
 }
@@ -2043,35 +1515,24 @@ footer .call {
    DESKTOP
 ===================================================== */
 
-@media (min-width:681px) {
+@media (min-width: 681px) {
 
     .nav {
-
-        justify-content:
-            center;
-
+        justify-content: center;
     }
 
 
     .nav-indicator {
-
-        display:
-            none;
-
+        display: none;
     }
 
 
     .grid .wide {
+        max-width: 760px;
 
-        max-width:
-            760px;
+        margin: auto;
 
-        margin:
-            auto;
-
-        width:
-            100%;
-
+        width: 100%;
     }
 
 }
