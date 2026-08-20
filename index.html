@@ -3,42 +3,30 @@
 
 <head>
     <meta charset="UTF-8">
-
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1.0">
-
-    <meta name="theme-color"
-          content="#11100e">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#11100e">
 
     <meta name="description"
           content="Skylight Cafe & Restro - Digital Menu">
 
     <title>Skylight Cafe & Restro | Digital Menu</title>
 
-    <link rel="stylesheet"
-          href="style.css">
+    <link rel="stylesheet" href="style.css">
 </head>
-
 
 <body>
 
-<!-- =====================================================
-     PAGE START / SCROLL RESET
-===================================================== -->
-
 <script>
     /*
-     * Prevent browser from restoring the previous
-     * scroll position when the customer opens/reloads
-     * the QR menu.
+     * Prevent browser from restoring an old scroll position.
      */
     if ("scrollRestoration" in history) {
         history.scrollRestoration = "manual";
     }
 
     /*
-     * If this is a normal menu URL without a hash,
-     * always start from the top.
+     * Only reset to top when there is no category hash.
+     * This means the normal QR URL opens at the top.
      */
     if (!window.location.hash) {
         window.scrollTo(0, 0);
@@ -64,7 +52,6 @@
     <div class="tagline">
         GOOD FOOD · GOOD VIBES · GOOD TIMES
     </div>
-
 
     <div class="hero-actions">
 
@@ -97,150 +84,91 @@
 </header>
 
 
-
 <!-- =====================================================
      CATEGORY NAVIGATION
 ===================================================== -->
 
 <nav class="nav-wrapper">
 
-    <div
-        class="nav"
-        id="categoryNav"
-    >
+    <div class="nav" id="categoryNav">
 
-        <a
-            href="#specials"
-            data-section="specials"
-        >
+        <a href="#specials" data-section="specials">
             ⭐ Specials
         </a>
 
-        <a
-            href="#beverages"
-            data-section="beverages"
-        >
+        <a href="#beverages" data-section="beverages">
             ☕ Beverages
         </a>
 
-        <a
-            href="#pizza"
-            data-section="pizza"
-        >
+        <a href="#pizza" data-section="pizza">
             🍕 Pizza
         </a>
 
-        <a
-            href="#sandwich"
-            data-section="sandwich"
-        >
+        <a href="#sandwich" data-section="sandwich">
             🥪 Sandwich
         </a>
 
-        <a
-            href="#burger"
-            data-section="burger"
-        >
+        <a href="#burger" data-section="burger">
             🍔 Burger
         </a>
 
-        <a
-            href="#fries"
-            data-section="fries"
-        >
+        <a href="#fries" data-section="fries">
             🍟 Fries
         </a>
 
-        <a
-            href="#nachos"
-            data-section="nachos"
-        >
+        <a href="#nachos" data-section="nachos">
             🌮 Nachos
         </a>
 
-        <a
-            href="#maggi"
-            data-section="maggi"
-        >
+        <a href="#maggi" data-section="maggi">
             🍜 Maggi
         </a>
 
-        <a
-            href="#pasta"
-            data-section="pasta"
-        >
+        <a href="#pasta" data-section="pasta">
             🍝 Pasta
         </a>
 
-        <a
-            href="#pavbhaji"
-            data-section="pavbhaji"
-        >
+        <a href="#pavbhaji" data-section="pavbhaji">
             🍛 Pav Bhaji
         </a>
 
-        <a
-            href="#extras"
-            data-section="extras"
-        >
+        <a href="#extras" data-section="extras">
             ➕ Extras
         </a>
 
-        <a
-            href="#momos"
-            data-section="momos"
-        >
+        <a href="#momos" data-section="momos">
             🥟 Momos
         </a>
 
-        <a
-            href="#chinese"
-            data-section="chinese"
-        >
+        <a href="#chinese" data-section="chinese">
             🥢 Chinese
         </a>
 
-        <a
-            href="#desserts"
-            data-section="desserts"
-        >
+        <a href="#desserts" data-section="desserts">
             🍰 Desserts
         </a>
 
-        <a
-            href="#birthday"
-            data-section="birthday"
-        >
+        <a href="#birthday" data-section="birthday">
             🎂 Birthday Hall
         </a>
 
     </div>
 
 
-    <!-- Mobile pagination indicator -->
+    <div class="nav-indicator">
 
-    <div
-        class="nav-indicator"
-        id="navIndicator"
-    >
-
-        <span class="nav-arrow">
-            ‹
-        </span>
+        <span class="nav-arrow">‹</span>
 
         <div
             class="nav-dots"
             id="navDots"
         ></div>
 
-        <span class="nav-arrow">
-            ›
-        </span>
+        <span class="nav-arrow">›</span>
 
     </div>
 
 </nav>
-
 
 
 <!-- =====================================================
@@ -251,7 +179,7 @@
 
 
 <!-- =====================================================
-     WELCOME / FIRST SCREEN
+     WELCOME
 ===================================================== -->
 
 <section
@@ -276,7 +204,6 @@
     </div>
 
 </section>
-
 
 
 <!-- =====================================================
@@ -333,7 +260,6 @@
         </div>
 
 
-
         <div class="special-card">
 
             <div class="special-icon">
@@ -359,7 +285,6 @@
         </div>
 
 
-
         <div class="special-card">
 
             <div class="special-icon">
@@ -383,7 +308,6 @@
             </div>
 
         </div>
-
 
 
         <div class="special-card">
@@ -415,370 +339,139 @@
 </section>
 
 
-
 <!-- =====================================================
      BEVERAGES
 ===================================================== -->
 
-<section
-    id="beverages"
-    class="section"
->
+<section id="beverages" class="section">
 
-    <h2>
-        ☕ Beverages
-    </h2>
-
+    <h2>☕ Beverages</h2>
 
     <div class="grid">
 
-
         <div class="card">
 
-            <h3>
-                Hot Beverages
-            </h3>
+            <h3>Hot Beverages</h3>
 
             <ul>
-
-                <li>
-                    Hot Coffee
-                    <b>₹40</b>
-                </li>
-
-                <li>
-                    Black Coffee
-                    <b>₹40</b>
-                </li>
-
-                <li>
-                    Bournvita Milk
-                    <b>₹40</b>
-                </li>
-
-                <li>
-                    Hot Chocolate
-                    <b>₹70</b>
-                </li>
-
+                <li>Hot Coffee <b>₹40</b></li>
+                <li>Black Coffee <b>₹40</b></li>
+                <li>Bournvita Milk <b>₹40</b></li>
+                <li>Hot Chocolate <b>₹70</b></li>
             </ul>
 
         </div>
 
 
-
         <div class="card">
 
-            <h3>
-                Cold Beverages
-            </h3>
+            <h3>Cold Beverages</h3>
 
             <ul>
-
-                <li>
-                    Cold Coffee
-                    <b>₹50</b>
-                </li>
-
-                <li>
-                    Cold Coffee With Crush
-                    <b>₹80</b>
-                </li>
-
-                <li>
-                    Cold Coffee With Ice-Cream
-                    <b>₹90</b>
-                </li>
-
-                <li>
-                    Lemon Ice Tea
-                    <b>₹80</b>
-                </li>
-
-                <li>
-                    Peach Ice Tea
-                    <b>₹80</b>
-                </li>
-
+                <li>Cold Coffee <b>₹50</b></li>
+                <li>Cold Coffee With Crush <b>₹80</b></li>
+                <li>Cold Coffee With Ice-Cream <b>₹90</b></li>
+                <li>Lemon Ice Tea <b>₹80</b></li>
+                <li>Peach Ice Tea <b>₹80</b></li>
             </ul>
 
         </div>
 
 
-
         <div class="card">
 
-            <h3>
-                Milkshake
-            </h3>
+            <h3>Milkshake</h3>
 
             <ul>
-
-                <li>
-                    Oreo Milkshake
-                    <b>₹100</b>
-                </li>
-
-                <li>
-                    KitKat Milkshake
-                    <b>₹100</b>
-                </li>
-
-                <li>
-                    Vanilla Milkshake
-                    <b>₹100</b>
-                </li>
-
-                <li>
-                    Mango Milkshake
-                    <b>₹100</b>
-                </li>
-
-                <li>
-                    Chocolate Milkshake
-                    <b>₹100</b>
-                </li>
-
-                <li>
-                    Strawberry Milkshake
-                    <b>₹100</b>
-                </li>
-
-                <li>
-                    Pineapple Milkshake
-                    <b>₹100</b>
-                </li>
-
-                <li>
-                    Pista Milkshake
-                    <b>₹100</b>
-                </li>
-
-                <li>
-                    Butterscotch Milkshake
-                    <b>₹100</b>
-                </li>
-
-                <li>
-                    Blueberry Milkshake
-                    <b>₹100</b>
-                </li>
-
+                <li>Oreo Milkshake <b>₹100</b></li>
+                <li>KitKat Milkshake <b>₹100</b></li>
+                <li>Vanilla Milkshake <b>₹100</b></li>
+                <li>Mango Milkshake <b>₹100</b></li>
+                <li>Chocolate Milkshake <b>₹100</b></li>
+                <li>Strawberry Milkshake <b>₹100</b></li>
+                <li>Pineapple Milkshake <b>₹100</b></li>
+                <li>Pista Milkshake <b>₹100</b></li>
+                <li>Butterscotch Milkshake <b>₹100</b></li>
+                <li>Blueberry Milkshake <b>₹100</b></li>
             </ul>
 
         </div>
 
 
-
         <div class="card">
 
-            <h3>
-                Mocktails
-            </h3>
+            <h3>Mocktails</h3>
 
             <ul>
-
-                <li>
-                    Blue Curacao Mojito
-                    <b>₹90</b>
-                </li>
-
-                <li>
-                    Mint Mojito
-                    <b>₹90</b>
-                </li>
-
-                <li>
-                    Guava Mojito
-                    <b>₹90</b>
-                </li>
-
-                <li>
-                    Classic Mojito
-                    <b>₹90</b>
-                </li>
-
-                <li>
-                    Raspberry Mojito
-                    <b>₹90</b>
-                </li>
-
-                <li>
-                    Green Apple Mojito
-                    <b>₹90</b>
-                </li>
-
-                <li>
-                    Watermelon Mojito
-                    <b>₹90</b>
-                </li>
-
-                <li>
-                    Blue Berry Mojito
-                    <b>₹90</b>
-                </li>
-
+                <li>Blue Curacao Mojito <b>₹90</b></li>
+                <li>Mint Mojito <b>₹90</b></li>
+                <li>Guava Mojito <b>₹90</b></li>
+                <li>Classic Mojito <b>₹90</b></li>
+                <li>Raspberry Mojito <b>₹90</b></li>
+                <li>Green Apple Mojito <b>₹90</b></li>
+                <li>Watermelon Mojito <b>₹90</b></li>
+                <li>Blue Berry Mojito <b>₹90</b></li>
             </ul>
 
         </div>
 
 
-
         <div class="card">
 
-            <h3>
-                Ice-Cream
-            </h3>
+            <h3>Ice-Cream</h3>
 
             <ul>
-
-                <li>
-                    Vanilla Ice-Cream
-                    <b>₹50</b>
-                </li>
-
-                <li>
-                    Chocolate Ice-Cream
-                    <b>₹50</b>
-                </li>
-
-                <li>
-                    Butter Scotch Ice-Cream
-                    <b>₹50</b>
-                </li>
-
-                <li>
-                    Mango Ice-Cream
-                    <b>₹50</b>
-                </li>
-
-                <li>
-                    Pista Ice-Cream
-                    <b>₹50</b>
-                </li>
-
-                <li>
-                    Strawberry Ice-Cream
-                    <b>₹50</b>
-                </li>
-
-                <li>
-                    Skylight Special Ice-Cream
-                    <b>₹70</b>
-                </li>
-
+                <li>Vanilla Ice-Cream <b>₹50</b></li>
+                <li>Chocolate Ice-Cream <b>₹50</b></li>
+                <li>Butter Scotch Ice-Cream <b>₹50</b></li>
+                <li>Mango Ice-Cream <b>₹50</b></li>
+                <li>Pista Ice-Cream <b>₹50</b></li>
+                <li>Strawberry Ice-Cream <b>₹50</b></li>
+                <li>Skylight Special Ice-Cream <b>₹70</b></li>
             </ul>
 
         </div>
 
 
-
         <div class="card">
 
-            <h3>
-                Ice Crusher
-            </h3>
+            <h3>Ice Crusher</h3>
 
             <ul>
-
-                <li>
-                    Mango Crusher
-                    <b>₹80</b>
-                </li>
-
-                <li>
-                    Pista Crusher
-                    <b>₹80</b>
-                </li>
-
-                <li>
-                    Strawberry Crusher
-                    <b>₹80</b>
-                </li>
-
-                <li>
-                    Blueberry Crusher
-                    <b>₹80</b>
-                </li>
-
-                <li>
-                    Pineapple Crusher
-                    <b>₹80</b>
-                </li>
-
+                <li>Mango Crusher <b>₹80</b></li>
+                <li>Pista Crusher <b>₹80</b></li>
+                <li>Strawberry Crusher <b>₹80</b></li>
+                <li>Blueberry Crusher <b>₹80</b></li>
+                <li>Pineapple Crusher <b>₹80</b></li>
             </ul>
 
         </div>
 
 
-
         <div class="card">
 
-            <h3>
-                CAD-B
-            </h3>
+            <h3>CAD-B</h3>
 
             <ul>
-
-                <li>
-                    Choco CAD-B
-                    <b>₹140</b>
-                </li>
-
-                <li>
-                    Oreo CAD-B
-                    <b>₹140</b>
-                </li>
-
-                <li>
-                    KitKat CAD-B
-                    <b>₹140</b>
-                </li>
-
+                <li>Choco CAD-B <b>₹140</b></li>
+                <li>Oreo CAD-B <b>₹140</b></li>
+                <li>KitKat CAD-B <b>₹140</b></li>
             </ul>
 
         </div>
 
 
-
         <div class="card">
 
-            <h3>
-                Mastani
-            </h3>
+            <h3>Mastani</h3>
 
             <ul>
-
-                <li>
-                    Mango Mastani
-                    <b>₹120</b>
-                </li>
-
-                <li>
-                    Strawberry Mastani
-                    <b>₹120</b>
-                </li>
-
-                <li>
-                    Pista Mastani
-                    <b>₹120</b>
-                </li>
-
-                <li>
-                    Butter Scotch Mastani
-                    <b>₹120</b>
-                </li>
-
-                <li>
-                    Chocolate Mastani
-                    <b>₹120</b>
-                </li>
-
-                <li>
-                    Vanilla Mastani
-                    <b>₹120</b>
-                </li>
-
+                <li>Mango Mastani <b>₹120</b></li>
+                <li>Strawberry Mastani <b>₹120</b></li>
+                <li>Pista Mastani <b>₹120</b></li>
+                <li>Butter Scotch Mastani <b>₹120</b></li>
+                <li>Chocolate Mastani <b>₹120</b></li>
+                <li>Vanilla Mastani <b>₹120</b></li>
             </ul>
 
         </div>
@@ -788,24 +481,17 @@
 </section>
 
 
-
 <!-- =====================================================
      PIZZA
 ===================================================== -->
 
-<section
-    id="pizza"
-    class="section"
->
+<section id="pizza" class="section">
 
-    <h2>
-        🍕 Pizza
-    </h2>
+    <h2>🍕 Pizza</h2>
 
     <div class="price-note">
         S (6") / M (8")
     </div>
-
 
     <div class="grid">
 
@@ -871,9 +557,7 @@
                         </span>
                     </span>
 
-                    <b>
-                        ₹220 / ₹260
-                    </b>
+                    <b>₹220 / ₹260</b>
                 </li>
 
             </ul>
@@ -885,91 +569,32 @@
 </section>
 
 
-
 <!-- =====================================================
      SANDWICH
 ===================================================== -->
 
-<section
-    id="sandwich"
-    class="section"
->
+<section id="sandwich" class="section">
 
-    <h2>
-        🥪 Sandwich
-    </h2>
-
+    <h2>🥪 Sandwich</h2>
 
     <div class="grid">
 
         <div class="card wide">
 
             <ul>
-
-                <li>
-                    Veg Sandwich (Without Grill)
-                    <b>₹60</b>
-                </li>
-
-                <li>
-                    Veg Grill Sandwich
-                    <b>₹70</b>
-                </li>
-
-                <li>
-                    Veg Cheese Grill Sandwich
-                    <b>₹100</b>
-                </li>
-
-                <li>
-                    Schezwan Cheese Grill Sandwich
-                    <b>₹120</b>
-                </li>
-
-                <li>
-                    Peri Peri Cheese Grill Sandwich
-                    <b>₹120</b>
-                </li>
-
-                <li>
-                    Masala Cheese Grill Sandwich
-                    <b>₹120</b>
-                </li>
-
-                <li>
-                    Tandoori Cheese Grill Sandwich
-                    <b>₹120</b>
-                </li>
-
-                <li>
-                    Paneer Cheese Grill Sandwich
-                    <b>₹130</b>
-                </li>
-
-                <li>
-                    Corn And Cheese Sandwich
-                    <b>₹100</b>
-                </li>
-
-                <li>
-                    Chocolate Grill Sandwich
-                    <b>₹100</b>
-                </li>
-
-                <li>
-                    Bread Butter Sandwich
-                    <b>₹40</b>
-                </li>
-
-                <li>
-                    Bread Butter Grill Sandwich
-                    <b>₹60</b>
-                </li>
-
-                <li>
-                    Club Sandwich
-                    <b>₹140</b>
-                </li>
+                <li>Veg Sandwich (Without Grill) <b>₹60</b></li>
+                <li>Veg Grill Sandwich <b>₹70</b></li>
+                <li>Veg Cheese Grill Sandwich <b>₹100</b></li>
+                <li>Schezwan Cheese Grill Sandwich <b>₹120</b></li>
+                <li>Peri Peri Cheese Grill Sandwich <b>₹120</b></li>
+                <li>Masala Cheese Grill Sandwich <b>₹120</b></li>
+                <li>Tandoori Cheese Grill Sandwich <b>₹120</b></li>
+                <li>Paneer Cheese Grill Sandwich <b>₹130</b></li>
+                <li>Corn And Cheese Sandwich <b>₹100</b></li>
+                <li>Chocolate Grill Sandwich <b>₹100</b></li>
+                <li>Bread Butter Sandwich <b>₹40</b></li>
+                <li>Bread Butter Grill Sandwich <b>₹60</b></li>
+                <li>Club Sandwich <b>₹140</b></li>
 
                 <li>
                     <span>
@@ -979,88 +604,6 @@
                         </span>
                     </span>
 
-                    <b>
-                        ₹160
-                    </b>
-                </li>
-
-            </ul>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-
-<!-- =====================================================
-     BURGER
-===================================================== -->
-
-<section
-    id="burger"
-    class="section"
->
-
-    <h2>
-        🍔 Burger
-    </h2>
-
-
-    <div class="grid">
-
-        <div class="card wide">
-
-            <ul>
-
-                <li>
-                    Veg Burger
-                    <b>₹70</b>
-                </li>
-
-                <li>
-                    Veg Cheese Burger
-                    <b>₹90</b>
-                </li>
-
-                <li>
-                    Mayo Cheese Burger
-                    <b>₹90</b>
-                </li>
-
-                <li>
-                    Schezwan Cheese Burger
-                    <b>₹100</b>
-                </li>
-
-                <li>
-                    Peri Peri Cheese Burger
-                    <b>₹100</b>
-                </li>
-
-                <li>
-                    Tandoori Cheese Burger
-                    <b>₹100</b>
-                </li>
-
-                <li>
-                    Paneer Burger
-                    <b>₹110</b>
-                </li>
-
-                <li>
-                    Paneer Cheese Burger
-                    <b>₹120</b>
-                </li>
-
-                <li>
-                    Double Patty Cheese Burger
-                    <b>₹140</b>
-                </li>
-
-                <li>
-                    Double Patty Paneer Cheese Burger
                     <b>₹160</b>
                 </li>
 
@@ -1073,62 +616,29 @@
 </section>
 
 
-
 <!-- =====================================================
-     FRIES
+     BURGER
 ===================================================== -->
 
-<section
-    id="fries"
-    class="section"
->
+<section id="burger" class="section">
 
-    <h2>
-        🍟 Fries
-    </h2>
-
+    <h2>🍔 Burger</h2>
 
     <div class="grid">
 
         <div class="card wide">
 
             <ul>
-
-                <li>
-                    Simply Salted Fries
-                    <b>₹80</b>
-                </li>
-
-                <li>
-                    Peri Peri Fries
-                    <b>₹100</b>
-                </li>
-
-                <li>
-                    Mayo Fries
-                    <b>₹110</b>
-                </li>
-
-                <li>
-                    Tandoori Fries
-                    <b>₹120</b>
-                </li>
-
-                <li>
-                    Cheese Fries
-                    <b>₹120</b>
-                </li>
-
-                <li>
-                    Double Cheese Fries
-                    <b>₹140</b>
-                </li>
-
-                <li>
-                    Masala Fries
-                    <b>₹140</b>
-                </li>
-
+                <li>Veg Burger <b>₹70</b></li>
+                <li>Veg Cheese Burger <b>₹90</b></li>
+                <li>Mayo Cheese Burger <b>₹90</b></li>
+                <li>Schezwan Cheese Burger <b>₹100</b></li>
+                <li>Peri Peri Cheese Burger <b>₹100</b></li>
+                <li>Tandoori Cheese Burger <b>₹100</b></li>
+                <li>Paneer Burger <b>₹110</b></li>
+                <li>Paneer Cheese Burger <b>₹120</b></li>
+                <li>Double Patty Cheese Burger <b>₹140</b></li>
+                <li>Double Patty Paneer Cheese Burger <b>₹160</b></li>
             </ul>
 
         </div>
@@ -1137,43 +647,52 @@
 
 </section>
 
+
+<!-- =====================================================
+     FRIES
+===================================================== -->
+
+<section id="fries" class="section">
+
+    <h2>🍟 Fries</h2>
+
+    <div class="grid">
+
+        <div class="card wide">
+
+            <ul>
+                <li>Simply Salted Fries <b>₹80</b></li>
+                <li>Peri Peri Fries <b>₹100</b></li>
+                <li>Mayo Fries <b>₹110</b></li>
+                <li>Tandoori Fries <b>₹120</b></li>
+                <li>Cheese Fries <b>₹120</b></li>
+                <li>Double Cheese Fries <b>₹140</b></li>
+                <li>Masala Fries <b>₹140</b></li>
+            </ul>
+
+        </div>
+
+    </div>
+
+</section>
 
 
 <!-- =====================================================
      NACHOS
 ===================================================== -->
 
-<section
-    id="nachos"
-    class="section"
->
+<section id="nachos" class="section">
 
-    <h2>
-        🌮 Nachos
-    </h2>
-
+    <h2>🌮 Nachos</h2>
 
     <div class="grid">
 
         <div class="card wide">
 
             <ul>
-
-                <li>
-                    Cheese Nachos
-                    <b>₹100</b>
-                </li>
-
-                <li>
-                    Peri Peri Cheese Nachos
-                    <b>₹120</b>
-                </li>
-
-                <li>
-                    Tandoori Cheese Nachos
-                    <b>₹120</b>
-                </li>
-
+                <li>Cheese Nachos <b>₹100</b></li>
+                <li>Peri Peri Cheese Nachos <b>₹120</b></li>
+                <li>Tandoori Cheese Nachos <b>₹120</b></li>
             </ul>
 
         </div>
@@ -1181,74 +700,30 @@
     </div>
 
 </section>
-
 
 
 <!-- =====================================================
      MAGGI
 ===================================================== -->
 
-<section
-    id="maggi"
-    class="section"
->
+<section id="maggi" class="section">
 
-    <h2>
-        🍜 Maggi
-    </h2>
-
+    <h2>🍜 Maggi</h2>
 
     <div class="grid">
 
         <div class="card wide">
 
             <ul>
-
-                <li>
-                    Plain Maggi
-                    <b>₹50</b>
-                </li>
-
-                <li>
-                    Plain Masala Maggi
-                    <b>₹70</b>
-                </li>
-
-                <li>
-                    Plain Cheese Maggi
-                    <b>₹80</b>
-                </li>
-
-                <li>
-                    Vegetable Maggi
-                    <b>₹80</b>
-                </li>
-
-                <li>
-                    Schezwan Cheese Maggi
-                    <b>₹90</b>
-                </li>
-
-                <li>
-                    Peri Peri Cheese Maggi
-                    <b>₹100</b>
-                </li>
-
-                <li>
-                    Butter & Cheese Maggi
-                    <b>₹100</b>
-                </li>
-
-                <li>
-                    Corn & Cheese Maggi
-                    <b>₹90</b>
-                </li>
-
-                <li>
-                    Alfredo Cheese Maggi
-                    <b>₹120</b>
-                </li>
-
+                <li>Plain Maggi <b>₹50</b></li>
+                <li>Plain Masala Maggi <b>₹70</b></li>
+                <li>Plain Cheese Maggi <b>₹80</b></li>
+                <li>Vegetable Maggi <b>₹80</b></li>
+                <li>Schezwan Cheese Maggi <b>₹90</b></li>
+                <li>Peri Peri Cheese Maggi <b>₹100</b></li>
+                <li>Butter & Cheese Maggi <b>₹100</b></li>
+                <li>Corn & Cheese Maggi <b>₹90</b></li>
+                <li>Alfredo Cheese Maggi <b>₹120</b></li>
             </ul>
 
         </div>
@@ -1256,44 +731,24 @@
     </div>
 
 </section>
-
 
 
 <!-- =====================================================
      PASTA
 ===================================================== -->
 
-<section
-    id="pasta"
-    class="section"
->
+<section id="pasta" class="section">
 
-    <h2>
-        🍝 Pasta
-    </h2>
-
+    <h2>🍝 Pasta</h2>
 
     <div class="grid">
 
         <div class="card wide">
 
             <ul>
-
-                <li>
-                    White Sauce Pasta
-                    <b>₹150</b>
-                </li>
-
-                <li>
-                    Red Sauce Pasta
-                    <b>₹150</b>
-                </li>
-
-                <li>
-                    Alfredo Sauce Pasta
-                    <b>₹150</b>
-                </li>
-
+                <li>White Sauce Pasta <b>₹150</b></li>
+                <li>Red Sauce Pasta <b>₹150</b></li>
+                <li>Alfredo Sauce Pasta <b>₹150</b></li>
             </ul>
 
         </div>
@@ -1303,20 +758,13 @@
 </section>
 
 
-
 <!-- =====================================================
      PAV BHAJI
 ===================================================== -->
 
-<section
-    id="pavbhaji"
-    class="section"
->
+<section id="pavbhaji" class="section">
 
-    <h2>
-        🍛 Pav Bhaji
-    </h2>
-
+    <h2>🍛 Pav Bhaji</h2>
 
     <div class="grid">
 
@@ -1339,9 +787,7 @@
 
                     </span>
 
-                    <b>
-                        ₹149
-                    </b>
+                    <b>₹149</b>
 
                 </li>
 
@@ -1369,47 +815,23 @@
 </section>
 
 
-
 <!-- =====================================================
      EXTRAS
 ===================================================== -->
 
-<section
-    id="extras"
-    class="section"
->
+<section id="extras" class="section">
 
-    <h2>
-        ➕ Extras
-    </h2>
-
+    <h2>➕ Extras</h2>
 
     <div class="grid">
 
         <div class="card wide">
 
             <ul>
-
-                <li>
-                    Extra Butter
-                    <b>₹10</b>
-                </li>
-
-                <li>
-                    Extra Pav
-                    <b>₹10</b>
-                </li>
-
-                <li>
-                    Extra Cheese
-                    <b>₹20</b>
-                </li>
-
-                <li>
-                    Extra Bhaji
-                    <b>₹90</b>
-                </li>
-
+                <li>Extra Butter <b>₹10</b></li>
+                <li>Extra Pav <b>₹10</b></li>
+                <li>Extra Cheese <b>₹20</b></li>
+                <li>Extra Bhaji <b>₹90</b></li>
             </ul>
 
         </div>
@@ -1419,47 +841,26 @@
 </section>
 
 
-
 <!-- =====================================================
-     MOMOS & BITES
+     MOMOS
 ===================================================== -->
 
-<section
-    id="momos"
-    class="section"
->
+<section id="momos" class="section">
 
-    <h2>
-        🥟 Momos & Bites
-    </h2>
-
+    <h2>🥟 Momos & Bites</h2>
 
     <div class="grid">
 
         <div class="card wide">
 
             <ul>
-
-                <li>
-                    Veg Momos
-                    <b>₹100</b>
-                </li>
-
-                <li>
-                    Veg Cheese Momos
-                    <b>₹130</b>
-                </li>
-
-                <li>
-                    Paneer Momos
-                    <b>₹150</b>
-                </li>
+                <li>Veg Momos <b>₹100</b></li>
+                <li>Veg Cheese Momos <b>₹130</b></li>
+                <li>Paneer Momos <b>₹150</b></li>
 
                 <li>
                     Garlic Cheese Bread
-                    <small>
-                        (2-Slice)
-                    </small>
+                    <small>(2-Slice)</small>
                     <b>₹120</b>
                 </li>
 
@@ -1467,7 +868,6 @@
                     Potato Cheese Balls
                     <b>₹120</b>
                 </li>
-
             </ul>
 
         </div>
@@ -1475,103 +875,44 @@
     </div>
 
 </section>
-
 
 
 <!-- =====================================================
      CHINESE
 ===================================================== -->
 
-<section
-    id="chinese"
-    class="section"
->
+<section id="chinese" class="section">
 
-    <h2>
-        🥢 Chinese Starter
-    </h2>
-
+    <h2>🥢 Chinese Starter</h2>
 
     <div class="grid">
 
-
         <div class="card">
 
-            <h3>
-                Soups
-            </h3>
+            <h3>Soups</h3>
 
             <ul>
-
-                <li>
-                    Tomato Soup
-                    <b>₹90</b>
-                </li>
-
-                <li>
-                    Sweet Corn Soup
-                    <b>₹90</b>
-                </li>
-
-                <li>
-                    Veg Manchow Soup
-                    <b>₹90</b>
-                </li>
-
-                <li>
-                    Hot & Sour Soup
-                    <b>₹90</b>
-                </li>
-
+                <li>Tomato Soup <b>₹90</b></li>
+                <li>Sweet Corn Soup <b>₹90</b></li>
+                <li>Veg Manchow Soup <b>₹90</b></li>
+                <li>Hot & Sour Soup <b>₹90</b></li>
             </ul>
 
         </div>
 
 
-
         <div class="card">
 
-            <h3>
-                Chillies & Noodles
-            </h3>
+            <h3>Chillies & Noodles</h3>
 
             <ul>
-
-                <li>
-                    Veg Manchurian
-                    <b>₹140</b>
-                </li>
-
-                <li>
-                    Veg Manchurian (Gravy)
-                    <b>₹150</b>
-                </li>
-
-                <li>
-                    Soyabean Chilly
-                    <b>₹150</b>
-                </li>
-
-                <li>
-                    Paneer Chilly
-                    <b>₹170</b>
-                </li>
-
-                <li>
-                    Hakka Noodles
-                    <b>₹140</b>
-                </li>
-
-                <li>
-                    Schezwan Noodles
-                    <b>₹150</b>
-                </li>
-
-                <li>
-                    Manchurian Noodles
-                    <b>₹170</b>
-                </li>
-
+                <li>Veg Manchurian <b>₹140</b></li>
+                <li>Veg Manchurian (Gravy) <b>₹150</b></li>
+                <li>Soyabean Chilly <b>₹150</b></li>
+                <li>Paneer Chilly <b>₹170</b></li>
+                <li>Hakka Noodles <b>₹140</b></li>
+                <li>Schezwan Noodles <b>₹150</b></li>
+                <li>Manchurian Noodles <b>₹170</b></li>
             </ul>
 
         </div>
@@ -1579,44 +920,24 @@
     </div>
 
 </section>
-
 
 
 <!-- =====================================================
      DESSERTS
 ===================================================== -->
 
-<section
-    id="desserts"
-    class="section"
->
+<section id="desserts" class="section">
 
-    <h2>
-        🍰 Desserts
-    </h2>
-
+    <h2>🍰 Desserts</h2>
 
     <div class="grid">
 
         <div class="card wide">
 
             <ul>
-
-                <li>
-                    Brownie
-                    <b>₹130</b>
-                </li>
-
-                <li>
-                    Brownie With Ice-Cream
-                    <b>₹150</b>
-                </li>
-
-                <li>
-                    Choco Lava Cake
-                    <b>₹80</b>
-                </li>
-
+                <li>Brownie <b>₹130</b></li>
+                <li>Brownie With Ice-Cream <b>₹150</b></li>
+                <li>Choco Lava Cake <b>₹80</b></li>
             </ul>
 
         </div>
@@ -1626,15 +947,11 @@
 </section>
 
 
-
 <!-- =====================================================
      BIRTHDAY HALL
 ===================================================== -->
 
-<section
-    id="birthday"
-    class="birthday"
->
+<section id="birthday" class="birthday">
 
     <div class="birthday-overlay">
 
@@ -1652,11 +969,14 @@
         </p>
 
 
+        <!--
+            Replace this placeholder with the actual
+            birthday hall image later.
+        -->
+
         <div class="birthday-photo-placeholder">
 
-            <span>
-                🎉
-            </span>
+            <span>🎉</span>
 
             <p>
                 Birthday Hall Photos Coming Soon
@@ -1664,6 +984,11 @@
 
         </div>
 
+
+        <!-- IMPORTANT:
+             Both buttons are inside one centered
+             container.
+        -->
 
         <div class="birthday-actions">
 
@@ -1691,14 +1016,11 @@
 </section>
 
 
-
 <!-- =====================================================
      LOCATION
 ===================================================== -->
 
-<section
-    class="visit-section"
->
+<section class="visit-section">
 
     <span class="eyebrow">
         COME VISIT US
@@ -1716,7 +1038,6 @@
         Nashik, Maharashtra
     </p>
 
-
     <a
         class="location-button"
         href="https://maps.app.goo.gl/LDqEwQvmm9vroLCU7?g_st=ac"
@@ -1729,14 +1050,11 @@
 </section>
 
 
-
 <!-- =====================================================
      OPENING HOURS
 ===================================================== -->
 
-<section
-    class="hours-section"
->
+<section class="hours-section">
 
     <span class="eyebrow">
         WHEN TO VISIT
@@ -1745,7 +1063,6 @@
     <h2>
         🕐 Opening Hours
     </h2>
-
 
     <div class="hours-card">
 
@@ -1766,14 +1083,11 @@
 </section>
 
 
-
 <!-- =====================================================
-     GOOGLE REVIEW
+     REVIEW
 ===================================================== -->
 
-<section
-    class="review-section"
->
+<section class="review-section">
 
     <span class="eyebrow">
         ENJOYED YOUR VISIT?
@@ -1788,7 +1102,6 @@
         grow and serve you better.
     </p>
 
-
     <a
         class="review-button"
         href="https://maps.app.goo.gl/LDqEwQvmm9vroLCU7?g_st=ac"
@@ -1802,7 +1115,6 @@
 
 
 </main>
-
 
 
 <!-- =====================================================
@@ -1839,7 +1151,6 @@
 </footer>
 
 
-
 <!-- =====================================================
      FLOATING WHATSAPP
 ===================================================== -->
@@ -1855,9 +1166,8 @@
 </a>
 
 
-
 <!-- =====================================================
-     NAVIGATION JAVASCRIPT
+     JAVASCRIPT
 ===================================================== -->
 
 <script>
@@ -1894,7 +1204,6 @@ document.addEventListener(
                 })
                 .filter(Boolean);
 
-
         const dotsContainer =
             document.getElementById(
                 "navDots"
@@ -1907,33 +1216,34 @@ document.addEventListener(
 
         let clickTimer = null;
 
+        let scrollFrame = null;
 
 
-        /* ==========================================
+        /* =================================================
            CREATE PAGINATION DOTS
-        ========================================== */
+        ================================================= */
 
-        if (dotsContainer) {
+        sections.forEach(
+            function () {
 
-            sections.forEach(
-                function () {
+                if (!dotsContainer) {
+                    return;
+                }
 
-                    const dot =
-                        document.createElement(
-                            "span"
-                        );
-
-                    dot.className =
-                        "nav-dot";
-
-                    dotsContainer.appendChild(
-                        dot
+                const dot =
+                    document.createElement(
+                        "span"
                     );
 
-                }
-            );
+                dot.className =
+                    "nav-dot";
 
-        }
+                dotsContainer.appendChild(
+                    dot
+                );
+
+            }
+        );
 
 
         const dots =
@@ -1946,14 +1256,73 @@ document.addEventListener(
                 : [];
 
 
+        /* =================================================
+           KEEP ACTIVE TAB VISIBLE
+        ================================================= */
 
-        /* ==========================================
-           ACTIVE CATEGORY
-        ========================================== */
+        function keepLinkVisible(link) {
+
+            if (!nav || !link) {
+                return;
+            }
+
+
+            const navRect =
+                nav.getBoundingClientRect();
+
+            const linkRect =
+                link.getBoundingClientRect();
+
+
+            const margin = 30;
+
+
+            if (
+                linkRect.left <
+                navRect.left + margin
+            ) {
+
+                nav.scrollBy({
+
+                    left:
+                        linkRect.left -
+                        navRect.left -
+                        margin,
+
+                    behavior: "smooth"
+
+                });
+
+            }
+
+            else if (
+                linkRect.right >
+                navRect.right - margin
+            ) {
+
+                nav.scrollBy({
+
+                    left:
+                        linkRect.right -
+                        navRect.right +
+                        margin,
+
+                    behavior: "smooth"
+
+                });
+
+            }
+
+        }
+
+
+        /* =================================================
+           SET ACTIVE CATEGORY
+        ================================================= */
 
         function setActive(
             id,
-            moveHorizontal
+            moveNavigation
         ) {
 
             if (!id) {
@@ -1961,24 +1330,24 @@ document.addEventListener(
             }
 
 
-            currentActiveId =
-                id;
+            currentActiveId = id;
 
 
             navLinks.forEach(
                 function (link) {
 
-                    const isActive =
+                    const active =
                         link.dataset.section === id;
 
                     link.classList.toggle(
                         "active",
-                        isActive
+                        active
                     );
 
+
                     if (
-                        isActive &&
-                        moveHorizontal
+                        active &&
+                        moveNavigation
                     ) {
 
                         keepLinkVisible(
@@ -2015,74 +1384,9 @@ document.addEventListener(
         }
 
 
-
-        /* ==========================================
-           KEEP ACTIVE TAB VISIBLE
-        ========================================== */
-
-        function keepLinkVisible(
-            link
-        ) {
-
-            if (!nav || !link) {
-                return;
-            }
-
-
-            const navRect =
-                nav.getBoundingClientRect();
-
-            const linkRect =
-                link.getBoundingClientRect();
-
-
-            const margin = 35;
-
-
-            if (
-                linkRect.left <
-                navRect.left + margin
-            ) {
-
-                nav.scrollBy({
-
-                    left:
-                        linkRect.left -
-                        navRect.left -
-                        margin,
-
-                    behavior: "smooth"
-
-                });
-
-            }
-
-
-            else if (
-                linkRect.right >
-                navRect.right - margin
-            ) {
-
-                nav.scrollBy({
-
-                    left:
-                        linkRect.right -
-                        navRect.right +
-                        margin,
-
-                    behavior: "smooth"
-
-                });
-
-            }
-
-        }
-
-
-
-        /* ==========================================
-           CATEGORY CLICK
-        ========================================== */
+        /* =================================================
+           NAVIGATION CLICK
+        ================================================= */
 
         navLinks.forEach(
             function (link) {
@@ -2097,6 +1401,7 @@ document.addEventListener(
                         const id =
                             this.dataset.section;
 
+
                         const target =
                             document.getElementById(
                                 id
@@ -2108,13 +1413,8 @@ document.addEventListener(
                         }
 
 
-                        /*
-                         * Tell observer to temporarily
-                         * ignore intermediate sections
-                         * while smooth scrolling.
-                         */
-
-                        clickInProgress = true;
+                        clickInProgress =
+                            true;
 
 
                         clearTimeout(
@@ -2128,11 +1428,6 @@ document.addEventListener(
                         );
 
 
-                        /*
-                         * Calculate position below
-                         * sticky navigation.
-                         */
-
                         const navHeight =
                             navWrapper
                                 ? navWrapper.offsetHeight
@@ -2143,29 +1438,34 @@ document.addEventListener(
                             target.getBoundingClientRect().top +
                             window.pageYOffset -
                             navHeight -
-                            10;
+                            8;
 
-
-                        /*
-                         * Smooth vertical movement.
-                         */
 
                         window.scrollTo({
 
-                            top: Math.max(
-                                0,
-                                targetTop
-                            ),
+                            top:
+                                Math.max(
+                                    0,
+                                    targetTop
+                                ),
 
-                            behavior: "smooth"
+                            behavior:
+                                "smooth"
 
                         });
 
 
                         /*
-                         * Release observer after
-                         * smooth movement finishes.
+                         * Update URL hash without
+                         * causing browser's own jump.
                          */
+
+                        history.replaceState(
+                            null,
+                            "",
+                            "#" + id
+                        );
+
 
                         clickTimer =
                             setTimeout(
@@ -2174,10 +1474,10 @@ document.addEventListener(
                                     clickInProgress =
                                         false;
 
-                                    updateFromPosition();
+                                    updateActiveFromScroll();
 
                                 },
-                                700
+                                800
                             );
 
                     }
@@ -2187,22 +1487,16 @@ document.addEventListener(
         );
 
 
+        /* =================================================
+           DETERMINE ACTIVE CATEGORY
+        ================================================= */
 
-        /* ==========================================
-           DETERMINE ACTIVE SECTION
-        ========================================== */
-
-        function updateFromPosition() {
+        function updateActiveFromScroll() {
 
             if (clickInProgress) {
                 return;
             }
 
-
-            /*
-             * The active line is just below
-             * the sticky navigation.
-             */
 
             const navHeight =
                 navWrapper
@@ -2211,17 +1505,27 @@ document.addEventListener(
 
 
             const activationPoint =
-                navHeight + 70;
+                navHeight + 80;
+
+
+            /*
+             * At very top, Specials is active.
+             */
+
+            if (window.scrollY < 120) {
+
+                setActive(
+                    "specials",
+                    true
+                );
+
+                return;
+            }
 
 
             let activeSection =
                 sections[0];
 
-
-            /*
-             * Select the LAST section whose
-             * top has crossed the activation line.
-             */
 
             sections.forEach(
                 function (section) {
@@ -2244,23 +1548,6 @@ document.addEventListener(
             );
 
 
-            /*
-             * At the very top, keep Specials
-             * selected.
-             */
-
-            if (
-                window.scrollY < 120
-            ) {
-
-                activeSection =
-                    document.getElementById(
-                        "specials"
-                    );
-
-            }
-
-
             if (
                 activeSection &&
                 activeSection.id !==
@@ -2277,14 +1564,9 @@ document.addEventListener(
         }
 
 
-
-        /* ==========================================
-           SCROLL LISTENER
-        ========================================== */
-
-        let scrollFrame =
-            null;
-
+        /* =================================================
+           SCROLL EVENT
+        ================================================= */
 
         window.addEventListener(
             "scroll",
@@ -2299,7 +1581,7 @@ document.addEventListener(
                     requestAnimationFrame(
                         function () {
 
-                            updateFromPosition();
+                            updateActiveFromScroll();
 
                             scrollFrame =
                                 null;
@@ -2314,15 +1596,9 @@ document.addEventListener(
         );
 
 
-
-        /* ==========================================
-           INITIAL STATE
-        ========================================== */
-
-        /*
-         * If the customer opens the plain QR URL,
-         * start at the top and select Specials.
-         */
+        /* =================================================
+           INITIAL PAGE STATE
+        ================================================= */
 
         if (!window.location.hash) {
 
@@ -2336,6 +1612,7 @@ document.addEventListener(
 
             });
 
+
             setActive(
                 "specials",
                 false
@@ -2343,26 +1620,25 @@ document.addEventListener(
 
         }
 
-
-        /*
-         * If somebody intentionally opens a URL
-         * such as #pizza, respect that hash.
-         */
-
         else {
+
+            /*
+             * If a customer intentionally opens
+             * #pizza etc., respect that.
+             */
 
             const hash =
                 window.location.hash
-                    .replace("#", "");
+                    .substring(1);
 
 
-            const hashSection =
+            const target =
                 document.getElementById(
                     hash
                 );
 
 
-            if (hashSection) {
+            if (target) {
 
                 setActive(
                     hash,
@@ -2377,7 +1653,6 @@ document.addEventListener(
 );
 
 </script>
-
 
 </body>
 </html>
