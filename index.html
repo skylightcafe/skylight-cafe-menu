@@ -1286,6 +1286,20 @@
         var waiterMode = document.getElementById("waiterMode");
         var waiterItems = document.getElementById("waiterItems");
 
+        function lockPageScroll() {
+            document.body.classList.add("modal-open");
+        }
+
+        function unlockPageScroll() {
+            if (
+                cartOverlay.classList.contains("hidden") &&
+                pizzaModal.classList.contains("hidden") &&
+                waiterMode.classList.contains("hidden")
+            ) {
+                document.body.classList.remove("modal-open");
+            }
+        }
+
         function escapeHtml(value) {
             return String(value)
                 .replace(/&/g, "&amp;")
@@ -1495,12 +1509,14 @@
 
             pizzaModal.classList.remove("hidden");
             pizzaModal.setAttribute("aria-hidden", "false");
+            lockPageScroll();
         }
 
         function closePizzaModal() {
             selectedPizza = null;
             pizzaModal.classList.add("hidden");
             pizzaModal.setAttribute("aria-hidden", "true");
+            unlockPageScroll();
         }
 
         function addToCart(name, price, variant) {
@@ -1543,6 +1559,8 @@
             } else {
                 cartBar.classList.add("hidden");
                 cartOverlay.classList.add("hidden");
+                cartOverlay.setAttribute("aria-hidden", "true");
+                unlockPageScroll();
             }
 
             renderCart();
@@ -1587,11 +1605,13 @@
         function openCart() {
             cartOverlay.classList.remove("hidden");
             cartOverlay.setAttribute("aria-hidden", "false");
+            lockPageScroll();
         }
 
         function closeCart() {
             cartOverlay.classList.add("hidden");
             cartOverlay.setAttribute("aria-hidden", "true");
+            unlockPageScroll();
         }
 
         function renderWaiter() {
@@ -1620,16 +1640,16 @@
         document.getElementById("closeCartBtn").addEventListener("click", closeCart);
         document.getElementById("closePizzaModal").addEventListener("click", closePizzaModal);
 
+        /*
+         * Do not close popups when the customer taps/clicks outside the panel.
+         * They must use the X button (or Escape) to close them.
+         */
         cartOverlay.addEventListener("click", function (event) {
-            if (event.target === cartOverlay) {
-                closeCart();
-            }
+            event.stopPropagation();
         });
 
         pizzaModal.addEventListener("click", function (event) {
-            if (event.target === pizzaModal) {
-                closePizzaModal();
-            }
+            event.stopPropagation();
         });
 
         smallPizzaBtn.addEventListener("click", function () {
@@ -1660,13 +1680,20 @@
 
             renderWaiter();
             cartOverlay.classList.add("hidden");
+            cartOverlay.setAttribute("aria-hidden", "true");
             waiterMode.classList.remove("hidden");
             waiterMode.setAttribute("aria-hidden", "false");
+            lockPageScroll();
         });
 
         document.getElementById("closeWaiterBtn").addEventListener("click", function () {
             waiterMode.classList.add("hidden");
             waiterMode.setAttribute("aria-hidden", "true");
+            unlockPageScroll();
+        });
+
+        waiterMode.addEventListener("click", function (event) {
+            event.stopPropagation();
         });
 
         document.addEventListener("click", function (event) {
@@ -1734,6 +1761,7 @@
                 closeCart();
                 waiterMode.classList.add("hidden");
                 waiterMode.setAttribute("aria-hidden", "true");
+                unlockPageScroll();
             }
         });
 
