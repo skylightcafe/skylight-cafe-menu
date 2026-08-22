@@ -637,23 +637,19 @@ main {
 
 
 .card li {
-    display: flex;
+    position: relative;
+    display: block;
 
-    justify-content: space-between;
-
-    align-items: flex-start;
-
-    gap: 10px;
-
-    padding: 7px 0;
+    padding: 7px 0 38px;
 
     border-bottom:
         1px dashed
         #d2c1a5;
 
     font-size: 13px;
-
     line-height: 1.35;
+
+    min-height: 62px;
 }
 
 
@@ -663,11 +659,14 @@ main {
 
 
 .card li b {
-    flex: 0 0 auto;
+    position: absolute;
+    top: 7px;
+    right: 0;
 
     white-space: nowrap;
 
     color: #7a4d1e;
+    text-align: right;
 }
 
 
@@ -1351,9 +1350,23 @@ footer .call {
 
     .card li {
         padding:
-            6.5px 0;
+            6.5px 0 36px;
 
         font-size: 12px;
+        min-height: 58px;
+    }
+
+    .card li b {
+        top: 6.5px;
+    }
+
+    .card li .add-btn {
+        display: flex;
+        width: max-content;
+        max-width: 100%;
+        margin-top: 4px;
+        padding: 5px 9px;
+        font-size: 9px;
     }
 
 
@@ -1499,6 +1512,8 @@ footer .call:hover {
 }
 
 
+}
+
 /* =====================================================
    ADD TO CART - NEW FUNCTIONALITY ONLY
    Existing menu/header/navigation styles remain unchanged.
@@ -1510,27 +1525,111 @@ footer .call:hover {
 }
 
 .add-btn {
-    flex: 0 0 auto;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    margin-top: 5px;
+
     border: 0;
     border-radius: 999px;
-    padding: 6px 10px;
-    background: linear-gradient(135deg, #d9aa61, #bd8c48);
+
+    padding: 5px 10px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #d9aa61,
+            #bd8c48
+        );
+
     color: #1a140e;
+
     font-size: 10px;
     font-weight: 700;
+
     cursor: pointer;
     white-space: nowrap;
-    box-shadow: 0 3px 9px rgba(0,0,0,.16);
-    transition: transform .15s ease, box-shadow .15s ease;
+
+    box-shadow:
+        0 3px 9px
+        rgba(0,0,0,.16);
+
+    transition:
+        transform .15s ease,
+        box-shadow .15s ease,
+        background .15s ease;
 }
 
 .add-btn:hover {
     transform: translateY(-1px);
-    box-shadow: 0 5px 12px rgba(0,0,0,.22);
+
+    box-shadow:
+        0 5px 12px
+        rgba(0,0,0,.22);
+}
+
+.add-btn:active {
+    transform: scale(.97);
 }
 
 .special-card .add-btn {
     margin-top: 7px;
+}
+
+/* Menu item quantity controls */
+.selected-control,
+.inline-qty {
+    display: flex;
+    width: max-content;
+    max-width: 100%;
+    align-items: center;
+    gap: 7px;
+
+    margin-top: 5px;
+    padding: 3px 6px;
+
+    border-radius: 999px;
+    background: #ead7b6;
+}
+
+.selected-control button,
+.inline-qty button {
+    width: 24px;
+    height: 24px;
+
+    border: 0;
+    border-radius: 50%;
+
+    background: #c89b5b;
+    color: #21170d;
+
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 24px;
+    padding: 0;
+
+    cursor: pointer;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.selected-control button:hover,
+.inline-qty button:hover {
+    background: #b68443;
+}
+
+.selected-control span,
+.inline-qty span {
+    min-width: 18px;
+    text-align: center;
+
+    font-size: 12px;
+    font-weight: 700;
+
+    color: #5c3b1c;
 }
 
 /* Floating cart */
@@ -1653,6 +1752,15 @@ footer .call:hover {
     font: 700 28px "Cormorant Garamond", serif;
     color: #62411f;
 }
+.waiter-header > div {
+    min-width: 0;
+}
+
+.waiter-header .close-cart {
+    flex: 0 0 auto;
+    margin-top: 0;
+}
+
 
 .close-cart,
 .close-pizza {
