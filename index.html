@@ -1218,7 +1218,7 @@
             </div>
             <div class="cart-actions">
                 <button id="clearCartBtn" class="clear-cart-btn" type="button">Clear All</button>
-                <button id="showWaiterBtn" class="show-waiter-btn" type="button">👋 Show Waiter</button>
+                <button id="showWaiterBtn" class="show-waiter-btn" type="button">👋 Show Captain</button>
             </div>
         </div>
     </div>
@@ -1245,10 +1245,10 @@
 </div>
 
 <div id="waiterMode" class="waiter-mode hidden" aria-hidden="true">
-    <div class="waiter-box" role="dialog" aria-modal="true" aria-label="Selection for waiter">
+    <div class="waiter-box" role="dialog" aria-modal="true" aria-label="Selection for captain">
         <div class="waiter-header">
             <div>
-                <span class="eyebrow">SHOW TO WAITER</span>
+                <span class="eyebrow">SHOW TO CAPTAIN</span>
                 <h2>Your Selection</h2>
             </div>
             <button id="closeWaiterBtn" class="close-cart" type="button" aria-label="Close">✕</button>
@@ -1258,7 +1258,7 @@
             <span>Total Items: <strong id="waiterCount">0</strong></span>
             <span>Estimated Total: <strong>₹<span id="waiterTotal">0</span></strong></span>
         </div>
-        <p class="waiter-note">Please show this screen to your waiter.</p>
+        <p class="waiter-note">Please show this screen to your captain.</p>
     </div>
 </div>
 
@@ -1317,14 +1317,44 @@
             if (price) {
                 price.remove();
             }
-            clone.querySelectorAll(".badge, .add-btn").forEach(function (element) {
+            clone.querySelectorAll(".badge, .add-btn, .item-action").forEach(function (element) {
                 element.remove();
             });
             return clone.textContent.replace(/\s+/g, " ").trim();
         }
 
+        function makeItemAction(li, name, prices, isPizza) {
+            var existing = li.querySelector(".item-action");
+            if (existing) {
+                return;
+            }
+
+            var action = document.createElement("div");
+            action.className = "item-action";
+            action.dataset.name = name;
+            action.dataset.pizza = isPizza ? "true" : "false";
+            action.dataset.small = prices[0] || "0";
+            action.dataset.medium = prices[1] || "0";
+
+            var addButton = document.createElement("button");
+            addButton.type = "button";
+            addButton.className = "add-btn";
+            addButton.textContent = "+ Add";
+
+            addButton.addEventListener("click", function () {
+                if (isPizza && prices.length >= 2) {
+                    openPizzaModal(name, prices[0], prices[1]);
+                } else {
+                    addToCart(name, prices[0], "");
+                }
+            });
+
+            action.appendChild(addButton);
+            li.appendChild(action);
+        }
+
         function addButtonToMenuItem(li, isPizza) {
-            if (li.querySelector(".add-btn")) {
+            if (li.querySelector(".item-action")) {
                 return;
             }
 
@@ -1338,28 +1368,12 @@
                 return;
             }
 
-            var button = document.createElement("button");
-            button.type = "button";
-            button.className = "add-btn";
-            button.textContent = "+ Add";
-
             var name = getMenuItemName(li);
-
-            if (isPizza && prices.length >= 2) {
-                button.addEventListener("click", function () {
-                    openPizzaModal(name, prices[0], prices[1]);
-                });
-            } else {
-                button.addEventListener("click", function () {
-                    addToCart(name, prices[0], "");
-                });
-            }
-
-            li.appendChild(button);
+            makeItemAction(li, name, prices, isPizza);
         }
 
         function addButtonToSpecialCard(card) {
-            if (card.querySelector(".add-btn")) {
+            if (card.querySelector(".item-action")) {
                 return;
             }
 
@@ -1374,25 +1388,28 @@
                 return;
             }
 
+            var name = title.textContent.replace(/\s+/g, " ").trim();
+            var action = document.createElement("div");
+            action.className = "item-action special-item-action";
+            action.dataset.name = name;
+            action.dataset.pizza = prices.length >= 2 ? "true" : "false";
+            action.dataset.small = prices[0] || "0";
+            action.dataset.medium = prices[1] || "0";
+
             var button = document.createElement("button");
             button.type = "button";
             button.className = "add-btn";
             button.textContent = "+ Add";
-
-            var name = title.textContent.replace(/\s+/g, " ").trim();
-
-            if (prices.length >= 2) {
-                button.addEventListener("click", function () {
+            button.addEventListener("click", function () {
+                if (prices.length >= 2) {
                     openPizzaModal(name, prices[0], prices[1]);
-                });
-            } else {
-                button.addEventListener("click", function () {
+                } else {
                     addToCart(name, prices[0], "");
-                });
-            }
+                }
+            });
 
-            var content = title.parentElement;
-            content.appendChild(button);
+            action.appendChild(button);
+            title.parentElement.appendChild(action);
         }
 
         function setupAddButtons() {
@@ -1405,6 +1422,63 @@
 
             document.querySelectorAll(".special-card").forEach(function (card) {
                 addButtonToSpecialCard(card);
+            });
+        }
+
+        function updateMenuActions() {
+            document.querySelectorAll(".item-action").forEach(function (action) {
+                var name = action.dataset.name;
+                var isPizza = action.dataset.pizza === "true";
+                var smallPrice = Number(action.dataset.small || 0);
+                var mediumPrice = Number(action.dataset.medium || 0);
+
+                var items = cart.filter(function (item) {
+                    if (isPizza) {
+                        return item.name === name;
+                    }
+                    return item.name === name && item.variant === "";
+                });
+
+                action.innerHTML = "";
+
+                if (items.length === 0) {
+                    var add = document.createElement("button");
+                    add.type = "button";
+                    add.className = "add-btn";
+                    add.textContent = "+ Add";
+                    add.addEventListener("click", function () {
+                        if (isPizza && mediumPrice > 0) {
+                            openPizzaModal(name, smallPrice, mediumPrice);
+                        } else {
+                            addToCart(name, smallPrice, "");
+                        }
+                    });
+                    action.appendChild(add);
+                    return;
+                }
+
+                if (isPizza) {
+                    items.forEach(function (item) {
+                        var control = document.createElement("div");
+                        control.className = "selected-control";
+                        control.innerHTML =
+                            '<span class="selected-variant">' + escapeHtml(item.variant || "Selected") + '</span>' +
+                            '<button type="button" class="inline-qty" data-key="' + escapeHtml(item.key) + '" data-action="decrease">−</button>' +
+                            '<span class="inline-count">' + item.quantity + '</span>' +
+                            '<button type="button" class="inline-qty" data-key="' + escapeHtml(item.key) + '" data-action="increase">+</button>';
+                        action.appendChild(control);
+                    });
+                    return;
+                }
+
+                var item = items[0];
+                var control = document.createElement("div");
+                control.className = "selected-control";
+                control.innerHTML =
+                    '<button type="button" class="inline-qty" data-key="' + escapeHtml(item.key) + '" data-action="decrease">−</button>' +
+                    '<span class="inline-count">' + item.quantity + '</span>' +
+                    '<button type="button" class="inline-qty" data-key="' + escapeHtml(item.key) + '" data-action="increase">+</button>';
+                action.appendChild(control);
             });
         }
 
@@ -1472,6 +1546,7 @@
             }
 
             renderCart();
+            updateMenuActions();
         }
 
         function renderCart() {
@@ -1592,6 +1667,35 @@
         document.getElementById("closeWaiterBtn").addEventListener("click", function () {
             waiterMode.classList.add("hidden");
             waiterMode.setAttribute("aria-hidden", "true");
+        });
+
+        document.addEventListener("click", function (event) {
+            var button = event.target.closest(".inline-qty");
+            if (!button) {
+                return;
+            }
+
+            var key = button.dataset.key;
+            var item = cart.find(function (entry) {
+                return entry.key === key;
+            });
+
+            if (!item) {
+                return;
+            }
+
+            if (button.dataset.action === "increase") {
+                item.quantity += 1;
+            } else {
+                item.quantity -= 1;
+                if (item.quantity <= 0) {
+                    cart = cart.filter(function (entry) {
+                        return entry.key !== key;
+                    });
+                }
+            }
+
+            updateCart();
         });
 
         cartItems.addEventListener("click", function (event) {
