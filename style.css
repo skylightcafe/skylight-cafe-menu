@@ -1453,6 +1453,8 @@ footer .call {
             24px 14px;
     }
 
+}
+
 footer .call:hover {
     transform: translateY(-2px);
 
@@ -1494,19 +1496,42 @@ footer .call:hover {
 
 /* =====================================================
    ADD TO CART - NEW FUNCTIONALITY ONLY
-   Existing menu/header/navigation styles remain unchanged.
 ===================================================== */
 
-.card li,
-.special-card {
-    position: relative;
+.card li {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    grid-template-rows: auto auto;
+    align-items: start;
+    column-gap: 10px;
+    row-gap: 5px;
+}
+
+.card li > span {
+    grid-column: 1;
+    grid-row: 1;
+    min-width: 0;
+}
+
+.card li > b {
+    grid-column: 2;
+    grid-row: 1;
+    justify-self: end;
+    align-self: start;
+    white-space: nowrap;
+}
+
+.item-action {
+    grid-column: 1;
+    grid-row: 2;
+    justify-self: start;
+    min-height: 25px;
 }
 
 .add-btn {
-    flex: 0 0 auto;
     border: 0;
     border-radius: 999px;
-    padding: 6px 10px;
+    padding: 5px 11px;
     background: linear-gradient(135deg, #d9aa61, #bd8c48);
     color: #1a140e;
     font-size: 10px;
@@ -1522,15 +1547,53 @@ footer .call:hover {
     box-shadow: 0 5px 12px rgba(0,0,0,.22);
 }
 
-.special-card .add-btn {
+.special-item-action {
     margin-top: 7px;
 }
 
-/* Floating cart */
+.special-item-action .add-btn {
+    width: auto;
+}
+
+.selected-control {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    flex-wrap: wrap;
+}
+
+.inline-qty {
+    width: 24px;
+    height: 24px;
+    border: 1px solid #bd9a69;
+    border-radius: 50%;
+    background: #fff8ec;
+    color: #68431f;
+    cursor: pointer;
+    font-weight: 700;
+    line-height: 1;
+    padding: 0;
+}
+
+.inline-count {
+    min-width: 18px;
+    text-align: center;
+    color: #5c3b1c;
+    font-size: 11px;
+    font-weight: 700;
+}
+
+.selected-variant {
+    color: #80694e;
+    font-size: 10px;
+    margin-right: 2px;
+}
+
+/* Floating cart stays at the bottom */
 .cart-bar {
     position: fixed;
     left: 50%;
-    bottom: 18px;
+    bottom: 12px;
     transform: translateX(-50%);
     z-index: 110;
     width: min(560px, calc(100% - 120px));
@@ -1611,6 +1674,8 @@ footer .call:hover {
 }
 
 .cart-overlay {
+    color: #5c3b1c;
+    cursor: pointer;
     display: flex;
     align-items: flex-end;
     justify-content: center;
@@ -1619,18 +1684,18 @@ footer .call:hover {
 
 .cart-panel {
     width: min(620px, 100%);
-    max-height: 86vh;
+    max-height: 85vh;
     display: flex;
     flex-direction: column;
-    overflow: hidden;
     background: linear-gradient(145deg, #fffaf1, #f0e2cb);
     border: 1px solid #c89b5b;
     border-radius: 22px 22px 12px 12px;
     box-shadow: 0 -10px 40px rgba(0,0,0,.45);
+    overflow: hidden;
+    cursor: default;
 }
 
-.cart-header,
-.waiter-header {
+.cart-header {
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
@@ -1638,8 +1703,7 @@ footer .call:hover {
     border-bottom: 1px solid #d7c4a4;
 }
 
-.cart-header h2,
-.waiter-header h2 {
+.cart-header h2 {
     margin: 3px 0 0;
     font: 700 28px "Cormorant Garamond", serif;
     color: #62411f;
@@ -1682,8 +1746,7 @@ footer .call:hover {
     font-size: 13px;
 }
 
-.cart-item-info small,
-.waiter-item small {
+.cart-item-info small {
     color: #8a7155;
     font-size: 10px;
 }
@@ -1699,6 +1762,10 @@ footer .call:hover {
     flex-direction: column;
     align-items: flex-end;
     gap: 6px;
+}
+
+.cart-item-right > strong {
+    color: #75491f;
 }
 
 .quantity-control {
@@ -1729,7 +1796,7 @@ footer .call:hover {
 .cart-footer {
     padding: 14px 18px;
     border-top: 1px solid #d7c4a4;
-    background: rgba(255,250,241,.90);
+    background: rgba(255,250,241,.85);
 }
 
 .cart-total-row {
@@ -1763,6 +1830,7 @@ footer .call:hover {
 
 .empty-cart-icon {
     font-size: 42px;
+    margin-bottom: 8px;
 }
 
 .empty-cart h3 {
@@ -1770,7 +1838,7 @@ footer .call:hover {
     color: #5c3b1c;
 }
 
-/* Pizza size selection */
+/* Pizza modal */
 .pizza-modal {
     display: flex;
     align-items: center;
@@ -1779,26 +1847,26 @@ footer .call:hover {
 }
 
 .pizza-modal-box {
-    position: relative;
     width: min(420px, 100%);
-    padding: 25px 20px;
-    text-align: center;
+    position: relative;
     background: linear-gradient(145deg, #fffaf1, #f0e2cb);
     border: 1px solid #c89b5b;
     border-radius: 22px;
+    padding: 25px 20px;
+    text-align: center;
     box-shadow: 0 20px 60px rgba(0,0,0,.5);
+}
+
+.close-pizza {
+    position: absolute;
+    top: 12px;
+    right: 12px;
 }
 
 .pizza-modal-box h2 {
     margin: 5px 0 18px;
     color: #5c3b1c;
     font: 700 29px "Cormorant Garamond", serif;
-}
-
-.pizza-modal-box .close-pizza {
-    position: absolute;
-    top: 12px;
-    right: 12px;
 }
 
 .pizza-size-options {
@@ -1808,15 +1876,15 @@ footer .call:hover {
 }
 
 .pizza-size {
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
-    padding: 15px 10px;
     border: 1px solid #c99d67;
     border-radius: 16px;
+    padding: 15px 10px;
     background: #fff8ec;
     color: #5c3b1c;
     cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
 }
 
 .pizza-size:hover {
@@ -1828,7 +1896,12 @@ footer .call:hover {
     font-size: 18px;
 }
 
-/* Show waiter */
+/* Floating WhatsApp: above the cart */
+.floating-whatsapp {
+    bottom: 86px;
+}
+
+/* Show Captain */
 .waiter-mode {
     display: flex;
     align-items: center;
@@ -1859,6 +1932,7 @@ footer .call:hover {
 .waiter-item small {
     display: block;
     margin-top: 3px;
+    color: #8a7155;
 }
 
 .waiter-total {
@@ -1881,19 +1955,23 @@ footer .call:hover {
 }
 
 @media (max-width: 680px) {
+    .card li {
+        grid-template-columns: minmax(0, 1fr) auto;
+    }
+
     .add-btn {
         padding: 5px 9px;
         font-size: 9px;
     }
 
     .cart-bar {
-        bottom: 82px;
+        bottom: 10px;
         width: calc(100% - 20px);
     }
 
     .floating-whatsapp {
         right: 15px;
-        bottom: 15px;
+        bottom: 78px;
     }
 
     .cart-actions {
@@ -1908,3 +1986,4 @@ footer .call:hover {
         flex-direction: column;
     }
 }
+
