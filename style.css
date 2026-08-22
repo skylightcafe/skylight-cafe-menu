@@ -1954,6 +1954,22 @@ footer .call:hover {
     margin: 15px 0 0;
 }
 
+.waiter-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 10px;
+}
+
+.waiter-header > div {
+    flex: 1;
+}
+
+.waiter-header .close-cart {
+    flex-shrink: 0;
+    margin-top: 0;
+}
+
 @media (max-width: 680px) {
     .card li {
         grid-template-columns: minmax(0, 1fr) auto;
