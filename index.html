@@ -1,31 +1,58 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#11100e">
 
-<meta name="theme-color" content="#11100e">
-<meta
-    name="description"
-    content="Skylight Cafe & Restro digital menu"
->
+    <meta name="description"
+          content="Skylight Cafe & Restro - Digital Menu">
 
-<title>Skylight Cafe & Restro | Digital Menu</title>
+    <title>Skylight Cafe & Restro | Digital Menu</title>
 
-<link rel="stylesheet" href="style.css">
-
-<link
-    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Montserrat:wght@400;500;600;700&display=swap"
-    rel="stylesheet"
->
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
+<script>
+    /*
+     * Always start the normal/base URL at the very top of the page.
+     * A URL containing a category hash (for example #pizza) is still
+     * allowed to open that specific category intentionally.
+     */
+    if ("scrollRestoration" in history) {
+        history.scrollRestoration = "manual";
+    }
+
+    function resetToTopForBaseUrl() {
+        if (!window.location.hash) {
+            window.scrollTo({
+                top: 0,
+                left: 0,
+                behavior: "auto"
+            });
+        }
+    }
+
+    /* Do it immediately and again after the page is laid out.
+       This prevents browser scroll restoration / image layout from
+       opening the page somewhere below the logo. */
+    resetToTopForBaseUrl();
+
+    window.addEventListener("load", resetToTopForBaseUrl);
+    window.addEventListener("pageshow", function () {
+        resetToTopForBaseUrl();
+    });
+</script>
+
+
 <div class="bg"></div>
 
+
 <!-- =====================================================
-     HERO
+     HEADER
 ===================================================== -->
 
 <header class="hero">
@@ -33,7 +60,7 @@
     <img
         src="logo.jpg"
         class="logo"
-        alt="Skylight Cafe & Restro logo"
+        alt="Skylight Cafe & Restro Logo"
     >
 
     <div class="tagline">
@@ -50,6 +77,22 @@
             📞 9637340956
         </a>
 
+        <a
+            href="https://maps.app.goo.gl/LDqEwQvmm9vroLCU7?g_st=ac"
+            target="_blank"
+            rel="noopener noreferrer"
+        >
+            📍 Location
+        </a>
+
+        <a
+            href="https://www.instagram.com/skylight_cafe_and_restro/"
+            target="_blank"
+            rel="noopener noreferrer"
+        >
+            📸 Instagram
+        </a>
+
     </div>
 
 </header>
@@ -59,31 +102,85 @@
      CATEGORY NAVIGATION
 ===================================================== -->
 
-<nav class="nav" id="categoryNav">
+<nav class="nav-wrapper">
 
-    <a href="#beverages">Beverages</a>
+    <div class="nav" id="categoryNav">
 
-    <a href="#pizza">Pizza</a>
+        <a href="#specials" data-section="specials">
+            ⭐ Specials
+        </a>
 
-    <a href="#sandwich">Sandwich</a>
+        <a href="#beverages" data-section="beverages">
+            ☕ Beverages
+        </a>
 
-    <a href="#burger">Burger</a>
+        <a href="#pizza" data-section="pizza">
+            🍕 Pizza
+        </a>
 
-    <a href="#fries">Fries</a>
+        <a href="#sandwich" data-section="sandwich">
+            🥪 Sandwich
+        </a>
 
-    <a href="#pavbhaji">Pav Bhaji</a>
+        <a href="#burger" data-section="burger">
+            🍔 Burger
+        </a>
 
-    <a href="#maggie">Maggi</a>
+        <a href="#fries" data-section="fries">
+            🍟 Fries
+        </a>
 
-    <a href="#pasta">Pasta</a>
+        <a href="#nachos" data-section="nachos">
+            🌮 Nachos
+        </a>
 
-    <a href="#chinese">Chinese</a>
+        <a href="#maggi" data-section="maggi">
+            🍜 Maggi
+        </a>
 
-    <a href="#momos">Momos</a>
+        <a href="#pasta" data-section="pasta">
+            🍝 Pasta
+        </a>
 
-    <a href="#desserts">Desserts</a>
+        <a href="#pavbhaji" data-section="pavbhaji">
+            🍛 Pav Bhaji
+        </a>
 
-    <a href="#birthday">Birthday Hall</a>
+        <a href="#extras" data-section="extras">
+            ➕ Extras
+        </a>
+
+        <a href="#momos" data-section="momos">
+            🥟 Momos
+        </a>
+
+        <a href="#chinese" data-section="chinese">
+            🥢 Chinese
+        </a>
+
+        <a href="#desserts" data-section="desserts">
+            🍰 Desserts
+        </a>
+
+        <a href="#birthday" data-section="birthday">
+            🎂 Birthday Hall
+        </a>
+
+    </div>
+
+
+    <div class="nav-indicator">
+
+        <span class="nav-arrow">‹</span>
+
+        <div
+            class="nav-dots"
+            id="navDots"
+        ></div>
+
+        <span class="nav-arrow">›</span>
+
+    </div>
 
 </nav>
 
@@ -94,11 +191,15 @@
 
 <main>
 
+
 <!-- =====================================================
      WELCOME
 ===================================================== -->
 
-<section class="welcome">
+<section
+    class="welcome"
+    id="welcome"
+>
 
     <span class="eyebrow">
         WELCOME TO
@@ -109,8 +210,145 @@
     </h1>
 
     <p>
-        Explore our menu and choose your favourites.
+        Good food, good vibes and good times.
     </p>
+
+    <div class="welcome-hint">
+        👇 Scroll down to explore our menu
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     SPECIALS
+===================================================== -->
+
+<section
+    id="specials"
+    class="section specials-section"
+>
+
+    <div class="section-heading-center">
+
+        <span class="eyebrow">
+            OUR RECOMMENDATIONS
+        </span>
+
+        <h2>
+            ⭐ Skylight Specials
+        </h2>
+
+        <p>
+            Try something special from our menu.
+        </p>
+
+    </div>
+
+
+    <div class="specials-grid">
+
+
+        <div class="special-card">
+
+            <div class="special-icon">
+                🍕
+            </div>
+
+            <div>
+
+                <span class="badge special-badge">
+                    👑 Skylight Special
+                </span>
+
+                <h3>
+                    Skylight Special Pizza
+                </h3>
+
+                <strong>
+                    ₹220 / ₹260
+                </strong>
+
+            </div>
+
+        </div>
+
+
+        <div class="special-card">
+
+            <div class="special-icon">
+                🥪
+            </div>
+
+            <div>
+
+                <span class="badge special-badge">
+                    👑 Skylight Special
+                </span>
+
+                <h3>
+                    Skylight Special Sandwich
+                </h3>
+
+                <strong>
+                    ₹160
+                </strong>
+
+            </div>
+
+        </div>
+
+
+        <div class="special-card">
+
+            <div class="special-icon">
+                🍨
+            </div>
+
+            <div>
+
+                <span class="badge popular-badge">
+                    ⭐ Customer Favourite
+                </span>
+
+                <h3>
+                    Skylight Special Ice-Cream
+                </h3>
+
+                <strong>
+                    ₹70
+                </strong>
+
+            </div>
+
+        </div>
+
+
+        <div class="special-card">
+
+            <div class="special-icon">
+                🍛
+            </div>
+
+            <div>
+
+                <span class="badge popular-badge">
+                    🔥 Popular
+                </span>
+
+                <h3>
+                    Unlimited Pav Bhaji
+                </h3>
+
+                <strong>
+                    ₹149
+                </strong>
+
+            </div>
+
+        </div>
+
+    </div>
 
 </section>
 
@@ -125,240 +363,129 @@
 
     <div class="grid">
 
-        <!-- Hot Beverages -->
-
         <div class="card">
 
             <h3>Hot Beverages</h3>
 
             <ul>
-
-                <li>
-                    <span>Hot Coffee</span>
-                    <b>₹40</b>
-                    <button class="add-btn"
-                            data-name="Hot Coffee"
-                            data-price="40">
-                        + Add
-                    </button>
-                </li>
-
-                <li>
-                    <span>Black Coffee</span>
-                    <b>₹40</b>
-                    <button class="add-btn"
-                            data-name="Black Coffee"
-                            data-price="40">
-                        + Add
-                    </button>
-                </li>
-
-                <li>
-                    <span>Bournvita Milk</span>
-                    <b>₹40</b>
-                    <button class="add-btn"
-                            data-name="Bournvita Milk"
-                            data-price="40">
-                        + Add
-                    </button>
-                </li>
-
-                <li>
-                    <span>Hot Chocolate</span>
-                    <b>₹70</b>
-                    <button class="add-btn"
-                            data-name="Hot Chocolate"
-                            data-price="70">
-                        + Add
-                    </button>
-                </li>
-
+                <li>Hot Coffee <b>₹40</b></li>
+                <li>Black Coffee <b>₹40</b></li>
+                <li>Bournvita Milk <b>₹40</b></li>
+                <li>Hot Chocolate <b>₹70</b></li>
             </ul>
 
         </div>
 
-
-        <!-- Cold Beverages -->
 
         <div class="card">
 
             <h3>Cold Beverages</h3>
 
             <ul>
-
-                <li>
-                    <span>Cold Coffee</span>
-                    <b>₹50</b>
-                    <button class="add-btn"
-                            data-name="Cold Coffee"
-                            data-price="50">
-                        + Add
-                    </button>
-                </li>
-
-                <li>
-                    <span>Cold Coffee With Crush</span>
-                    <b>₹80</b>
-                    <button class="add-btn"
-                            data-name="Cold Coffee With Crush"
-                            data-price="80">
-                        + Add
-                    </button>
-                </li>
-
-                <li>
-                    <span>Cold Coffee With Ice-Cream</span>
-                    <b>₹90</b>
-                    <button class="add-btn"
-                            data-name="Cold Coffee With Ice-Cream"
-                            data-price="90">
-                        + Add
-                    </button>
-                </li>
-
-                <li>
-                    <span>Lemon Ice Tea</span>
-                    <b>₹80</b>
-                    <button class="add-btn"
-                            data-name="Lemon Ice Tea"
-                            data-price="80">
-                        + Add
-                    </button>
-                </li>
-
-                <li>
-                    <span>Peach Ice Tea</span>
-                    <b>₹80</b>
-                    <button class="add-btn"
-                            data-name="Peach Ice Tea"
-                            data-price="80">
-                        + Add
-                    </button>
-                </li>
-
+                <li>Cold Coffee <b>₹50</b></li>
+                <li>Cold Coffee With Crush <b>₹80</b></li>
+                <li>Cold Coffee With Ice-Cream <b>₹90</b></li>
+                <li>Lemon Ice Tea <b>₹80</b></li>
+                <li>Peach Ice Tea <b>₹80</b></li>
             </ul>
 
         </div>
 
-
-        <!-- Milkshake -->
 
         <div class="card">
 
             <h3>Milkshake</h3>
 
             <ul>
-
-                <li><span>Oreo Milkshake</span><b>₹100</b><button class="add-btn" data-name="Oreo Milkshake" data-price="100">+ Add</button></li>
-                <li><span>KitKat Milkshake</span><b>₹100</b><button class="add-btn" data-name="KitKat Milkshake" data-price="100">+ Add</button></li>
-                <li><span>Vanilla Milkshake</span><b>₹100</b><button class="add-btn" data-name="Vanilla Milkshake" data-price="100">+ Add</button></li>
-                <li><span>Mango Milkshake</span><b>₹100</b><button class="add-btn" data-name="Mango Milkshake" data-price="100">+ Add</button></li>
-                <li><span>Chocolate Milkshake</span><b>₹100</b><button class="add-btn" data-name="Chocolate Milkshake" data-price="100">+ Add</button></li>
-                <li><span>Strawberry Milkshake</span><b>₹100</b><button class="add-btn" data-name="Strawberry Milkshake" data-price="100">+ Add</button></li>
-                <li><span>Pineapple Milkshake</span><b>₹100</b><button class="add-btn" data-name="Pineapple Milkshake" data-price="100">+ Add</button></li>
-                <li><span>Pista Milkshake</span><b>₹100</b><button class="add-btn" data-name="Pista Milkshake" data-price="100">+ Add</button></li>
-                <li><span>Butterscotch Milkshake</span><b>₹100</b><button class="add-btn" data-name="Butterscotch Milkshake" data-price="100">+ Add</button></li>
-                <li><span>Blueberry Milkshake</span><b>₹100</b><button class="add-btn" data-name="Blueberry Milkshake" data-price="100">+ Add</button></li>
-
+                <li>Oreo Milkshake <b>₹100</b></li>
+                <li>KitKat Milkshake <b>₹100</b></li>
+                <li>Vanilla Milkshake <b>₹100</b></li>
+                <li>Mango Milkshake <b>₹100</b></li>
+                <li>Chocolate Milkshake <b>₹100</b></li>
+                <li>Strawberry Milkshake <b>₹100</b></li>
+                <li>Pineapple Milkshake <b>₹100</b></li>
+                <li>Pista Milkshake <b>₹100</b></li>
+                <li>Butterscotch Milkshake <b>₹100</b></li>
+                <li>Blueberry Milkshake <b>₹100</b></li>
             </ul>
 
         </div>
 
-
-        <!-- Mocktails -->
 
         <div class="card">
 
             <h3>Mocktails</h3>
 
             <ul>
-
-                <li><span>Blue Curacao Mojito</span><b>₹90</b><button class="add-btn" data-name="Blue Curacao Mojito" data-price="90">+ Add</button></li>
-                <li><span>Mint Mojito</span><b>₹90</b><button class="add-btn" data-name="Mint Mojito" data-price="90">+ Add</button></li>
-                <li><span>Guava Mojito</span><b>₹90</b><button class="add-btn" data-name="Guava Mojito" data-price="90">+ Add</button></li>
-                <li><span>Classic Mojito</span><b>₹90</b><button class="add-btn" data-name="Classic Mojito" data-price="90">+ Add</button></li>
-                <li><span>Raspberry Mojito</span><b>₹90</b><button class="add-btn" data-name="Raspberry Mojito" data-price="90">+ Add</button></li>
-                <li><span>Green Apple Mojito</span><b>₹90</b><button class="add-btn" data-name="Green Apple Mojito" data-price="90">+ Add</button></li>
-                <li><span>Watermelon Mojito</span><b>₹90</b><button class="add-btn" data-name="Watermelon Mojito" data-price="90">+ Add</button></li>
-                <li><span>Blue Berry Mojito</span><b>₹90</b><button class="add-btn" data-name="Blue Berry Mojito" data-price="90">+ Add</button></li>
-
+                <li>Blue Curacao Mojito <b>₹90</b></li>
+                <li>Mint Mojito <b>₹90</b></li>
+                <li>Guava Mojito <b>₹90</b></li>
+                <li>Classic Mojito <b>₹90</b></li>
+                <li>Raspberry Mojito <b>₹90</b></li>
+                <li>Green Apple Mojito <b>₹90</b></li>
+                <li>Watermelon Mojito <b>₹90</b></li>
+                <li>Blue Berry Mojito <b>₹90</b></li>
             </ul>
 
         </div>
 
-
-        <!-- Ice Cream -->
 
         <div class="card">
 
             <h3>Ice-Cream</h3>
 
             <ul>
-
-                <li><span>Vanilla Ice-Cream</span><b>₹50</b><button class="add-btn" data-name="Vanilla Ice-Cream" data-price="50">+ Add</button></li>
-                <li><span>Chocolate Ice-Cream</span><b>₹50</b><button class="add-btn" data-name="Chocolate Ice-Cream" data-price="50">+ Add</button></li>
-                <li><span>Butter Scotch Ice-Cream</span><b>₹50</b><button class="add-btn" data-name="Butter Scotch Ice-Cream" data-price="50">+ Add</button></li>
-                <li><span>Mango Ice-Cream</span><b>₹50</b><button class="add-btn" data-name="Mango Ice-Cream" data-price="50">+ Add</button></li>
-                <li><span>Pista Ice-Cream</span><b>₹50</b><button class="add-btn" data-name="Pista Ice-Cream" data-price="50">+ Add</button></li>
-                <li><span>Strawberry Ice-Cream</span><b>₹50</b><button class="add-btn" data-name="Strawberry Ice-Cream" data-price="50">+ Add</button></li>
-                <li><span>Skylight Special Ice-Cream</span><b>₹70</b><button class="add-btn" data-name="Skylight Special Ice-Cream" data-price="70">+ Add</button></li>
-
+                <li>Vanilla Ice-Cream <b>₹50</b></li>
+                <li>Chocolate Ice-Cream <b>₹50</b></li>
+                <li>Butter Scotch Ice-Cream <b>₹50</b></li>
+                <li>Mango Ice-Cream <b>₹50</b></li>
+                <li>Pista Ice-Cream <b>₹50</b></li>
+                <li>Strawberry Ice-Cream <b>₹50</b></li>
+                <li>Skylight Special Ice-Cream <b>₹70</b></li>
             </ul>
 
         </div>
 
-
-        <!-- Ice Crusher -->
 
         <div class="card">
 
             <h3>Ice Crusher</h3>
 
             <ul>
-
-                <li><span>Mango Crusher</span><b>₹80</b><button class="add-btn" data-name="Mango Crusher" data-price="80">+ Add</button></li>
-                <li><span>Pista Crusher</span><b>₹80</b><button class="add-btn" data-name="Pista Crusher" data-price="80">+ Add</button></li>
-                <li><span>Strawberry Crusher</span><b>₹80</b><button class="add-btn" data-name="Strawberry Crusher" data-price="80">+ Add</button></li>
-                <li><span>Blueberry Crusher</span><b>₹80</b><button class="add-btn" data-name="Blueberry Crusher" data-price="80">+ Add</button></li>
-                <li><span>Pineapple Crusher</span><b>₹80</b><button class="add-btn" data-name="Pineapple Crusher" data-price="80">+ Add</button></li>
-
+                <li>Mango Crusher <b>₹80</b></li>
+                <li>Pista Crusher <b>₹80</b></li>
+                <li>Strawberry Crusher <b>₹80</b></li>
+                <li>Blueberry Crusher <b>₹80</b></li>
+                <li>Pineapple Crusher <b>₹80</b></li>
             </ul>
 
         </div>
 
-
-        <!-- CAD-B -->
 
         <div class="card">
 
             <h3>CAD-B</h3>
 
             <ul>
-
-                <li><span>Choco CAD-B</span><b>₹140</b><button class="add-btn" data-name="Choco CAD-B" data-price="140">+ Add</button></li>
-                <li><span>Oreo CAD-B</span><b>₹140</b><button class="add-btn" data-name="Oreo CAD-B" data-price="140">+ Add</button></li>
-                <li><span>KitKat CAD-B</span><b>₹140</b><button class="add-btn" data-name="KitKat CAD-B" data-price="140">+ Add</button></li>
-
+                <li>Choco CAD-B <b>₹140</b></li>
+                <li>Oreo CAD-B <b>₹140</b></li>
+                <li>KitKat CAD-B <b>₹140</b></li>
             </ul>
 
         </div>
 
-
-        <!-- Mastani -->
 
         <div class="card">
 
             <h3>Mastani</h3>
 
             <ul>
-
-                <li><span>Mango Mastani</span><b>₹120</b><button class="add-btn" data-name="Mango Mastani" data-price="120">+ Add</button></li>
-                <li><span>Strawberry Mastani</span><b>₹120</b><button class="add-btn" data-name="Strawberry Mastani" data-price="120">+ Add</button></li>
-                <li><span>Pista Mastani</span><b>₹120</b><button class="add-btn" data-name="Pista Mastani" data-price="120">+ Add</button></li>
-                <li><span>Butter Scotch Mastani</span><b>₹120</b><button class="add-btn" data-name="Butter Scotch Mastani" data-price="120">+ Add</button></li>
-                <li><span>Chocolate Mastani</span><b>₹120</b><button class="add-btn" data-name="Chocolate Mastani" data-price="120">+ Add</button></li>
-                <li><span>Vanilla Mastani</span><b>₹120</b><button class="add-btn" data-name="Vanilla Mastani" data-price="120">+ Add</button></li>
-
+                <li>Mango Mastani <b>₹120</b></li>
+                <li>Strawberry Mastani <b>₹120</b></li>
+                <li>Pista Mastani <b>₹120</b></li>
+                <li>Butter Scotch Mastani <b>₹120</b></li>
+                <li>Chocolate Mastani <b>₹120</b></li>
+                <li>Vanilla Mastani <b>₹120</b></li>
             </ul>
 
         </div>
@@ -387,124 +514,64 @@
             <ul>
 
                 <li>
-                    <span>Veg Cheese Pizza</span>
+                    Veg Cheese Pizza
                     <b>₹160 / ₹200</b>
-                    <button class="pizza-add"
-                            data-name="Veg Cheese Pizza"
-                            data-small="160"
-                            data-medium="200">
-                        + Add
-                    </button>
                 </li>
 
                 <li>
-                    <span>Margarita Pizza</span>
+                    Margarita Pizza
                     <b>₹140 / ₹180</b>
-                    <button class="pizza-add"
-                            data-name="Margarita Pizza"
-                            data-small="140"
-                            data-medium="180">
-                        + Add
-                    </button>
                 </li>
 
                 <li>
-                    <span>Corn & Cheese Pizza</span>
+                    Corn & Cheese Pizza
                     <b>₹150 / ₹180</b>
-                    <button class="pizza-add"
-                            data-name="Corn & Cheese Pizza"
-                            data-small="150"
-                            data-medium="180">
-                        + Add
-                    </button>
                 </li>
 
                 <li>
-                    <span>Schezwan Cheese Pizza</span>
+                    Schezwan Cheese Pizza
                     <b>₹170 / ₹210</b>
-                    <button class="pizza-add"
-                            data-name="Schezwan Cheese Pizza"
-                            data-small="170"
-                            data-medium="210">
-                        + Add
-                    </button>
                 </li>
 
                 <li>
-                    <span>Tandoori Cheese Pizza</span>
+                    Tandoori Cheese Pizza
                     <b>₹170 / ₹210</b>
-                    <button class="pizza-add"
-                            data-name="Tandoori Cheese Pizza"
-                            data-small="170"
-                            data-medium="210">
-                        + Add
-                    </button>
                 </li>
 
                 <li>
-                    <span>Peri Peri Cheese Pizza</span>
+                    Peri Peri Cheese Pizza
                     <b>₹170 / ₹210</b>
-                    <button class="pizza-add"
-                            data-name="Peri Peri Cheese Pizza"
-                            data-small="170"
-                            data-medium="210">
-                        + Add
-                    </button>
                 </li>
 
                 <li>
-                    <span>Paneer Pizza</span>
+                    Paneer Pizza
                     <b>₹180 / ₹220</b>
-                    <button class="pizza-add"
-                            data-name="Paneer Pizza"
-                            data-small="180"
-                            data-medium="220">
-                        + Add
-                    </button>
                 </li>
 
                 <li>
-                    <span>Paneer Tikka Pizza</span>
+                    Paneer Tikka Pizza
                     <b>₹200 / ₹240</b>
-                    <button class="pizza-add"
-                            data-name="Paneer Tikka Pizza"
-                            data-small="200"
-                            data-medium="240">
-                        + Add
-                    </button>
                 </li>
 
                 <li>
-                    <span>Schezwan Paneer Pizza</span>
+                    Schezwan Paneer Pizza
                     <b>₹200 / ₹240</b>
-                    <button class="pizza-add"
-                            data-name="Schezwan Paneer Pizza"
-                            data-small="200"
-                            data-medium="240">
-                        + Add
-                    </button>
                 </li>
 
                 <li>
-                    <span>Chocolate Cheese Pizza</span>
+                    Chocolate Cheese Pizza
                     <b>₹160 / ₹200</b>
-                    <button class="pizza-add"
-                            data-name="Chocolate Cheese Pizza"
-                            data-small="160"
-                            data-medium="200">
-                        + Add
-                    </button>
                 </li>
 
                 <li>
-                    <span>Skylight Special Pizza</span>
+                    <span>
+                        Skylight Special Pizza
+                        <span class="badge special-badge">
+                            👑 Special
+                        </span>
+                    </span>
+
                     <b>₹220 / ₹260</b>
-                    <button class="pizza-add"
-                            data-name="Skylight Special Pizza"
-                            data-small="220"
-                            data-medium="260">
-                        + Add
-                    </button>
                 </li>
 
             </ul>
@@ -529,21 +596,30 @@
         <div class="card wide">
 
             <ul>
+                <li>Veg Sandwich (Without Grill) <b>₹60</b></li>
+                <li>Veg Grill Sandwich <b>₹70</b></li>
+                <li>Veg Cheese Grill Sandwich <b>₹100</b></li>
+                <li>Schezwan Cheese Grill Sandwich <b>₹120</b></li>
+                <li>Peri Peri Cheese Grill Sandwich <b>₹120</b></li>
+                <li>Masala Cheese Grill Sandwich <b>₹120</b></li>
+                <li>Tandoori Cheese Grill Sandwich <b>₹120</b></li>
+                <li>Paneer Cheese Grill Sandwich <b>₹130</b></li>
+                <li>Corn And Cheese Sandwich <b>₹100</b></li>
+                <li>Chocolate Grill Sandwich <b>₹100</b></li>
+                <li>Bread Butter Sandwich <b>₹40</b></li>
+                <li>Bread Butter Grill Sandwich <b>₹60</b></li>
+                <li>Club Sandwich <b>₹140</b></li>
 
-                <li><span>Veg Sandwich (Without Grill)</span><b>₹60</b><button class="add-btn" data-name="Veg Sandwich (Without Grill)" data-price="60">+ Add</button></li>
-                <li><span>Veg Grill Sandwich</span><b>₹70</b><button class="add-btn" data-name="Veg Grill Sandwich" data-price="70">+ Add</button></li>
-                <li><span>Veg Cheese Grill Sandwich</span><b>₹100</b><button class="add-btn" data-name="Veg Cheese Grill Sandwich" data-price="100">+ Add</button></li>
-                <li><span>Schezwan Cheese Grill Sandwich</span><b>₹120</b><button class="add-btn" data-name="Schezwan Cheese Grill Sandwich" data-price="120">+ Add</button></li>
-                <li><span>Peri Peri Cheese Grill Sandwich</span><b>₹120</b><button class="add-btn" data-name="Peri Peri Cheese Grill Sandwich" data-price="120">+ Add</button></li>
-                <li><span>Masala Cheese Grill Sandwich</span><b>₹120</b><button class="add-btn" data-name="Masala Cheese Grill Sandwich" data-price="120">+ Add</button></li>
-                <li><span>Tandoori Cheese Grill Sandwich</span><b>₹120</b><button class="add-btn" data-name="Tandoori Cheese Grill Sandwich" data-price="120">+ Add</button></li>
-                <li><span>Paneer Cheese Grill Sandwich</span><b>₹130</b><button class="add-btn" data-name="Paneer Cheese Grill Sandwich" data-price="130">+ Add</button></li>
-                <li><span>Corn And Cheese Sandwich</span><b>₹100</b><button class="add-btn" data-name="Corn And Cheese Sandwich" data-price="100">+ Add</button></li>
-                <li><span>Chocolate Grill Sandwich</span><b>₹100</b><button class="add-btn" data-name="Chocolate Grill Sandwich" data-price="100">+ Add</button></li>
-                <li><span>Bread Butter Sandwich</span><b>₹40</b><button class="add-btn" data-name="Bread Butter Sandwich" data-price="40">+ Add</button></li>
-                <li><span>Bread Butter Grill Sandwich</span><b>₹60</b><button class="add-btn" data-name="Bread Butter Grill Sandwich" data-price="60">+ Add</button></li>
-                <li><span>Club Sandwich</span><b>₹140</b><button class="add-btn" data-name="Club Sandwich" data-price="140">+ Add</button></li>
-                <li><span>Skylight Special Sandwich</span><b>₹160</b><button class="add-btn" data-name="Skylight Special Sandwich" data-price="160">+ Add</button></li>
+                <li>
+                    <span>
+                        Skylight Special Sandwich
+                        <span class="badge special-badge">
+                            👑 Special
+                        </span>
+                    </span>
+
+                    <b>₹160</b>
+                </li>
 
             </ul>
 
@@ -567,18 +643,16 @@
         <div class="card wide">
 
             <ul>
-
-                <li><span>Veg Burger</span><b>₹70</b><button class="add-btn" data-name="Veg Burger" data-price="70">+ Add</button></li>
-                <li><span>Veg Cheese Burger</span><b>₹90</b><button class="add-btn" data-name="Veg Cheese Burger" data-price="90">+ Add</button></li>
-                <li><span>Mayo Cheese Burger</span><b>₹90</b><button class="add-btn" data-name="Mayo Cheese Burger" data-price="90">+ Add</button></li>
-                <li><span>Schezwan Cheese Burger</span><b>₹100</b><button class="add-btn" data-name="Schezwan Cheese Burger" data-price="100">+ Add</button></li>
-                <li><span>Peri Peri Cheese Burger</span><b>₹100</b><button class="add-btn" data-name="Peri Peri Cheese Burger" data-price="100">+ Add</button></li>
-                <li><span>Tandoori Cheese Burger</span><b>₹100</b><button class="add-btn" data-name="Tandoori Cheese Burger" data-price="100">+ Add</button></li>
-                <li><span>Paneer Burger</span><b>₹110</b><button class="add-btn" data-name="Paneer Burger" data-price="110">+ Add</button></li>
-                <li><span>Paneer Cheese Burger</span><b>₹120</b><button class="add-btn" data-name="Paneer Cheese Burger" data-price="120">+ Add</button></li>
-                <li><span>Double Patty Cheese Burger</span><b>₹140</b><button class="add-btn" data-name="Double Patty Cheese Burger" data-price="140">+ Add</button></li>
-                <li><span>Double Patty Paneer Cheese Burger</span><b>₹160</b><button class="add-btn" data-name="Double Patty Paneer Cheese Burger" data-price="160">+ Add</button></li>
-
+                <li>Veg Burger <b>₹70</b></li>
+                <li>Veg Cheese Burger <b>₹90</b></li>
+                <li>Mayo Cheese Burger <b>₹90</b></li>
+                <li>Schezwan Cheese Burger <b>₹100</b></li>
+                <li>Peri Peri Cheese Burger <b>₹100</b></li>
+                <li>Tandoori Cheese Burger <b>₹100</b></li>
+                <li>Paneer Burger <b>₹110</b></li>
+                <li>Paneer Cheese Burger <b>₹120</b></li>
+                <li>Double Patty Cheese Burger <b>₹140</b></li>
+                <li>Double Patty Paneer Cheese Burger <b>₹160</b></li>
             </ul>
 
         </div>
@@ -601,15 +675,13 @@
         <div class="card wide">
 
             <ul>
-
-                <li><span>Simply Salted Fries</span><b>₹80</b><button class="add-btn" data-name="Simply Salted Fries" data-price="80">+ Add</button></li>
-                <li><span>Peri Peri Fries</span><b>₹100</b><button class="add-btn" data-name="Peri Peri Fries" data-price="100">+ Add</button></li>
-                <li><span>Mayo Fries</span><b>₹110</b><button class="add-btn" data-name="Mayo Fries" data-price="110">+ Add</button></li>
-                <li><span>Tandoori Fries</span><b>₹120</b><button class="add-btn" data-name="Tandoori Fries" data-price="120">+ Add</button></li>
-                <li><span>Cheese Fries</span><b>₹120</b><button class="add-btn" data-name="Cheese Fries" data-price="120">+ Add</button></li>
-                <li><span>Double Cheese Fries</span><b>₹140</b><button class="add-btn" data-name="Double Cheese Fries" data-price="140">+ Add</button></li>
-                <li><span>Masala Fries</span><b>₹140</b><button class="add-btn" data-name="Masala Fries" data-price="140">+ Add</button></li>
-
+                <li>Simply Salted Fries <b>₹80</b></li>
+                <li>Peri Peri Fries <b>₹100</b></li>
+                <li>Mayo Fries <b>₹110</b></li>
+                <li>Tandoori Fries <b>₹120</b></li>
+                <li>Cheese Fries <b>₹120</b></li>
+                <li>Double Cheese Fries <b>₹140</b></li>
+                <li>Masala Fries <b>₹140</b></li>
             </ul>
 
         </div>
@@ -620,59 +692,21 @@
 
 
 <!-- =====================================================
-     PAV BHAJI
+     NACHOS
 ===================================================== -->
 
-<section id="pavbhaji" class="section">
+<section id="nachos" class="section">
 
-    <h2>🥘 Pav Bhaji</h2>
+    <h2>🌮 Nachos</h2>
 
     <div class="grid">
 
         <div class="card wide">
 
             <ul>
-
-                <li>
-                    <span>Unlimited Pav Bhaji (Single Person)</span>
-                    <b>₹149</b>
-                    <button class="add-btn"
-                            data-name="Unlimited Pav Bhaji (Single Person)"
-                            data-price="149">
-                        + Add
-                    </button>
-                </li>
-
-                <li>
-                    <span>Butter Pav Bhaji (Limited)</span>
-                    <b>₹120</b>
-                    <button class="add-btn"
-                            data-name="Butter Pav Bhaji (Limited)"
-                            data-price="120">
-                        + Add
-                    </button>
-                </li>
-
-                <li>
-                    <span>Kolhapuri Pav Bhaji</span>
-                    <b>₹140</b>
-                    <button class="add-btn"
-                            data-name="Kolhapuri Pav Bhaji"
-                            data-price="140">
-                        + Add
-                    </button>
-                </li>
-
-                <li>
-                    <span>Cheese Pav Bhaji</span>
-                    <b>₹150</b>
-                    <button class="add-btn"
-                            data-name="Cheese Pav Bhaji"
-                            data-price="150">
-                        + Add
-                    </button>
-                </li>
-
+                <li>Cheese Nachos <b>₹100</b></li>
+                <li>Peri Peri Cheese Nachos <b>₹120</b></li>
+                <li>Tandoori Cheese Nachos <b>₹120</b></li>
             </ul>
 
         </div>
@@ -683,10 +717,10 @@
 
 
 <!-- =====================================================
-     MAGGIE
+     MAGGI
 ===================================================== -->
 
-<section id="maggie" class="section">
+<section id="maggi" class="section">
 
     <h2>🍜 Maggi</h2>
 
@@ -695,18 +729,15 @@
         <div class="card wide">
 
             <ul>
-
-                <li><span>Plain Maggi</span><b>₹50</b><button class="add-btn" data-name="Plain Maggi" data-price="50">+ Add</button></li>
-                <li><span>Plain Masala Maggi</span><b>₹70</b><button class="add-btn" data-name="Plain Masala Maggi" data-price="70">+ Add</button></li>
-                <li><span>Plain Cheese Maggi</span><b>₹80</b><button class="add-btn" data-name="Plain Cheese Maggi" data-price="80">+ Add</button></li>
-                <li><span>Vegetable Maggi</span><b>₹80</b><button class="add-btn" data-name="Vegetable Maggi" data-price="80">+ Add</button></li>
-                <li><span>Vegetable Cheese Maggi</span><b>₹90</b><button class="add-btn" data-name="Vegetable Cheese Maggi" data-price="90">+ Add</button></li>
-                <li><span>Schezwan Cheese Maggi</span><b>₹90</b><button class="add-btn" data-name="Schezwan Cheese Maggi" data-price="90">+ Add</button></li>
-                <li><span>Peri Peri Cheese Maggi</span><b>₹100</b><button class="add-btn" data-name="Peri Peri Cheese Maggi" data-price="100">+ Add</button></li>
-                <li><span>Butter Cheese Maggi</span><b>₹90</b><button class="add-btn" data-name="Butter Cheese Maggi" data-price="90">+ Add</button></li>
-                <li><span>Corn & Cheese Maggi</span><b>₹90</b><button class="add-btn" data-name="Corn & Cheese Maggi" data-price="90">+ Add</button></li>
-                <li><span>Alfredo Cheese Maggi</span><b>₹120</b><button class="add-btn" data-name="Alfredo Cheese Maggi" data-price="120">+ Add</button></li>
-
+                <li>Plain Maggi <b>₹50</b></li>
+                <li>Plain Masala Maggi <b>₹70</b></li>
+                <li>Plain Cheese Maggi <b>₹80</b></li>
+                <li>Vegetable Maggi <b>₹80</b></li>
+                <li>Schezwan Cheese Maggi <b>₹90</b></li>
+                <li>Peri Peri Cheese Maggi <b>₹100</b></li>
+                <li>Butter & Cheese Maggi <b>₹100</b></li>
+                <li>Corn & Cheese Maggi <b>₹90</b></li>
+                <li>Alfredo Cheese Maggi <b>₹120</b></li>
             </ul>
 
         </div>
@@ -729,11 +760,9 @@
         <div class="card wide">
 
             <ul>
-
-                <li><span>White Sauce Pasta</span><b>₹150</b><button class="add-btn" data-name="White Sauce Pasta" data-price="150">+ Add</button></li>
-                <li><span>Red Sauce Pasta</span><b>₹150</b><button class="add-btn" data-name="Red Sauce Pasta" data-price="150">+ Add</button></li>
-                <li><span>Alfredo Sauce Pasta</span><b>₹150</b><button class="add-btn" data-name="Alfredo Sauce Pasta" data-price="150">+ Add</button></li>
-
+                <li>White Sauce Pasta <b>₹150</b></li>
+                <li>Red Sauce Pasta <b>₹150</b></li>
+                <li>Alfredo Sauce Pasta <b>₹150</b></li>
             </ul>
 
         </div>
@@ -744,61 +773,12 @@
 
 
 <!-- =====================================================
-     CHINESE
+     PAV BHAJI
 ===================================================== -->
 
-<section id="chinese" class="section">
+<section id="pavbhaji" class="section">
 
-    <h2>🥢 Chinese Starter</h2>
-
-    <div class="grid">
-
-        <div class="card">
-
-            <h3>Soups</h3>
-
-            <ul>
-
-                <li><span>Tomato Soup</span><b>₹90</b><button class="add-btn" data-name="Tomato Soup" data-price="90">+ Add</button></li>
-                <li><span>Sweet Corn Soup</span><b>₹90</b><button class="add-btn" data-name="Sweet Corn Soup" data-price="90">+ Add</button></li>
-                <li><span>Veg Manchow Soup</span><b>₹90</b><button class="add-btn" data-name="Veg Manchow Soup" data-price="90">+ Add</button></li>
-                <li><span>Hot & Sour Soup</span><b>₹90</b><button class="add-btn" data-name="Hot & Sour Soup" data-price="90">+ Add</button></li>
-
-            </ul>
-
-        </div>
-
-
-        <div class="card">
-
-            <h3>Chillies & Noodles</h3>
-
-            <ul>
-
-                <li><span>Veg Manchurian</span><b>₹140</b><button class="add-btn" data-name="Veg Manchurian" data-price="140">+ Add</button></li>
-                <li><span>Veg Manchurian (Gravy)</span><b>₹150</b><button class="add-btn" data-name="Veg Manchurian (Gravy)" data-price="150">+ Add</button></li>
-                <li><span>Soyabean Chilly</span><b>₹150</b><button class="add-btn" data-name="Soyabean Chilly" data-price="150">+ Add</button></li>
-                <li><span>Paneer Chilly</span><b>₹170</b><button class="add-btn" data-name="Paneer Chilly" data-price="170">+ Add</button></li>
-                <li><span>Hakka Noodles</span><b>₹140</b><button class="add-btn" data-name="Hakka Noodles" data-price="140">+ Add</button></li>
-                <li><span>Schezwan Noodles</span><b>₹150</b><button class="add-btn" data-name="Schezwan Noodles" data-price="150">+ Add</button></li>
-                <li><span>Manchurian Noodles</span><b>₹170</b><button class="add-btn" data-name="Manchurian Noodles" data-price="170">+ Add</button></li>
-
-            </ul>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- =====================================================
-     MOMOS
-===================================================== -->
-
-<section id="momos" class="section">
-
-    <h2>🥟 Momos & Bites</h2>
+    <h2>🍛 Pav Bhaji</h2>
 
     <div class="grid">
 
@@ -807,53 +787,37 @@
             <ul>
 
                 <li>
-                    <span>Veg Momos</span>
-                    <b>₹100</b>
-                    <button class="add-btn"
-                            data-name="Veg Momos"
-                            data-price="100">
-                        + Add
-                    </button>
+
+                    <span>
+
+                        Unlimited Pav Bhaji
+                        <small>
+                            (Single Person)
+                        </small>
+
+                        <span class="badge popular-badge">
+                            🔥 Popular
+                        </span>
+
+                    </span>
+
+                    <b>₹149</b>
+
                 </li>
 
                 <li>
-                    <span>Veg Cheese Momos</span>
-                    <b>₹130</b>
-                    <button class="add-btn"
-                            data-name="Veg Cheese Momos"
-                            data-price="130">
-                        + Add
-                    </button>
+                    Butter Pav Bhaji (Limited)
+                    <b>₹120</b>
                 </li>
 
                 <li>
-                    <span>Paneer Momos</span>
+                    Kolhapuri Pav Bhaji
+                    <b>₹140</b>
+                </li>
+
+                <li>
+                    Cheese Pav Bhaji
                     <b>₹150</b>
-                    <button class="add-btn"
-                            data-name="Paneer Momos"
-                            data-price="150">
-                        + Add
-                    </button>
-                </li>
-
-                <li>
-                    <span>Garlic Cheese Bread (2-Slice)</span>
-                    <b>₹120</b>
-                    <button class="add-btn"
-                            data-name="Garlic Cheese Bread (2-Slice)"
-                            data-price="120">
-                        + Add
-                    </button>
-                </li>
-
-                <li>
-                    <span>Potato Cheese Balls</span>
-                    <b>₹120</b>
-                    <button class="add-btn"
-                            data-name="Potato Cheese Balls"
-                            data-price="120">
-                        + Add
-                    </button>
                 </li>
 
             </ul>
@@ -878,47 +842,91 @@
         <div class="card wide">
 
             <ul>
+                <li>Extra Butter <b>₹10</b></li>
+                <li>Extra Pav <b>₹10</b></li>
+                <li>Extra Cheese <b>₹20</b></li>
+                <li>Extra Bhaji <b>₹90</b></li>
+            </ul>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     MOMOS
+===================================================== -->
+
+<section id="momos" class="section">
+
+    <h2>🥟 Momos & Bites</h2>
+
+    <div class="grid">
+
+        <div class="card wide">
+
+            <ul>
+                <li>Veg Momos <b>₹100</b></li>
+                <li>Veg Cheese Momos <b>₹130</b></li>
+                <li>Paneer Momos <b>₹150</b></li>
 
                 <li>
-                    <span>Extra Butter</span>
-                    <b>₹10</b>
-                    <button class="add-btn"
-                            data-name="Extra Butter"
-                            data-price="10">
-                        + Add
-                    </button>
+                    Garlic Cheese Bread
+                    <small>(2-Slice)</small>
+                    <b>₹120</b>
                 </li>
 
                 <li>
-                    <span>Extra Pav</span>
-                    <b>₹10</b>
-                    <button class="add-btn"
-                            data-name="Extra Pav"
-                            data-price="10">
-                        + Add
-                    </button>
+                    Potato Cheese Balls
+                    <b>₹120</b>
                 </li>
+            </ul>
 
-                <li>
-                    <span>Extra Cheese</span>
-                    <b>₹20</b>
-                    <button class="add-btn"
-                            data-name="Extra Cheese"
-                            data-price="20">
-                        + Add
-                    </button>
-                </li>
+        </div>
 
-                <li>
-                    <span>Extra Bhaji</span>
-                    <b>₹90</b>
-                    <button class="add-btn"
-                            data-name="Extra Bhaji"
-                            data-price="90">
-                        + Add
-                    </button>
-                </li>
+    </div>
 
+</section>
+
+
+<!-- =====================================================
+     CHINESE
+===================================================== -->
+
+<section id="chinese" class="section">
+
+    <h2>🥢 Chinese Starter</h2>
+
+    <div class="grid">
+
+        <div class="card">
+
+            <h3>Soups</h3>
+
+            <ul>
+                <li>Tomato Soup <b>₹90</b></li>
+                <li>Sweet Corn Soup <b>₹90</b></li>
+                <li>Veg Manchow Soup <b>₹90</b></li>
+                <li>Hot & Sour Soup <b>₹90</b></li>
+            </ul>
+
+        </div>
+
+
+        <div class="card">
+
+            <h3>Chillies & Noodles</h3>
+
+            <ul>
+                <li>Veg Manchurian <b>₹140</b></li>
+                <li>Veg Manchurian (Gravy) <b>₹150</b></li>
+                <li>Soyabean Chilly <b>₹150</b></li>
+                <li>Paneer Chilly <b>₹170</b></li>
+                <li>Hakka Noodles <b>₹140</b></li>
+                <li>Schezwan Noodles <b>₹150</b></li>
+                <li>Manchurian Noodles <b>₹170</b></li>
             </ul>
 
         </div>
@@ -941,37 +949,9 @@
         <div class="card wide">
 
             <ul>
-
-                <li>
-                    <span>Brownie</span>
-                    <b>₹130</b>
-                    <button class="add-btn"
-                            data-name="Brownie"
-                            data-price="130">
-                        + Add
-                    </button>
-                </li>
-
-                <li>
-                    <span>Brownie With Ice-Cream</span>
-                    <b>₹150</b>
-                    <button class="add-btn"
-                            data-name="Brownie With Ice-Cream"
-                            data-price="150">
-                        + Add
-                    </button>
-                </li>
-
-                <li>
-                    <span>Choco Lava Cake</span>
-                    <b>₹80</b>
-                    <button class="add-btn"
-                            data-name="Choco Lava Cake"
-                            data-price="80">
-                        + Add
-                    </button>
-                </li>
-
+                <li>Brownie <b>₹130</b></li>
+                <li>Brownie With Ice-Cream <b>₹150</b></li>
+                <li>Choco Lava Cake <b>₹80</b></li>
             </ul>
 
         </div>
@@ -982,7 +962,7 @@
 
 
 <!-- =====================================================
-     BIRTHDAY PARTY HALL
+     BIRTHDAY HALL
 ===================================================== -->
 
 <section id="birthday" class="birthday">
@@ -998,8 +978,31 @@
         </h2>
 
         <p>
-            Birthday Party Hall Available
+            Make your special day memorable at
+            Skylight Cafe & Restro.
         </p>
+
+
+        <!--
+            Replace this placeholder with the actual
+            birthday hall image later.
+        -->
+
+        <div class="birthday-photo-placeholder">
+
+            <span>🎉</span>
+
+            <p>
+                Birthday Hall Photos Coming Soon
+            </p>
+
+        </div>
+
+
+        <!-- IMPORTANT:
+             Both buttons are inside one centered
+             container.
+        -->
 
         <div class="birthday-actions">
 
@@ -1007,8 +1010,9 @@
                 class="call"
                 href="tel:8007138763"
             >
-                📞 Call
+                📞 Call Now
             </a>
+
 
             <a
                 class="whatsapp"
@@ -1025,6 +1029,105 @@
 
 </section>
 
+
+<!-- =====================================================
+     LOCATION
+===================================================== -->
+
+<section class="visit-section">
+
+    <span class="eyebrow">
+        COME VISIT US
+    </span>
+
+    <h2>
+        📍 Find Us
+    </h2>
+
+    <p>
+        Skylight Cafe & Restro
+    </p>
+
+    <p>
+        Nashik, Maharashtra
+    </p>
+
+    <a
+        class="location-button"
+        href="https://maps.app.goo.gl/LDqEwQvmm9vroLCU7?g_st=ac"
+        target="_blank"
+        rel="noopener noreferrer"
+    >
+        📍 Get Directions
+    </a>
+
+</section>
+
+
+<!-- =====================================================
+     OPENING HOURS
+===================================================== -->
+
+<section class="hours-section">
+
+    <span class="eyebrow">
+        WHEN TO VISIT
+    </span>
+
+    <h2>
+        🕐 Opening Hours
+    </h2>
+
+    <div class="hours-card">
+
+        <div>
+
+            <span>
+                Monday – Sunday
+            </span>
+
+            <strong>
+                9:30 AM – 10:00 PM
+            </strong>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     REVIEW
+===================================================== -->
+
+<section class="review-section">
+
+    <span class="eyebrow">
+        ENJOYED YOUR VISIT?
+    </span>
+
+    <h2>
+        ⭐ We'd Love Your Feedback
+    </h2>
+
+    <p>
+        Your review helps Skylight Cafe & Restro
+        grow and serve you better.
+    </p>
+
+    <a
+        class="review-button"
+        href="https://g.page/r/CUjUCkSeVe0YEBE/review"
+        target="_blank"
+        rel="noopener noreferrer"
+    >
+        ⭐ Rate Us on Google
+    </a>
+
+</section>
+
+
 </main>
 
 
@@ -1039,9 +1142,7 @@
     </strong>
 
     <p>
-        📞 8007138763
-        &nbsp; | &nbsp;
-        9637340956
+        📞 8007138763 &nbsp; | &nbsp; 9637340956
     </p>
 
     <p>
@@ -1049,27 +1150,13 @@
     </p>
 
     <a
-        class="footer-location-button"
-        href="https://maps.app.goo.gl/LDqEwQvmm9vroLCU7?g_st=ac"
-        target="_blank"
-        rel="noopener noreferrer"
-    >
-        📍 Get Directions
-    </a>
-
-    <p>
-        🕘 9:30 AM – 10:00 PM
-    </p>
-
-    <a
-        class="instagram-link"
-        href="https://www.instagram.com/skylight_cafe_and_restro/"
-        target="_blank"
-        rel="noopener noreferrer"
-    >
-        📷 Instagram
-    </a>
-
+    class="footer-location-button"
+    href="https://maps.app.goo.gl/LDqEwQvmm9vroLCU7?g_st=ac"
+    target="_blank"
+    rel="noopener noreferrer"
+>
+    📍 Get Directions
+</a>
     <p>
         © 2026 Skylight Cafe & Restro
     </p>
@@ -1078,257 +1165,479 @@
 
 
 <!-- =====================================================
-     FLOATING CART
+     FLOATING WHATSAPP
 ===================================================== -->
 
-<div
-    id="cartBar"
-    class="cart-bar hidden"
+<a
+    class="floating-whatsapp"
+    href="https://wa.me/918007138763?text=Hello%20Skylight%20Cafe%2C%20I%20want%20to%20know%20more%20about%20your%20cafe."
+    target="_blank"
+    rel="noopener noreferrer"
+    aria-label="Chat with Skylight Cafe on WhatsApp"
 >
+    💬
+</a>
 
-    <div class="cart-summary">
 
-        <span class="cart-icon">
-            🛒
-        </span>
-
-        <span>
-            <strong id="cartCount">
-                0
-            </strong>
-            Items
-        </span>
-
-        <span class="cart-total">
-            ₹<span id="cartTotal">0</span>
-        </span>
-
-    </div>
-
-    <button
-        id="viewCartBtn"
-        class="view-cart-btn"
-    >
-        View Cart
-    </button>
-
-</div>
 
 
 <!-- =====================================================
-     CART OVERLAY
+     CART / ADD BUTTON FUNCTIONALITY
+     Added without removing existing page sections.
 ===================================================== -->
 
-<div
-    id="cartOverlay"
-    class="cart-overlay hidden"
->
+<div id="cartBar" class="cart-bar hidden">
+    <div class="cart-summary">
+        <span class="cart-icon">🛒</span>
+        <span><strong id="cartCount">0</strong> Items</span>
+        <span class="cart-total">₹<span id="cartTotal">0</span></span>
+    </div>
+    <button id="viewCartBtn" class="view-cart-btn" type="button">View Cart</button>
+</div>
 
-    <div class="cart-panel">
-
+<div id="cartOverlay" class="cart-overlay hidden" aria-hidden="true">
+    <div class="cart-panel" role="dialog" aria-modal="true" aria-label="Selected items">
         <div class="cart-header">
-
             <div>
-
-                <span class="eyebrow">
-                    YOUR SELECTION
-                </span>
-
-                <h2>
-                    🛒 Selected Items
-                </h2>
-
+                <span class="eyebrow">YOUR SELECTION</span>
+                <h2>🛒 Selected Items</h2>
             </div>
-
-            <button
-                id="closeCartBtn"
-                class="close-cart"
-            >
-                ✕
-            </button>
-
+            <button id="closeCartBtn" class="close-cart" type="button" aria-label="Close cart">✕</button>
         </div>
 
-
-        <div
-            id="cartItems"
-            class="cart-items"
-        >
-        </div>
-
+        <div id="cartItems" class="cart-items"></div>
 
         <div class="cart-footer">
-
             <div class="cart-total-row">
-
-                <span>
-                    Total Items
-                </span>
-
-                <strong id="panelCartCount">
-                    0
-                </strong>
-
+                <span>Total Items</span>
+                <strong id="panelCartCount">0</strong>
             </div>
-
             <div class="cart-total-row total-price">
-
-                <span>
-                    Estimated Total
-                </span>
-
-                <strong>
-                    ₹<span id="panelCartTotal">0</span>
-                </strong>
-
+                <span>Estimated Total</span>
+                <strong>₹<span id="panelCartTotal">0</span></strong>
             </div>
-
-
             <div class="cart-actions">
-
-                <button
-                    id="clearCartBtn"
-                    class="clear-cart-btn"
-                >
-                    Clear All
-                </button>
-
-                <button
-                    id="showWaiterBtn"
-                    class="show-waiter-btn"
-                >
-                    👋 Show Waiter
-                </button>
-
+                <button id="clearCartBtn" class="clear-cart-btn" type="button">Clear All</button>
+                <button id="showWaiterBtn" class="show-waiter-btn" type="button">👋 Show Waiter</button>
             </div>
-
         </div>
-
     </div>
-
 </div>
 
-
-<!-- =====================================================
-     PIZZA SIZE MODAL
-===================================================== -->
-
-<div
-    id="pizzaModal"
-    class="pizza-modal hidden"
->
-
-    <div class="pizza-modal-box">
-
-        <button
-            id="closePizzaModal"
-            class="close-pizza"
-        >
-            ✕
-        </button>
-
-        <span class="eyebrow">
-            CHOOSE SIZE
-        </span>
-
-        <h2 id="pizzaName">
-            Pizza
-        </h2>
-
+<div id="pizzaModal" class="pizza-modal hidden" aria-hidden="true">
+    <div class="pizza-modal-box" role="dialog" aria-modal="true" aria-label="Choose pizza size">
+        <button id="closePizzaModal" class="close-pizza" type="button" aria-label="Close">✕</button>
+        <span class="eyebrow">CHOOSE SIZE</span>
+        <h2 id="pizzaName">Pizza</h2>
         <div class="pizza-size-options">
-
-            <button
-                class="pizza-size"
-                data-size="Small"
-                id="smallPizzaBtn"
-            >
+            <button id="smallPizzaBtn" class="pizza-size" type="button">
                 <span>Small</span>
-                <strong>6"</strong>
+                <strong>6&quot;</strong>
                 <b>₹0</b>
             </button>
-
-            <button
-                class="pizza-size"
-                data-size="Medium"
-                id="mediumPizzaBtn"
-            >
+            <button id="mediumPizzaBtn" class="pizza-size" type="button">
                 <span>Medium</span>
-                <strong>8"</strong>
+                <strong>8&quot;</strong>
                 <b>₹0</b>
             </button>
-
         </div>
-
     </div>
-
 </div>
 
-
-<!-- =====================================================
-     SHOW WAITER MODE
-===================================================== -->
-
-<div
-    id="waiterMode"
-    class="waiter-mode hidden"
->
-
-    <div class="waiter-box">
-
+<div id="waiterMode" class="waiter-mode hidden" aria-hidden="true">
+    <div class="waiter-box" role="dialog" aria-modal="true" aria-label="Selection for waiter">
         <div class="waiter-header">
-
             <div>
-                <span class="eyebrow">
-                    SHOW TO WAITER
-                </span>
-
-                <h2>
-                    Your Selection
-                </h2>
+                <span class="eyebrow">SHOW TO WAITER</span>
+                <h2>Your Selection</h2>
             </div>
-
-            <button
-                id="closeWaiterBtn"
-                class="close-cart"
-            >
-                ✕
-            </button>
-
+            <button id="closeWaiterBtn" class="close-cart" type="button" aria-label="Close">✕</button>
         </div>
-
-
-        <div
-            id="waiterItems"
-            class="waiter-items"
-        >
-        </div>
-
-
+        <div id="waiterItems"></div>
         <div class="waiter-total">
-
-            <span>
-                Total Items:
-                <strong id="waiterCount">
-                    0
-                </strong>
-            </span>
-
-            <span>
-                Estimated Total:
-                <strong>
-                    ₹<span id="waiterTotal">0</span>
-                </strong>
-            </span>
-
+            <span>Total Items: <strong id="waiterCount">0</strong></span>
+            <span>Estimated Total: <strong>₹<span id="waiterTotal">0</span></strong></span>
         </div>
-
-        <p class="waiter-note">
-            Please show this screen to your waiter.
-        </p>
-
+        <p class="waiter-note">Please show this screen to your waiter.</p>
     </div>
-
 </div>
+
+<script>
+(function () {
+    "use strict";
+
+    document.addEventListener("DOMContentLoaded", function () {
+        var cart = [];
+        var selectedPizza = null;
+
+        var cartBar = document.getElementById("cartBar");
+        var cartOverlay = document.getElementById("cartOverlay");
+        var cartItems = document.getElementById("cartItems");
+        var cartCount = document.getElementById("cartCount");
+        var cartTotal = document.getElementById("cartTotal");
+        var panelCartCount = document.getElementById("panelCartCount");
+        var panelCartTotal = document.getElementById("panelCartTotal");
+
+        var pizzaModal = document.getElementById("pizzaModal");
+        var pizzaName = document.getElementById("pizzaName");
+        var smallPizzaBtn = document.getElementById("smallPizzaBtn");
+        var mediumPizzaBtn = document.getElementById("mediumPizzaBtn");
+
+        var waiterMode = document.getElementById("waiterMode");
+        var waiterItems = document.getElementById("waiterItems");
+
+        function escapeHtml(value) {
+            return String(value)
+                .replace(/&/g, "&amp;")
+                .replace(/</g, "&lt;")
+                .replace(/>/g, "&gt;")
+                .replace(/\"/g, "&quot;")
+                .replace(/'/g, "&#039;");
+        }
+
+        function numberFromPrice(text) {
+            var match = String(text).replace(/,/g, "").match(/\d+(?:\.\d+)?/);
+            return match ? Number(match[0]) : 0;
+        }
+
+        function pricesFromText(text) {
+            return String(text)
+                .split("/")
+                .map(function (part) {
+                    return numberFromPrice(part);
+                })
+                .filter(function (value) {
+                    return value > 0;
+                });
+        }
+
+        function getMenuItemName(li) {
+            var clone = li.cloneNode(true);
+            var price = clone.querySelector("b");
+            if (price) {
+                price.remove();
+            }
+            clone.querySelectorAll(".badge, .add-btn").forEach(function (element) {
+                element.remove();
+            });
+            return clone.textContent.replace(/\s+/g, " ").trim();
+        }
+
+        function addButtonToMenuItem(li, isPizza) {
+            if (li.querySelector(".add-btn")) {
+                return;
+            }
+
+            var priceElement = li.querySelector("b");
+            if (!priceElement) {
+                return;
+            }
+
+            var prices = pricesFromText(priceElement.textContent);
+            if (prices.length === 0) {
+                return;
+            }
+
+            var button = document.createElement("button");
+            button.type = "button";
+            button.className = "add-btn";
+            button.textContent = "+ Add";
+
+            var name = getMenuItemName(li);
+
+            if (isPizza && prices.length >= 2) {
+                button.addEventListener("click", function () {
+                    openPizzaModal(name, prices[0], prices[1]);
+                });
+            } else {
+                button.addEventListener("click", function () {
+                    addToCart(name, prices[0], "");
+                });
+            }
+
+            li.appendChild(button);
+        }
+
+        function addButtonToSpecialCard(card) {
+            if (card.querySelector(".add-btn")) {
+                return;
+            }
+
+            var title = card.querySelector("h3");
+            var price = card.querySelector("strong");
+            if (!title || !price) {
+                return;
+            }
+
+            var prices = pricesFromText(price.textContent);
+            if (prices.length === 0) {
+                return;
+            }
+
+            var button = document.createElement("button");
+            button.type = "button";
+            button.className = "add-btn";
+            button.textContent = "+ Add";
+
+            var name = title.textContent.replace(/\s+/g, " ").trim();
+
+            if (prices.length >= 2) {
+                button.addEventListener("click", function () {
+                    openPizzaModal(name, prices[0], prices[1]);
+                });
+            } else {
+                button.addEventListener("click", function () {
+                    addToCart(name, prices[0], "");
+                });
+            }
+
+            var content = title.parentElement;
+            content.appendChild(button);
+        }
+
+        function setupAddButtons() {
+            document.querySelectorAll("main section.section").forEach(function (section) {
+                var isPizza = section.id === "pizza";
+                section.querySelectorAll("li").forEach(function (li) {
+                    addButtonToMenuItem(li, isPizza);
+                });
+            });
+
+            document.querySelectorAll(".special-card").forEach(function (card) {
+                addButtonToSpecialCard(card);
+            });
+        }
+
+        function openPizzaModal(name, smallPrice, mediumPrice) {
+            selectedPizza = {
+                name: name,
+                small: smallPrice,
+                medium: mediumPrice
+            };
+
+            pizzaName.textContent = name;
+            smallPizzaBtn.querySelector("b").textContent = "₹" + smallPrice;
+            mediumPizzaBtn.querySelector("b").textContent = "₹" + mediumPrice;
+
+            pizzaModal.classList.remove("hidden");
+            pizzaModal.setAttribute("aria-hidden", "false");
+        }
+
+        function closePizzaModal() {
+            selectedPizza = null;
+            pizzaModal.classList.add("hidden");
+            pizzaModal.setAttribute("aria-hidden", "true");
+        }
+
+        function addToCart(name, price, variant) {
+            var key = name + "|" + variant;
+            var existing = cart.find(function (item) {
+                return item.key === key;
+            });
+
+            if (existing) {
+                existing.quantity += 1;
+            } else {
+                cart.push({
+                    key: key,
+                    name: name,
+                    price: price,
+                    variant: variant,
+                    quantity: 1
+                });
+            }
+
+            updateCart();
+        }
+
+        function updateCart() {
+            var count = 0;
+            var total = 0;
+
+            cart.forEach(function (item) {
+                count += item.quantity;
+                total += item.price * item.quantity;
+            });
+
+            cartCount.textContent = count;
+            cartTotal.textContent = total;
+            panelCartCount.textContent = count;
+            panelCartTotal.textContent = total;
+
+            if (count > 0) {
+                cartBar.classList.remove("hidden");
+            } else {
+                cartBar.classList.add("hidden");
+                cartOverlay.classList.add("hidden");
+            }
+
+            renderCart();
+        }
+
+        function renderCart() {
+            cartItems.innerHTML = "";
+
+            if (cart.length === 0) {
+                cartItems.innerHTML =
+                    '<div class="empty-cart"><div class="empty-cart-icon">🛒</div>' +
+                    '<h3>Your selection is empty</h3>' +
+                    '<p>Add your favourite items from the menu.</p></div>';
+                return;
+            }
+
+            cart.forEach(function (item, index) {
+                var row = document.createElement("div");
+                row.className = "cart-item";
+
+                row.innerHTML =
+                    '<div class="cart-item-info">' +
+                        '<strong>' + escapeHtml(item.name) + '</strong>' +
+                        (item.variant ? '<small>' + escapeHtml(item.variant) + '</small>' : '') +
+                        '<span>₹' + item.price + ' × ' + item.quantity + '</span>' +
+                    '</div>' +
+                    '<div class="cart-item-right">' +
+                        '<strong>₹' + (item.price * item.quantity) + '</strong>' +
+                        '<div class="quantity-control">' +
+                            '<button class="quantity-btn" type="button" data-index="' + index + '" data-action="decrease">−</button>' +
+                            '<span>' + item.quantity + '</span>' +
+                            '<button class="quantity-btn" type="button" data-index="' + index + '" data-action="increase">+</button>' +
+                        '</div>' +
+                        '<button class="remove-item" type="button" data-index="' + index + '">Remove</button>' +
+                    '</div>';
+
+                cartItems.appendChild(row);
+            });
+        }
+
+        function openCart() {
+            cartOverlay.classList.remove("hidden");
+            cartOverlay.setAttribute("aria-hidden", "false");
+        }
+
+        function closeCart() {
+            cartOverlay.classList.add("hidden");
+            cartOverlay.setAttribute("aria-hidden", "true");
+        }
+
+        function renderWaiter() {
+            waiterItems.innerHTML = "";
+            var count = 0;
+            var total = 0;
+
+            cart.forEach(function (item) {
+                count += item.quantity;
+                total += item.price * item.quantity;
+
+                var row = document.createElement("div");
+                row.className = "waiter-item";
+                row.innerHTML =
+                    '<div><strong>' + escapeHtml(item.name) + '</strong>' +
+                    (item.variant ? '<small>' + escapeHtml(item.variant) + '</small>' : '') +
+                    '</div><strong>× ' + item.quantity + '</strong>';
+                waiterItems.appendChild(row);
+            });
+
+            document.getElementById("waiterCount").textContent = count;
+            document.getElementById("waiterTotal").textContent = total;
+        }
+
+        document.getElementById("viewCartBtn").addEventListener("click", openCart);
+        document.getElementById("closeCartBtn").addEventListener("click", closeCart);
+        document.getElementById("closePizzaModal").addEventListener("click", closePizzaModal);
+
+        cartOverlay.addEventListener("click", function (event) {
+            if (event.target === cartOverlay) {
+                closeCart();
+            }
+        });
+
+        pizzaModal.addEventListener("click", function (event) {
+            if (event.target === pizzaModal) {
+                closePizzaModal();
+            }
+        });
+
+        smallPizzaBtn.addEventListener("click", function () {
+            if (selectedPizza) {
+                addToCart(selectedPizza.name, selectedPizza.small, "Small (6\")");
+                closePizzaModal();
+            }
+        });
+
+        mediumPizzaBtn.addEventListener("click", function () {
+            if (selectedPizza) {
+                addToCart(selectedPizza.name, selectedPizza.medium, "Medium (8\")");
+                closePizzaModal();
+            }
+        });
+
+        document.getElementById("clearCartBtn").addEventListener("click", function () {
+            if (cart.length && window.confirm("Remove all selected items?")) {
+                cart = [];
+                updateCart();
+            }
+        });
+
+        document.getElementById("showWaiterBtn").addEventListener("click", function () {
+            if (!cart.length) {
+                return;
+            }
+
+            renderWaiter();
+            cartOverlay.classList.add("hidden");
+            waiterMode.classList.remove("hidden");
+            waiterMode.setAttribute("aria-hidden", "false");
+        });
+
+        document.getElementById("closeWaiterBtn").addEventListener("click", function () {
+            waiterMode.classList.add("hidden");
+            waiterMode.setAttribute("aria-hidden", "true");
+        });
+
+        cartItems.addEventListener("click", function (event) {
+            var button = event.target.closest("button");
+            if (!button) {
+                return;
+            }
+
+            var index = Number(button.dataset.index);
+            if (!Number.isInteger(index) || !cart[index]) {
+                return;
+            }
+
+            if (button.classList.contains("remove-item")) {
+                cart.splice(index, 1);
+                updateCart();
+                return;
+            }
+
+            if (button.classList.contains("quantity-btn")) {
+                if (button.dataset.action === "increase") {
+                    cart[index].quantity += 1;
+                } else {
+                    cart[index].quantity -= 1;
+                    if (cart[index].quantity <= 0) {
+                        cart.splice(index, 1);
+                    }
+                }
+                updateCart();
+            }
+        });
+
+        document.addEventListener("keydown", function (event) {
+            if (event.key === "Escape") {
+                closePizzaModal();
+                closeCart();
+                waiterMode.classList.add("hidden");
+                waiterMode.setAttribute("aria-hidden", "true");
+            }
+        });
+
+        setupAddButtons();
+        updateCart();
+    });
+})();
+</script>
 
 
 <!-- =====================================================
@@ -1337,758 +1646,490 @@
 
 <script>
 
-document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener(
+    "DOMContentLoaded",
+    function () {
 
-    let cart = [];
+        const nav =
+            document.getElementById(
+                "categoryNav"
+            );
 
-    const cartBar = document.getElementById("cartBar");
-    const cartOverlay = document.getElementById("cartOverlay");
-    const cartItemsContainer = document.getElementById("cartItems");
+        const navWrapper =
+            document.querySelector(
+                ".nav-wrapper"
+            );
 
-    const cartCount = document.getElementById("cartCount");
-    const cartTotal = document.getElementById("cartTotal");
+        const navLinks =
+            Array.from(
+                document.querySelectorAll(
+                    ".nav a[data-section]"
+                )
+            );
 
-    const panelCartCount = document.getElementById("panelCartCount");
-    const panelCartTotal = document.getElementById("panelCartTotal");
+        const sections =
+            navLinks
+                .map(function (link) {
 
-    const viewCartBtn = document.getElementById("viewCartBtn");
-    const closeCartBtn = document.getElementById("closeCartBtn");
+                    return document.getElementById(
+                        link.dataset.section
+                    );
 
-    const clearCartBtn = document.getElementById("clearCartBtn");
-    const showWaiterBtn = document.getElementById("showWaiterBtn");
+                })
+                .filter(Boolean);
 
-    const pizzaModal = document.getElementById("pizzaModal");
-    const pizzaName = document.getElementById("pizzaName");
+        const dotsContainer =
+            document.getElementById(
+                "navDots"
+            );
 
-    const smallPizzaBtn = document.getElementById("smallPizzaBtn");
-    const mediumPizzaBtn = document.getElementById("mediumPizzaBtn");
 
-    const closePizzaModal = document.getElementById("closePizzaModal");
+        let currentActiveId = null;
 
-    const waiterMode = document.getElementById("waiterMode");
-    const waiterItems = document.getElementById("waiterItems");
+        let clickInProgress = false;
 
-    const waiterCount = document.getElementById("waiterCount");
-    const waiterTotal = document.getElementById("waiterTotal");
+        let clickTimer = null;
 
-    const closeWaiterBtn = document.getElementById("closeWaiterBtn");
+        let scrollFrame = null;
 
-    let selectedPizza = null;
 
+        /* =================================================
+           CREATE PAGINATION DOTS
+        ================================================= */
 
-    /* =====================================================
-       ADD NORMAL ITEM
-    ===================================================== */
+        sections.forEach(
+            function () {
 
-    document.querySelectorAll(".add-btn").forEach(function (button) {
+                if (!dotsContainer) {
+                    return;
+                }
 
-        button.addEventListener("click", function () {
+                const dot =
+                    document.createElement(
+                        "span"
+                    );
 
-            const name = button.dataset.name;
-            const price = Number(button.dataset.price);
+                dot.className =
+                    "nav-dot";
 
-            addToCart(name, price, "");
-
-        });
-
-    });
-
-
-    /* =====================================================
-       ADD PIZZA
-    ===================================================== */
-
-    document.querySelectorAll(".pizza-add").forEach(function (button) {
-
-        button.addEventListener("click", function () {
-
-            selectedPizza = {
-                name: button.dataset.name,
-                small: Number(button.dataset.small),
-                medium: Number(button.dataset.medium)
-            };
-
-            pizzaName.textContent = selectedPizza.name;
-
-            smallPizzaBtn.querySelector("b").textContent =
-                "₹" + selectedPizza.small;
-
-            mediumPizzaBtn.querySelector("b").textContent =
-                "₹" + selectedPizza.medium;
-
-            pizzaModal.classList.remove("hidden");
-
-        });
-
-    });
-
-
-    /* =====================================================
-       PIZZA SIZE SELECTION
-    ===================================================== */
-
-    smallPizzaBtn.addEventListener("click", function () {
-
-        if (!selectedPizza) {
-            return;
-        }
-
-        addToCart(
-            selectedPizza.name,
-            selectedPizza.small,
-            "Small (6\")"
-        );
-
-        closePizzaSelection();
-
-    });
-
-
-    mediumPizzaBtn.addEventListener("click", function () {
-
-        if (!selectedPizza) {
-            return;
-        }
-
-        addToCart(
-            selectedPizza.name,
-            selectedPizza.medium,
-            "Medium (8\")"
-        );
-
-        closePizzaSelection();
-
-    });
-
-
-    function closePizzaSelection() {
-
-        pizzaModal.classList.add("hidden");
-
-        selectedPizza = null;
-
-    }
-
-
-    closePizzaModal.addEventListener(
-        "click",
-        closePizzaSelection
-    );
-
-
-    /* =====================================================
-       ADD TO CART
-    ===================================================== */
-
-    function addToCart(name, price, variant) {
-
-        const key = name + "|" + variant;
-
-        const existingItem = cart.find(function (item) {
-
-            return item.key === key;
-
-        });
-
-
-        if (existingItem) {
-
-            existingItem.quantity++;
-
-        } else {
-
-            cart.push({
-
-                key: key,
-
-                name: name,
-
-                price: price,
-
-                variant: variant,
-
-                quantity: 1
-
-            });
-
-        }
-
-
-        updateCart();
-
-        showAddedFeedback();
-
-    }
-
-
-    /* =====================================================
-       UPDATE CART
-    ===================================================== */
-
-    function updateCart() {
-
-        let totalItems = 0;
-
-        let totalPrice = 0;
-
-
-        cart.forEach(function (item) {
-
-            totalItems += item.quantity;
-
-            totalPrice +=
-                item.price * item.quantity;
-
-        });
-
-
-        cartCount.textContent = totalItems;
-
-        cartTotal.textContent = totalPrice;
-
-        panelCartCount.textContent = totalItems;
-
-        panelCartTotal.textContent = totalPrice;
-
-
-        if (totalItems > 0) {
-
-            cartBar.classList.remove("hidden");
-
-        } else {
-
-            cartBar.classList.add("hidden");
-
-            cartOverlay.classList.add("hidden");
-
-        }
-
-
-        renderCartItems();
-
-    }
-
-
-    /* =====================================================
-       RENDER CART
-    ===================================================== */
-
-    function renderCartItems() {
-
-        cartItemsContainer.innerHTML = "";
-
-
-        if (cart.length === 0) {
-
-            cartItemsContainer.innerHTML = `
-                <div class="empty-cart">
-                    <div class="empty-cart-icon">🛒</div>
-                    <h3>Your selection is empty</h3>
-                    <p>Add your favourite items from the menu.</p>
-                </div>
-            `;
-
-            return;
-
-        }
-
-
-        cart.forEach(function (item, index) {
-
-            const itemTotal =
-                item.price * item.quantity;
-
-
-            const itemElement =
-                document.createElement("div");
-
-            itemElement.className = "cart-item";
-
-
-            itemElement.innerHTML = `
-
-                <div class="cart-item-info">
-
-                    <strong>
-                        ${escapeHtml(item.name)}
-                    </strong>
-
-                    ${
-                        item.variant
-                        ?
-                        `<small>${escapeHtml(item.variant)}</small>`
-                        :
-                        ""
-                    }
-
-                    <span>
-                        ₹${item.price} × ${item.quantity}
-                    </span>
-
-                </div>
-
-
-                <div class="cart-item-right">
-
-                    <strong>
-                        ₹${itemTotal}
-                    </strong>
-
-                    <div class="quantity-control">
-
-                        <button
-                            class="quantity-btn"
-                            data-index="${index}"
-                            data-action="decrease"
-                        >
-                            −
-                        </button>
-
-                        <span>
-                            ${item.quantity}
-                        </span>
-
-                        <button
-                            class="quantity-btn"
-                            data-index="${index}"
-                            data-action="increase"
-                        >
-                            +
-                        </button>
-
-                    </div>
-
-
-                    <button
-                        class="remove-item"
-                        data-index="${index}"
-                    >
-                        Remove
-                    </button>
-
-                </div>
-
-            `;
-
-
-            cartItemsContainer.appendChild(itemElement);
-
-        });
-
-
-        document
-            .querySelectorAll(".quantity-btn")
-            .forEach(function (button) {
-
-                button.addEventListener(
-                    "click",
-                    function () {
-
-                        const index =
-                            Number(button.dataset.index);
-
-                        const action =
-                            button.dataset.action;
-
-
-                        if (action === "increase") {
-
-                            cart[index].quantity++;
-
-                        } else {
-
-                            cart[index].quantity--;
-
-                            if (cart[index].quantity <= 0) {
-
-                                cart.splice(index, 1);
-
-                            }
-
-                        }
-
-
-                        updateCart();
-
-                    }
+                dotsContainer.appendChild(
+                    dot
                 );
-
-            });
-
-
-        document
-            .querySelectorAll(".remove-item")
-            .forEach(function (button) {
-
-                button.addEventListener(
-                    "click",
-                    function () {
-
-                        const index =
-                            Number(button.dataset.index);
-
-                        cart.splice(index, 1);
-
-                        updateCart();
-
-                    }
-                );
-
-            });
-
-    }
-
-
-    /* =====================================================
-       OPEN CART
-    ===================================================== */
-
-    viewCartBtn.addEventListener(
-        "click",
-        function () {
-
-            cartOverlay.classList.remove("hidden");
-
-            document.body.classList.add("modal-open");
-
-        }
-    );
-
-
-    /* =====================================================
-       CLOSE CART
-    ===================================================== */
-
-    closeCartBtn.addEventListener(
-        "click",
-        closeCart
-    );
-
-
-    cartOverlay.addEventListener(
-        "click",
-        function (event) {
-
-            if (event.target === cartOverlay) {
-
-                closeCart();
 
             }
-
-        }
-    );
+        );
 
 
-    function closeCart() {
+        const dots =
+            dotsContainer
+                ? Array.from(
+                    dotsContainer.querySelectorAll(
+                        ".nav-dot"
+                    )
+                )
+                : [];
 
-        cartOverlay.classList.add("hidden");
 
-        document.body.classList.remove("modal-open");
+        /* =================================================
+           KEEP ACTIVE TAB VISIBLE
+        ================================================= */
 
-    }
+        function keepLinkVisible(link) {
 
-
-    /* =====================================================
-       CLEAR CART
-    ===================================================== */
-
-    clearCartBtn.addEventListener(
-        "click",
-        function () {
-
-            if (cart.length === 0) {
+            if (!nav || !link) {
                 return;
             }
 
 
-            const confirmed =
-                confirm(
-                    "Remove all selected items?"
-                );
+            const navRect =
+                nav.getBoundingClientRect();
 
+            const linkRect =
+                link.getBoundingClientRect();
 
-            if (confirmed) {
 
-                cart = [];
+            const margin = 30;
 
-                updateCart();
 
-            }
+            if (
+                linkRect.left <
+                navRect.left + margin
+            ) {
 
-        }
-    );
+                nav.scrollBy({
 
+                    left:
+                        linkRect.left -
+                        navRect.left -
+                        margin,
 
-    /* =====================================================
-       SHOW WAITER
-    ===================================================== */
-
-    showWaiterBtn.addEventListener(
-        "click",
-        function () {
-
-            if (cart.length === 0) {
-
-                return;
-
-            }
-
-
-            renderWaiterMode();
-
-            cartOverlay.classList.add("hidden");
-
-            waiterMode.classList.remove("hidden");
-
-            document.body.classList.add("modal-open");
-
-        }
-    );
-
-
-    function renderWaiterMode() {
-
-        waiterItems.innerHTML = "";
-
-        let itemCount = 0;
-
-        let total = 0;
-
-
-        cart.forEach(function (item) {
-
-            itemCount += item.quantity;
-
-            total +=
-                item.price * item.quantity;
-
-
-            const row =
-                document.createElement("div");
-
-            row.className = "waiter-item";
-
-
-            row.innerHTML = `
-
-                <div>
-
-                    <strong>
-                        ${escapeHtml(item.name)}
-                    </strong>
-
-                    ${
-                        item.variant
-                        ?
-                        `<small>${escapeHtml(item.variant)}</small>`
-                        :
-                        ""
-                    }
-
-                </div>
-
-
-                <strong>
-                    × ${item.quantity}
-                </strong>
-
-            `;
-
-
-            waiterItems.appendChild(row);
-
-        });
-
-
-        waiterCount.textContent = itemCount;
-
-        waiterTotal.textContent = total;
-
-    }
-
-
-    closeWaiterBtn.addEventListener(
-        "click",
-        function () {
-
-            waiterMode.classList.add("hidden");
-
-            document.body.classList.remove("modal-open");
-
-        }
-    );
-
-
-    /* =====================================================
-       ESCAPE HTML
-    ===================================================== */
-
-    function escapeHtml(value) {
-
-        return value
-            .replace(/&/g, "&amp;")
-            .replace(/</g, "&lt;")
-            .replace(/>/g, "&gt;")
-            .replace(/"/g, "&quot;")
-            .replace(/'/g, "&#039;");
-
-    }
-
-
-    /* =====================================================
-       ADD FEEDBACK
-    ===================================================== */
-
-    function showAddedFeedback() {
-
-        cartBar.classList.add("cart-added");
-
-        setTimeout(function () {
-
-            cartBar.classList.remove("cart-added");
-
-        }, 350);
-
-    }
-
-
-    /* =====================================================
-       ACTIVE CATEGORY ON SCROLL
-    ===================================================== */
-
-    const sections =
-        document.querySelectorAll(
-            "main .section, main .birthday"
-        );
-
-    const navLinks =
-        document.querySelectorAll(
-            "#categoryNav a"
-        );
-
-
-    const observer =
-        new IntersectionObserver(
-            function (entries) {
-
-                entries.forEach(function (entry) {
-
-                    if (entry.isIntersecting) {
-
-                        const id =
-                            entry.target.id;
-
-                        navLinks.forEach(
-                            function (link) {
-
-                                link.classList.remove(
-                                    "active"
-                                );
-
-                                if (
-                                    link.getAttribute("href")
-                                    === "#" + id
-                                ) {
-
-                                    link.classList.add(
-                                        "active"
-                                    );
-
-                                    /*
-                                     * Keep active tab visible
-                                     * without forcing page scroll.
-                                     */
-                                    link.scrollIntoView({
-                                        behavior: "smooth",
-                                        block: "nearest",
-                                        inline: "center"
-                                    });
-
-                                }
-
-                            }
-                        );
-
-                    }
+                    behavior: "smooth"
 
                 });
 
-            },
-            {
-                rootMargin:
-                    "-25% 0px -65% 0px",
-
-                threshold: 0
             }
-        );
+
+            else if (
+                linkRect.right >
+                navRect.right - margin
+            ) {
+
+                nav.scrollBy({
+
+                    left:
+                        linkRect.right -
+                        navRect.right +
+                        margin,
+
+                    behavior: "smooth"
+
+                });
+
+            }
+
+        }
 
 
-    sections.forEach(function (section) {
+        /* =================================================
+           SET ACTIVE CATEGORY
+        ================================================= */
 
-        observer.observe(section);
+        function setActive(
+            id,
+            moveNavigation
+        ) {
 
-    });
+            if (!id) {
+                return;
+            }
 
 
-    /* =====================================================
-       NAVIGATION
-    ===================================================== */
+            currentActiveId = id;
 
-    navLinks.forEach(function (link) {
 
-        link.addEventListener(
-            "click",
-            function () {
+            navLinks.forEach(
+                function (link) {
 
-                navLinks.forEach(
-                    function (item) {
+                    const active =
+                        link.dataset.section === id;
 
-                        item.classList.remove(
-                            "active"
+                    link.classList.toggle(
+                        "active",
+                        active
+                    );
+
+
+                    if (
+                        active &&
+                        moveNavigation
+                    ) {
+
+                        keepLinkVisible(
+                            link
                         );
+
+                    }
+
+                }
+            );
+
+
+            const index =
+                sections.findIndex(
+                    function (section) {
+
+                        return section.id === id;
 
                     }
                 );
 
 
-                link.classList.add("active");
+            dots.forEach(
+                function (dot, dotIndex) {
+
+                    dot.classList.toggle(
+                        "active",
+                        dotIndex === index
+                    );
+
+                }
+            );
+
+        }
+
+
+        /* =================================================
+           NAVIGATION CLICK
+        ================================================= */
+
+        navLinks.forEach(
+            function (link) {
+
+                link.addEventListener(
+                    "click",
+                    function (event) {
+
+                        event.preventDefault();
+
+
+                        const id =
+                            this.dataset.section;
+
+
+                        const target =
+                            document.getElementById(
+                                id
+                            );
+
+
+                        if (!target) {
+                            return;
+                        }
+
+
+                        clickInProgress =
+                            true;
+
+
+                        clearTimeout(
+                            clickTimer
+                        );
+
+
+                        setActive(
+                            id,
+                            true
+                        );
+
+
+                        const navHeight =
+                            navWrapper
+                                ? navWrapper.offsetHeight
+                                : 0;
+
+
+                        const targetTop =
+                            target.getBoundingClientRect().top +
+                            window.pageYOffset -
+                            navHeight -
+                            8;
+
+
+                        window.scrollTo({
+
+                            top:
+                                Math.max(
+                                    0,
+                                    targetTop
+                                ),
+
+                            behavior:
+                                "smooth"
+
+                        });
+
+
+                        /*
+                         * Update URL hash without
+                         * causing browser's own jump.
+                         */
+
+                        history.replaceState(
+                            null,
+                            "",
+                            "#" + id
+                        );
+
+
+                        clickTimer =
+                            setTimeout(
+                                function () {
+
+                                    clickInProgress =
+                                        false;
+
+                                    updateActiveFromScroll();
+
+                                },
+                                800
+                            );
+
+                    }
+                );
 
             }
         );
 
-    });
 
+        /* =================================================
+           DETERMINE ACTIVE CATEGORY
+        ================================================= */
 
-    /* =====================================================
-       CLOSE MODALS WITH ESC
-    ===================================================== */
+        function updateActiveFromScroll() {
 
-    document.addEventListener(
-        "keydown",
-        function (event) {
-
-            if (event.key !== "Escape") {
+            if (clickInProgress) {
                 return;
             }
 
 
-            pizzaModal.classList.add("hidden");
+            const navHeight =
+                navWrapper
+                    ? navWrapper.offsetHeight
+                    : 0;
 
-            cartOverlay.classList.add("hidden");
 
-            waiterMode.classList.add("hidden");
+            const activationPoint =
+                navHeight + 80;
 
-            document.body.classList.remove(
-                "modal-open"
+
+            /*
+             * At very top, Specials is active.
+             */
+
+            if (window.scrollY < 120) {
+
+                setActive(
+                    "specials",
+                    true
+                );
+
+                return;
+            }
+
+
+            let activeSection =
+                sections[0];
+
+
+            sections.forEach(
+                function (section) {
+
+                    const rect =
+                        section.getBoundingClientRect();
+
+
+                    if (
+                        rect.top <=
+                        activationPoint
+                    ) {
+
+                        activeSection =
+                            section;
+
+                    }
+
+                }
+            );
+
+
+            if (
+                activeSection &&
+                activeSection.id !==
+                currentActiveId
+            ) {
+
+                setActive(
+                    activeSection.id,
+                    true
+                );
+
+            }
+
+        }
+
+
+        /* =================================================
+           SCROLL EVENT
+        ================================================= */
+
+        window.addEventListener(
+            "scroll",
+            function () {
+
+                if (scrollFrame) {
+                    return;
+                }
+
+
+                scrollFrame =
+                    requestAnimationFrame(
+                        function () {
+
+                            updateActiveFromScroll();
+
+                            scrollFrame =
+                                null;
+
+                        }
+                    );
+
+            },
+            {
+                passive: true
+            }
+        );
+
+
+        /* =================================================
+           INITIAL PAGE STATE
+        ================================================= */
+
+        if (!window.location.hash) {
+
+            window.scrollTo({
+
+                top: 0,
+
+                left: 0,
+
+                behavior: "auto"
+
+            });
+
+
+            setActive(
+                "specials",
+                false
             );
 
         }
-    );
+
+        else {
+
+            /*
+             * If a customer intentionally opens
+             * #pizza etc., respect that.
+             */
+
+            const hash =
+                window.location.hash
+                    .substring(1);
 
 
-});
+            const target =
+                document.getElementById(
+                    hash
+                );
+
+
+            if (target) {
+
+                setActive(
+                    hash,
+                    false
+                );
+
+            }
+
+        }
+
+    }
+);
 
 </script>
 
 </body>
 </html>
+
+
+
