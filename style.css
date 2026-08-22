@@ -1987,3 +1987,19 @@ footer .call:hover {
     }
 }
 
+.waiter-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 10px;
+}
+
+.waiter-header > div {
+    flex: 1;
+}
+
+.waiter-header .close-cart {
+    flex-shrink: 0;
+    margin-top: 0;
+}
+
