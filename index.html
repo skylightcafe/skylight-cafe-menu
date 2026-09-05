@@ -134,8 +134,8 @@
             🌮 Nachos
         </a>
 
-        <a href="#maggie" data-section="maggie">
-            🍜 maggie
+        <a href="#maggi" data-section="maggi">
+            🍜 Maggi
         </a>
 
         <a href="#pasta" data-section="pasta">
@@ -717,27 +717,27 @@
 
 
 <!-- =====================================================
-     maggie
+     MAGGI
 ===================================================== -->
 
-<section id="maggie" class="section">
+<section id="maggi" class="section">
 
-    <h2>🍜 maggie</h2>
+    <h2>🍜 Maggi</h2>
 
     <div class="grid">
 
         <div class="card wide">
 
             <ul>
-                <li>Plain maggie <b>₹50</b></li>
-                <li>Plain Masala maggie <b>₹70</b></li>
-                <li>Plain Cheese maggie <b>₹80</b></li>
-                <li>Vegetable maggie <b>₹80</b></li>
-                <li>Schezwan Cheese maggie <b>₹90</b></li>
-                <li>Peri Peri Cheese maggie <b>₹100</b></li>
-                <li>Butter & Cheese maggie <b>₹100</b></li>
-                <li>Corn & Cheese maggie <b>₹90</b></li>
-                <li>Alfredo Cheese maggie <b>₹120</b></li>
+                <li>Plain Maggi <b>₹50</b></li>
+                <li>Plain Masala Maggi <b>₹70</b></li>
+                <li>Plain Cheese Maggi <b>₹80</b></li>
+                <li>Vegetable Maggi <b>₹80</b></li>
+                <li>Schezwan Cheese Maggi <b>₹90</b></li>
+                <li>Peri Peri Cheese Maggi <b>₹100</b></li>
+                <li>Butter & Cheese Maggi <b>₹100</b></li>
+                <li>Corn & Cheese Maggi <b>₹90</b></li>
+                <li>Alfredo Cheese Maggi <b>₹120</b></li>
             </ul>
 
         </div>
@@ -973,25 +973,13 @@
             CELEBRATE WITH US
         </span>
 
-        <h2>
-            🎂 Birthday Party Hall
-        </h2>
+        <h2>🎂 Birthday Party Hall</h2>
 
-        <p>
-            Make your special day memorable at
-            Skylight Cafe & Restro.
+        <p class="birthday-intro">
+            Make your special day memorable at Skylight Cafe & Restro.
         </p>
 
-
-        <div class="birthday-media">
-
-            <img
-                class="birthday-package-image"
-                src="birthday-hall-packages.jpg"
-                alt="Skylight Cafe & Restro Birthday Hall Packages"
-                loading="lazy"
-            >
-
+        <div class="birthday-video-card">
             <video
                 class="birthday-video"
                 controls
@@ -1002,39 +990,269 @@
                 <source src="birthday-hall.mp4" type="video/mp4">
                 Your browser does not support the video tag.
             </video>
+        </div>
+
+        <div class="birthday-packages">
+
+            <article class="birthday-package">
+                <div class="birthday-package-header">
+                    <span class="birthday-package-label">PACKAGE 1</span>
+                    <strong>₹1300</strong>
+                </div>
+
+                <div class="birthday-package-guests">
+                    👥 Up to 12 Guests
+                </div>
+
+                <ul class="birthday-features">
+                    <li>❄️ Fully AC decorated hall for 2 hrs</li>
+                    <li>🎂 250GM premium ice cake</li>
+                    <li>🎁 Surprise gift</li>
+                    <li>🔊 Sound system</li>
+                </ul>
+
+                <button
+                    type="button"
+                    class="birthday-book-btn"
+                    data-package="Package 1"
+                    data-price="₹1300"
+                >
+                    🎉 Book Now
+                </button>
+            </article>
+
+            <article class="birthday-package featured">
+                <div class="birthday-popular">⭐ POPULAR</div>
+
+                <div class="birthday-package-header">
+                    <span class="birthday-package-label">PACKAGE 2</span>
+                    <strong>₹1800</strong>
+                </div>
+
+                <div class="birthday-package-guests">
+                    👥 Up to 12 Guests
+                </div>
+
+                <ul class="birthday-features">
+                    <li>❄️ Fully AC decorated hall for 2 hrs</li>
+                    <li>🎂 500GM premium ice cake with crown & sash</li>
+                    <li>🎁 Surprise gift</li>
+                    <li>🍽️ Free food up to ₹200</li>
+                    <li>🔊 Sound system</li>
+                </ul>
+
+                <button
+                    type="button"
+                    class="birthday-book-btn"
+                    data-package="Package 2"
+                    data-price="₹1800"
+                >
+                    🎉 Book Now
+                </button>
+            </article>
 
         </div>
 
-
-        <!-- IMPORTANT:
-             Both buttons are inside one centered
-             container.
-        -->
+        <div class="birthday-extra-hour">
+            <span>⏱️ Extra Hour</span>
+            <strong>₹300</strong>
+        </div>
 
         <div class="birthday-actions">
-
-            <a
-                class="call"
-                href="tel:8007138763"
-            >
+            <a class="call" href="tel:8007138763">
                 📞 Call Now
             </a>
-
-
-            <a
-                class="whatsapp"
-                href="https://wa.me/918007138763?text=Hello%20Skylight%20Cafe%2C%20I%20want%20to%20enquire%20about%20the%20Birthday%20Party%20Hall."
-                target="_blank"
-                rel="noopener noreferrer"
-            >
-                💬 Enquire on WhatsApp
-            </a>
-
         </div>
 
     </div>
-
 </section>
+
+<div id="birthdayBookingModal" class="birthday-booking-modal hidden" aria-hidden="true">
+    <div
+        class="birthday-booking-box"
+        role="dialog"
+        aria-modal="true"
+        aria-label="Birthday Hall booking"
+    >
+
+        <button
+            id="closeBirthdayBooking"
+            class="birthday-booking-close"
+            type="button"
+            aria-label="Close"
+        >✕</button>
+
+        <span class="eyebrow">BIRTHDAY HALL BOOKING</span>
+        <h2>🎂 Book Your Celebration</h2>
+
+        <div class="birthday-selected-package">
+            <span id="birthdaySelectedPackage">Package 1</span>
+            <strong id="birthdaySelectedPrice">₹1300</strong>
+        </div>
+
+        <label class="birthday-form-field">
+            <span>Your Name</span>
+            <input id="birthdayCustomerName" type="text" maxlength="80"
+                   placeholder="Enter your name" autocomplete="name">
+        </label>
+
+        <label class="birthday-form-field">
+            <span>Mobile Number</span>
+            <input id="birthdayCustomerPhone" type="tel" maxlength="10"
+                   placeholder="Enter 10 digit mobile number"
+                   inputmode="numeric" autocomplete="tel">
+        </label>
+
+        <label class="birthday-form-field">
+            <span>Preferred Date</span>
+            <input id="birthdayBookingDate" type="date">
+        </label>
+
+        <label class="birthday-form-field">
+            <span>Preferred Time</span>
+            <input id="birthdayBookingTime" type="time">
+        </label>
+
+        <label class="birthday-form-field">
+            <span>Guests</span>
+            <select id="birthdayGuestCount">
+                <option value="">Select guests</option>
+                <option value="1">1 Guest</option>
+                <option value="2">2 Guests</option>
+                <option value="3">3 Guests</option>
+                <option value="4">4 Guests</option>
+                <option value="5">5 Guests</option>
+                <option value="6">6 Guests</option>
+                <option value="7">7 Guests</option>
+                <option value="8">8 Guests</option>
+                <option value="9">9 Guests</option>
+                <option value="10">10 Guests</option>
+                <option value="11">11 Guests</option>
+                <option value="12">12 Guests</option>
+            </select>
+        </label>
+
+        <p id="birthdayBookingError" class="birthday-booking-error"></p>
+
+        <button id="birthdayWhatsAppBtn" type="button" class="birthday-whatsapp-btn">
+            💬 Book on WhatsApp
+        </button>
+
+    </div>
+</div>
+
+<script>
+(function () {
+    "use strict";
+
+    document.addEventListener("DOMContentLoaded", function () {
+
+        var modal = document.getElementById("birthdayBookingModal");
+        var closeButton = document.getElementById("closeBirthdayBooking");
+        var whatsappButton = document.getElementById("birthdayWhatsAppBtn");
+
+        var selectedPackage = document.getElementById("birthdaySelectedPackage");
+        var selectedPrice = document.getElementById("birthdaySelectedPrice");
+
+        var nameInput = document.getElementById("birthdayCustomerName");
+        var phoneInput = document.getElementById("birthdayCustomerPhone");
+        var dateInput = document.getElementById("birthdayBookingDate");
+        var timeInput = document.getElementById("birthdayBookingTime");
+        var guestInput = document.getElementById("birthdayGuestCount");
+        var errorText = document.getElementById("birthdayBookingError");
+
+        var currentPackage = "Package 1";
+        var currentPrice = "₹1300";
+
+        function openBirthdayBooking(packageName, price) {
+            currentPackage = packageName;
+            currentPrice = price;
+            selectedPackage.textContent = packageName;
+            selectedPrice.textContent = price;
+            errorText.textContent = "";
+            modal.classList.remove("hidden");
+            modal.setAttribute("aria-hidden", "false");
+            document.body.classList.add("modal-open");
+        }
+
+        function closeBirthdayBookingModal() {
+            modal.classList.add("hidden");
+            modal.setAttribute("aria-hidden", "true");
+
+            var cartOverlay = document.getElementById("cartOverlay");
+            var pizzaModal = document.getElementById("pizzaModal");
+            var waiterMode = document.getElementById("waiterMode");
+
+            if (
+                (!cartOverlay || cartOverlay.classList.contains("hidden")) &&
+                (!pizzaModal || pizzaModal.classList.contains("hidden")) &&
+                (!waiterMode || waiterMode.classList.contains("hidden"))
+            ) {
+                document.body.classList.remove("modal-open");
+            }
+        }
+
+        document.querySelectorAll(".birthday-book-btn").forEach(function (button) {
+            button.addEventListener("click", function () {
+                openBirthdayBooking(
+                    button.dataset.package,
+                    button.dataset.price
+                );
+            });
+        });
+
+        closeButton.addEventListener("click", closeBirthdayBookingModal);
+
+        modal.addEventListener("click", function (event) {
+            event.stopPropagation();
+        });
+
+        whatsappButton.addEventListener("click", function () {
+
+            var customerName = nameInput.value.trim();
+            var customerPhone = phoneInput.value.trim();
+            var bookingDate = dateInput.value;
+            var bookingTime = timeInput.value;
+            var guests = guestInput.value;
+
+            if (!customerName || !customerPhone || !bookingDate || !bookingTime || !guests) {
+                errorText.textContent = "Please fill all booking details.";
+                return;
+            }
+
+            if (!/^\d{10}$/.test(customerPhone)) {
+                errorText.textContent = "Please enter a valid 10 digit mobile number.";
+                return;
+            }
+
+            var message =
+                "Hello Skylight Cafe & Restro,%0A%0A" +
+                "I want to book the Birthday Party Hall.%0A%0A" +
+                "Package: " + encodeURIComponent(currentPackage) + "%0A" +
+                "Price: " + encodeURIComponent(currentPrice) + "%0A" +
+                "Name: " + encodeURIComponent(customerName) + "%0A" +
+                "Mobile: " + encodeURIComponent(customerPhone) + "%0A" +
+                "Date: " + encodeURIComponent(bookingDate) + "%0A" +
+                "Preferred Time: " + encodeURIComponent(bookingTime) + "%0A" +
+                "Guests: " + encodeURIComponent(guests) + "%0A%0A" +
+                "Please confirm availability.";
+
+            window.open(
+                "https://wa.me/918007138763?text=" + message,
+                "_blank",
+                "noopener,noreferrer"
+            );
+        });
+
+        document.addEventListener("keydown", function (event) {
+            if (event.key === "Escape" && !modal.classList.contains("hidden")) {
+                closeBirthdayBookingModal();
+            }
+        });
+
+    });
+})();
+</script>
 
 
 <!-- =====================================================
@@ -1293,6 +1511,20 @@
         var waiterMode = document.getElementById("waiterMode");
         var waiterItems = document.getElementById("waiterItems");
 
+        function lockPageScroll() {
+            document.body.classList.add("modal-open");
+        }
+
+        function unlockPageScroll() {
+            if (
+                cartOverlay.classList.contains("hidden") &&
+                pizzaModal.classList.contains("hidden") &&
+                waiterMode.classList.contains("hidden")
+            ) {
+                document.body.classList.remove("modal-open");
+            }
+        }
+
         function escapeHtml(value) {
             return String(value)
                 .replace(/&/g, "&amp;")
@@ -1502,12 +1734,14 @@
 
             pizzaModal.classList.remove("hidden");
             pizzaModal.setAttribute("aria-hidden", "false");
+            lockPageScroll();
         }
 
         function closePizzaModal() {
             selectedPizza = null;
             pizzaModal.classList.add("hidden");
             pizzaModal.setAttribute("aria-hidden", "true");
+            unlockPageScroll();
         }
 
         function addToCart(name, price, variant) {
@@ -1550,6 +1784,8 @@
             } else {
                 cartBar.classList.add("hidden");
                 cartOverlay.classList.add("hidden");
+                cartOverlay.setAttribute("aria-hidden", "true");
+                unlockPageScroll();
             }
 
             renderCart();
@@ -1594,11 +1830,13 @@
         function openCart() {
             cartOverlay.classList.remove("hidden");
             cartOverlay.setAttribute("aria-hidden", "false");
+            lockPageScroll();
         }
 
         function closeCart() {
             cartOverlay.classList.add("hidden");
             cartOverlay.setAttribute("aria-hidden", "true");
+            unlockPageScroll();
         }
 
         function renderWaiter() {
@@ -1627,16 +1865,16 @@
         document.getElementById("closeCartBtn").addEventListener("click", closeCart);
         document.getElementById("closePizzaModal").addEventListener("click", closePizzaModal);
 
+        /*
+         * Do not close popups when the customer taps/clicks outside the panel.
+         * They must use the X button (or Escape) to close them.
+         */
         cartOverlay.addEventListener("click", function (event) {
-            if (event.target === cartOverlay) {
-                closeCart();
-            }
+            event.stopPropagation();
         });
 
         pizzaModal.addEventListener("click", function (event) {
-            if (event.target === pizzaModal) {
-                closePizzaModal();
-            }
+            event.stopPropagation();
         });
 
         smallPizzaBtn.addEventListener("click", function () {
@@ -1667,13 +1905,20 @@
 
             renderWaiter();
             cartOverlay.classList.add("hidden");
+            cartOverlay.setAttribute("aria-hidden", "true");
             waiterMode.classList.remove("hidden");
             waiterMode.setAttribute("aria-hidden", "false");
+            lockPageScroll();
         });
 
         document.getElementById("closeWaiterBtn").addEventListener("click", function () {
             waiterMode.classList.add("hidden");
             waiterMode.setAttribute("aria-hidden", "true");
+            unlockPageScroll();
+        });
+
+        waiterMode.addEventListener("click", function (event) {
+            event.stopPropagation();
         });
 
         document.addEventListener("click", function (event) {
@@ -1741,6 +1986,7 @@
                 closeCart();
                 waiterMode.classList.add("hidden");
                 waiterMode.setAttribute("aria-hidden", "true");
+                unlockPageScroll();
             }
         });
 
