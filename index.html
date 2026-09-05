@@ -2005,9 +2005,113 @@
                     👋 Show Captain
                 </button>
 
+                <button
+                    id="placeOrderBtn"
+                    class="place-order-btn"
+                    type="button"
+                >
+                    📲 Place Order
+                </button>
+
             </div>
 
         </div>
+
+    </div>
+
+</div>
+
+
+<div
+    id="placeOrderModal"
+    class="place-order-modal hidden"
+    aria-hidden="true"
+>
+
+    <div
+        class="place-order-box"
+        role="dialog"
+        aria-modal="true"
+        aria-label="Place order"
+    >
+
+        <button
+            id="closePlaceOrderBtn"
+            class="close-place-order"
+            type="button"
+            aria-label="Close"
+        >
+            ✕
+        </button>
+
+        <span class="eyebrow">
+            PLACE YOUR ORDER
+        </span>
+
+        <h2>
+            Customer Details
+        </h2>
+
+        <p class="place-order-subtitle">
+            Enter your details so our captain knows exactly which table to serve.
+        </p>
+
+        <div class="place-order-fields">
+
+            <label class="place-order-field">
+                <span>Table Number</span>
+                <input
+                    id="orderTableNumber"
+                    type="text"
+                    inputmode="numeric"
+                    maxlength="4"
+                    placeholder="e.g. 12"
+                    autocomplete="off"
+                >
+            </label>
+
+            <label class="place-order-field">
+                <span>Customer Name</span>
+                <input
+                    id="orderCustomerName"
+                    type="text"
+                    maxlength="60"
+                    placeholder="Enter your name"
+                    autocomplete="name"
+                >
+            </label>
+
+            <label class="place-order-field">
+                <span>Mobile Number</span>
+                <input
+                    id="orderCustomerPhone"
+                    type="tel"
+                    inputmode="numeric"
+                    maxlength="10"
+                    placeholder="10 digit mobile number"
+                    autocomplete="tel"
+                >
+            </label>
+
+        </div>
+
+        <p
+            id="placeOrderError"
+            class="place-order-error"
+            aria-live="polite"
+        ></p>
+
+        <button
+            id="shareOrderBtn"
+            class="share-order-btn"
+            type="button"
+        >
+            📲 Place Order on WhatsApp
+        </button>
+
+        <p class="place-order-note">
+            Your order details will be generated as a fixed image and shared through WhatsApp.
+        </p>
 
     </div>
 
@@ -4230,6 +4334,472 @@ document.addEventListener(
     }
 );
 
+</script>
+
+
+
+<!-- =====================================================
+     PLACE ORDER / CUSTOMER DETAILS / WHATSAPP IMAGE
+===================================================== -->
+<script>
+(function () {
+
+    "use strict";
+
+    document.addEventListener(
+        "DOMContentLoaded",
+        function () {
+
+            var placeOrderBtn =
+                document.getElementById("placeOrderBtn");
+
+            var placeOrderModal =
+                document.getElementById("placeOrderModal");
+
+            var closePlaceOrderBtn =
+                document.getElementById("closePlaceOrderBtn");
+
+            var shareOrderBtn =
+                document.getElementById("shareOrderBtn");
+
+            var tableInput =
+                document.getElementById("orderTableNumber");
+
+            var nameInput =
+                document.getElementById("orderCustomerName");
+
+            var phoneInput =
+                document.getElementById("orderCustomerPhone");
+
+            var errorBox =
+                document.getElementById("placeOrderError");
+
+
+            function openPlaceOrder() {
+
+                errorBox.textContent = "";
+
+                placeOrderModal.classList.remove("hidden");
+
+                placeOrderModal.setAttribute(
+                    "aria-hidden",
+                    "false"
+                );
+
+                setTimeout(function () {
+                    tableInput.focus();
+                }, 50);
+
+            }
+
+
+            function closePlaceOrder() {
+
+                placeOrderModal.classList.add("hidden");
+
+                placeOrderModal.setAttribute(
+                    "aria-hidden",
+                    "true"
+                );
+
+            }
+
+
+            function createOrderId() {
+
+                var now = new Date();
+
+                var dd = String(now.getDate()).padStart(2, "0");
+                var mm = String(now.getMonth() + 1).padStart(2, "0");
+                var yy = String(now.getFullYear()).slice(-2);
+                var hh = String(now.getHours()).padStart(2, "0");
+                var min = String(now.getMinutes()).padStart(2, "0");
+
+                return "SKY-" + dd + mm + yy + "-" + hh + min;
+
+            }
+
+
+            function getCartSnapshot() {
+
+                var rows = [];
+
+                var cartItems =
+                    document.querySelectorAll("#cartItems .cart-item");
+
+                Array.prototype.forEach.call(
+                    cartItems,
+                    function (row) {
+
+                        var info = row.querySelector(".cart-item-info");
+                        var strong = info ? info.querySelector("strong") : null;
+                        var small = info ? info.querySelector("small") : null;
+                        var priceLine = info ? info.querySelector("span") : null;
+                        var right = row.querySelector(".cart-item-right");
+                        var totalStrong = right ? right.querySelector("strong") : null;
+                        var qtyControl = right ? right.querySelector(".quantity-control span") : null;
+
+                        if (!strong || !qtyControl || !totalStrong) {
+                            return;
+                        }
+
+                        rows.push({
+                            name: strong.textContent.trim(),
+                            variant: small ? small.textContent.trim() : "",
+                            quantity: qtyControl.textContent.trim(),
+                            total: totalStrong.textContent.trim(),
+                            priceLine: priceLine ? priceLine.textContent.trim() : ""
+                        });
+
+                    }
+                );
+
+                return rows;
+
+            }
+
+
+            function getCartTotal() {
+
+                var totalElement =
+                    document.getElementById("panelCartTotal");
+
+                return totalElement
+                    ? totalElement.textContent.trim()
+                    : "0";
+
+            }
+
+
+            function getCartCount() {
+
+                var countElement =
+                    document.getElementById("panelCartCount");
+
+                return countElement
+                    ? countElement.textContent.trim()
+                    : "0";
+
+            }
+
+
+            function roundedRect(ctx, x, y, width, height, radius) {
+
+                var r = Math.min(radius, width / 2, height / 2);
+
+                ctx.beginPath();
+                ctx.moveTo(x + r, y);
+                ctx.arcTo(x + width, y, x + width, y + height, r);
+                ctx.arcTo(x + width, y + height, x, y + height, r);
+                ctx.arcTo(x, y + height, x, y, r);
+                ctx.arcTo(x, y, x + width, y, r);
+                ctx.closePath();
+
+            }
+
+
+            function drawOrderImage(customer, phone, table, orderId, items, total, count) {
+
+                var canvas = document.createElement("canvas");
+
+                var ctx = canvas.getContext("2d");
+
+                var width = 1080;
+                var rowHeight = 82;
+                var height = 690 + (items.length * rowHeight);
+
+                canvas.width = width;
+                canvas.height = height;
+
+                ctx.fillStyle = "#1b140f";
+                ctx.fillRect(0, 0, width, height);
+
+                ctx.strokeStyle = "#d8ae67";
+                ctx.lineWidth = 4;
+                roundedRect(ctx, 28, 28, width - 56, height - 56, 24);
+                ctx.stroke();
+
+                ctx.textAlign = "center";
+                ctx.fillStyle = "#e1bd82";
+                ctx.font = "700 48px Arial";
+                ctx.fillText("SKYLIGHT", width / 2, 105);
+
+                ctx.fillStyle = "#ffffff";
+                ctx.font = "700 26px Arial";
+                ctx.fillText("CAFE & RESTRO", width / 2, 145);
+
+                ctx.fillStyle = "#d8ae67";
+                ctx.font = "700 30px Arial";
+                ctx.fillText("ORDER SUMMARY", width / 2, 205);
+
+                ctx.strokeStyle = "#6d5234";
+                ctx.lineWidth = 2;
+                ctx.beginPath();
+                ctx.moveTo(90, 235);
+                ctx.lineTo(width - 90, 235);
+                ctx.stroke();
+
+                ctx.textAlign = "left";
+                ctx.fillStyle = "#ffffff";
+                ctx.font = "600 27px Arial";
+                ctx.fillText("Order ID: " + orderId, 90, 285);
+                ctx.fillText("Table No: " + table, 90, 325);
+                ctx.fillText("Customer: " + customer, 90, 365);
+                ctx.fillText("Mobile: " + phone, 90, 405);
+
+                var y = 460;
+                ctx.fillStyle = "#d8ae67";
+                ctx.font = "700 26px Arial";
+                ctx.fillText("ITEM", 90, y);
+                ctx.textAlign = "center";
+                ctx.fillText("QTY", 760, y);
+                ctx.textAlign = "right";
+                ctx.fillText("AMOUNT", 990, y);
+
+                ctx.strokeStyle = "#6d5234";
+                ctx.beginPath();
+                ctx.moveTo(90, y + 22);
+                ctx.lineTo(990, y + 22);
+                ctx.stroke();
+
+                y += 65;
+
+                items.forEach(function (item) {
+
+                    var itemName = item.name;
+
+                    if (item.variant) {
+                        itemName += " (" + item.variant + ")";
+                    }
+
+                    ctx.textAlign = "left";
+                    ctx.fillStyle = "#ffffff";
+                    ctx.font = "600 25px Arial";
+
+                    if (itemName.length > 38) {
+                        itemName = itemName.substring(0, 35) + "...";
+                    }
+
+                    ctx.fillText(itemName, 90, y);
+
+                    ctx.textAlign = "center";
+                    ctx.fillText("x " + item.quantity, 760, y);
+
+                    ctx.textAlign = "right";
+                    ctx.fillText(item.total, 990, y);
+
+                    y += rowHeight;
+
+                });
+
+                ctx.strokeStyle = "#6d5234";
+                ctx.beginPath();
+                ctx.moveTo(90, y - 25);
+                ctx.lineTo(990, y - 25);
+                ctx.stroke();
+
+                ctx.textAlign = "left";
+                ctx.fillStyle = "#ffffff";
+                ctx.font = "600 27px Arial";
+                ctx.fillText("Total Items: " + count, 90, y + 25);
+
+                ctx.textAlign = "right";
+                ctx.fillStyle = "#e1bd82";
+                ctx.font = "700 36px Arial";
+                ctx.fillText("Grand Total: ₹" + total, 990, y + 25);
+
+                ctx.textAlign = "center";
+                ctx.fillStyle = "#ffffff";
+                ctx.font = "italic 25px Arial";
+                ctx.fillText("Please confirm this order with our captain.", width / 2, height - 90);
+
+                ctx.fillStyle = "#d8ae67";
+                ctx.font = "600 22px Arial";
+                ctx.fillText("Thank you for choosing Skylight Cafe & Restro", width / 2, height - 52);
+
+                return canvas;
+
+            }
+
+
+            function canvasToBlob(canvas) {
+
+                return new Promise(function (resolve, reject) {
+
+                    canvas.toBlob(
+                        function (blob) {
+
+                            if (blob) {
+                                resolve(blob);
+                            }
+                            else {
+                                reject(new Error("Unable to create order image."));
+                            }
+
+                        },
+                        "image/png"
+                    );
+
+                });
+
+            }
+
+
+            async function shareOrder() {
+
+                errorBox.textContent = "";
+
+                var table = tableInput.value.trim();
+                var customer = nameInput.value.trim();
+                var phone = phoneInput.value.trim();
+
+                if (!table) {
+                    errorBox.textContent = "Please enter table number.";
+                    tableInput.focus();
+                    return;
+                }
+
+                if (!customer) {
+                    errorBox.textContent = "Please enter customer name.";
+                    nameInput.focus();
+                    return;
+                }
+
+                if (!/^[0-9]{10}$/.test(phone)) {
+                    errorBox.textContent = "Please enter a valid 10 digit mobile number.";
+                    phoneInput.focus();
+                    return;
+                }
+
+                var items = getCartSnapshot();
+
+                if (!items.length) {
+                    errorBox.textContent = "Your cart is empty. Please add items first.";
+                    return;
+                }
+
+                var orderId = createOrderId();
+                var total = getCartTotal();
+                var count = getCartCount();
+                var canvas = drawOrderImage(
+                    customer,
+                    phone,
+                    table,
+                    orderId,
+                    items,
+                    total,
+                    count
+                );
+
+                try {
+
+                    var blob = await canvasToBlob(canvas);
+                    var file = new File(
+                        [blob],
+                        orderId + ".png",
+                        { type: "image/png" }
+                    );
+
+                    if (
+                        navigator.share &&
+                        navigator.canShare &&
+                        navigator.canShare({ files: [file] })
+                    ) {
+
+                        await navigator.share({
+                            title: "Skylight Cafe Order " + orderId,
+                            text: "Skylight Cafe & Restro - Order " + orderId,
+                            files: [file]
+                        });
+
+                        closePlaceOrder();
+                        return;
+
+                    }
+
+                    var downloadUrl = URL.createObjectURL(blob);
+                    var downloadLink = document.createElement("a");
+                    downloadLink.href = downloadUrl;
+                    downloadLink.download = orderId + ".png";
+                    document.body.appendChild(downloadLink);
+                    downloadLink.click();
+                    downloadLink.remove();
+                    URL.revokeObjectURL(downloadUrl);
+
+                    errorBox.textContent =
+                        "Your order image was created. Your browser does not support direct image sharing; please open WhatsApp and attach the downloaded image.";
+
+                }
+                catch (error) {
+
+                    if (error && error.name === "AbortError") {
+                        return;
+                    }
+
+                    errorBox.textContent =
+                        "Could not share the order image. Please try again.";
+
+                }
+
+            }
+
+
+            placeOrderBtn.addEventListener(
+                "click",
+                openPlaceOrder
+            );
+
+            closePlaceOrderBtn.addEventListener(
+                "click",
+                closePlaceOrder
+            );
+
+            shareOrderBtn.addEventListener(
+                "click",
+                shareOrder
+            );
+
+            placeOrderModal.addEventListener(
+                "click",
+                function (event) {
+
+                    if (event.target === placeOrderModal) {
+                        closePlaceOrder();
+                    }
+
+                }
+            );
+
+            phoneInput.addEventListener(
+                "input",
+                function () {
+                    this.value = this.value.replace(/\D/g, "").slice(0, 10);
+                }
+            );
+
+            tableInput.addEventListener(
+                "input",
+                function () {
+                    this.value = this.value.replace(/\D/g, "").slice(0, 4);
+                }
+            );
+
+            document.addEventListener(
+                "keydown",
+                function (event) {
+                    if (
+                        event.key === "Escape" &&
+                        !placeOrderModal.classList.contains("hidden")
+                    ) {
+                        closePlaceOrder();
+                    }
+                }
+            );
+
+        }
+    );
+
+})();
 </script>
 
 </body>
