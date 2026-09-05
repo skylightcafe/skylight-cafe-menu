@@ -1226,19 +1226,23 @@
             }
 
             var message =
-                "Hello Skylight Cafe & Restro,%0A%0A" +
-                "I want to book the Birthday Party Hall.%0A%0A" +
-                "Package: " + encodeURIComponent(currentPackage) + "%0A" +
-                "Price: " + encodeURIComponent(currentPrice) + "%0A" +
-                "Name: " + encodeURIComponent(customerName) + "%0A" +
-                "Mobile: " + encodeURIComponent(customerPhone) + "%0A" +
-                "Date: " + encodeURIComponent(bookingDate) + "%0A" +
-                "Preferred Time: " + encodeURIComponent(bookingTime) + "%0A" +
-                "Guests: " + encodeURIComponent(guests) + "%0A%0A" +
+                "Hello Skylight Cafe & Restro,\n\n" +
+                "I want to book the Birthday Party Hall.\n\n" +
+                "Package: " + currentPackage + "\n" +
+                "Price: " + currentPrice + "\n" +
+                "Name: " + customerName + "\n" +
+                "Mobile: " + customerPhone + "\n" +
+                "Date: " + bookingDate + "\n" +
+                "Preferred Time: " + bookingTime + "\n" +
+                "Guests: " + guests + "\n\n" +
                 "Please confirm availability.";
 
+            var whatsappUrl =
+                "https://wa.me/918007138763?text=" +
+                encodeURIComponent(message);
+
             window.open(
-                "https://wa.me/918007138763?text=" + message,
+                whatsappUrl,
                 "_blank",
                 "noopener,noreferrer"
             );
