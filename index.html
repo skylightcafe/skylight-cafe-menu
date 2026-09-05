@@ -1092,7 +1092,7 @@
         <div class="birthday-actions">
 
             <a
-                class="call"
+                class="birthday-call-btn"
                 href="tel:8007138763"
             >
                 📞 Call Now
@@ -1174,7 +1174,7 @@
 
         <label class="birthday-form-field">
             <span>Preferred Time</span>
-            <input id="birthdayBookingTime" type="time">
+            <input id="birthdayBookingTime" type="time" min="09:30" max="20:30" step="1800">
         </label>
 
         <label class="birthday-form-field">
@@ -1297,23 +1297,63 @@
             }
 
 
-            function getMinimumBookingTime() {
+            function pad2(value) {
+                return String(value).padStart(2, "0");
+            }
 
-                var minDate = new Date();
 
-                minDate.setMinutes(
-                    minDate.getMinutes() + 60
+            function timeToMinutes(timeValue) {
+
+                var parts = timeValue.split(":");
+
+                return (
+                    parseInt(parts[0], 10) * 60 +
+                    parseInt(parts[1], 10)
                 );
 
-                var hours = String(
-                    minDate.getHours()
-                ).padStart(2, "0");
+            }
 
-                var minutes = String(
-                    minDate.getMinutes()
-                ).padStart(2, "0");
 
-                return hours + ":" + minutes;
+            function minutesToTime(totalMinutes) {
+
+                var hours = Math.floor(totalMinutes / 60);
+                var minutes = totalMinutes % 60;
+
+                return (
+                    pad2(hours) + ":" + pad2(minutes)
+                );
+
+            }
+
+
+            function getMinimumBookingTime() {
+
+                var now = new Date();
+
+                now.setMinutes(
+                    now.getMinutes() + 60
+                );
+
+                var totalMinutes =
+                    now.getHours() * 60 +
+                    now.getMinutes();
+
+                /*
+                 * Booking slots are every 30 minutes.
+                 * Always round UP to the next 30-minute slot.
+                 */
+                totalMinutes =
+                    Math.ceil(totalMinutes / 30) * 30;
+
+                var cafeOpeningMinutes = 9 * 60 + 30;
+                var cafeLastBookingMinutes = 20 * 60 + 30;
+
+                totalMinutes = Math.max(
+                    totalMinutes,
+                    cafeOpeningMinutes
+                );
+
+                return minutesToTime(totalMinutes);
 
             }
 
@@ -1323,16 +1363,35 @@
                 var today =
                     getTodayLocalDate();
 
+                var openingTime = "09:30";
+                var lastBookingTime = "20:30";
+
                 dateInput.min = today;
+
+                timeInput.min = openingTime;
+                timeInput.max = lastBookingTime;
+                timeInput.step = "1800";
 
                 if (dateInput.value === today) {
 
-                    timeInput.min =
+                    var minimumTime =
                         getMinimumBookingTime();
 
-                } else {
+                    timeInput.min = minimumTime;
 
-                    timeInput.removeAttribute("min");
+                    /*
+                     * If one-hour-from-now is already after
+                     * the last booking slot, no time is available today.
+                     */
+                    if (
+                        timeToMinutes(minimumTime) >
+                        timeToMinutes(lastBookingTime)
+                    ) {
+                        timeInput.min = lastBookingTime;
+                        timeInput.max = "20:29";
+                    } else {
+                        timeInput.max = lastBookingTime;
+                    }
 
                 }
 
@@ -1478,6 +1537,9 @@
                     var minimumTime =
                         getMinimumBookingTime();
 
+                    var openingTime = "09:30";
+                    var lastBookingTime = "20:30";
+
 
                     if (bookingDate && bookingDate < today) {
 
@@ -1490,12 +1552,25 @@
 
 
                     if (
+                        bookingTime < openingTime ||
+                        bookingTime > lastBookingTime
+                    ) {
+
+                        errorText.textContent =
+                            "Please select a booking time between 9:30 AM and 8:30 PM.";
+
+                        return;
+
+                    }
+
+
+                    if (
                         bookingDate === today &&
                         bookingTime < minimumTime
                     ) {
 
                         errorText.textContent =
-                            "Please select a time at least 1 hour from now.";
+                            "For today's booking, please select a time at least 1 hour from now.";
 
                         return;
 
