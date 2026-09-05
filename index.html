@@ -1174,7 +1174,7 @@
 
         <label class="birthday-form-field">
             <span>Preferred Time</span>
-            <input id="birthdayBookingTime" type="time" min="09:30" max="20:30" step="1800">
+            <select id="birthdayBookingTime"></select>
         </label>
 
         <label class="birthday-form-field">
@@ -1360,43 +1360,98 @@
 
             function updateBookingDateTimeLimits() {
 
-                var today =
-                    getTodayLocalDate();
-
-                var openingTime = "09:30";
-                var lastBookingTime = "20:30";
+                var today = getTodayLocalDate();
+                var openingMinutes = 9 * 60 + 30;
+                var lastBookingMinutes = 20 * 60 + 30;
 
                 dateInput.min = today;
 
-                timeInput.min = openingTime;
-                timeInput.max = lastBookingTime;
-                timeInput.step = "1800";
+                /*
+                 * Use a SELECT for time so invalid times cannot be picked
+                 * from the browser's native time picker.
+                 *
+                 * Cafe booking slots:
+                 * 09:30 AM through 08:30 PM, every 30 minutes.
+                 *
+                 * For today's booking, the first available slot must be
+                 * at least 1 hour from the current time.
+                 */
+                var minimumMinutes = openingMinutes;
 
                 if (dateInput.value === today) {
 
-                    var minimumTime =
-                        getMinimumBookingTime();
+                    var now = new Date();
+                    now.setMinutes(now.getMinutes() + 60);
 
-                    timeInput.min = minimumTime;
+                    var oneHourFromNowMinutes =
+                        now.getHours() * 60 + now.getMinutes();
 
-                    /*
-                     * If one-hour-from-now is already after
-                     * the last booking slot, no time is available today.
-                     */
-                    if (
-                        timeToMinutes(minimumTime) >
-                        timeToMinutes(lastBookingTime)
-                    ) {
-                        timeInput.min = lastBookingTime;
-                        timeInput.max = "20:29";
-                    } else {
-                        timeInput.max = lastBookingTime;
+                    minimumMinutes = Math.max(
+                        openingMinutes,
+                        Math.ceil(oneHourFromNowMinutes / 30) * 30
+                    );
+
+                }
+
+                var currentValue = timeInput.value;
+
+                timeInput.innerHTML = "";
+
+                var placeholder = document.createElement("option");
+                placeholder.value = "";
+                placeholder.textContent = "Select time";
+                placeholder.disabled = true;
+                placeholder.selected = true;
+                timeInput.appendChild(placeholder);
+
+                for (
+                    var slotMinutes = openingMinutes;
+                    slotMinutes <= lastBookingMinutes;
+                    slotMinutes += 30
+                ) {
+
+                    if (slotMinutes < minimumMinutes) {
+                        continue;
                     }
 
+                    var option = document.createElement("option");
+                    option.value = minutesToTime(slotMinutes);
+                    option.textContent = formatBookingTime(slotMinutes);
+                    timeInput.appendChild(option);
+
+                }
+
+                /* Keep the previous selection if it is still valid. */
+                if (
+                    currentValue &&
+                    Array.from(timeInput.options).some(
+                        function (option) {
+                            return option.value === currentValue;
+                        }
+                    )
+                ) {
+                    timeInput.value = currentValue;
                 }
 
             }
 
+
+            function formatBookingTime(totalMinutes) {
+
+                var hours24 = Math.floor(totalMinutes / 60);
+                var minutes = totalMinutes % 60;
+                var period = hours24 >= 12 ? "PM" : "AM";
+                var hours12 = hours24 % 12;
+
+                if (hours12 === 0) {
+                    hours12 = 12;
+                }
+
+                return (
+                    hours12 + ":" + pad2(minutes) + " " + period
+                );
+
+            }
 
             function openBirthdayBooking(
                 packageName,
