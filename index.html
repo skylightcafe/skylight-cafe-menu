@@ -1284,6 +1284,61 @@
                 "₹1300";
 
 
+            function getTodayLocalDate() {
+
+                var now = new Date();
+
+                var year = now.getFullYear();
+                var month = String(now.getMonth() + 1).padStart(2, "0");
+                var day = String(now.getDate()).padStart(2, "0");
+
+                return year + "-" + month + "-" + day;
+
+            }
+
+
+            function getMinimumBookingTime() {
+
+                var minDate = new Date();
+
+                minDate.setMinutes(
+                    minDate.getMinutes() + 60
+                );
+
+                var hours = String(
+                    minDate.getHours()
+                ).padStart(2, "0");
+
+                var minutes = String(
+                    minDate.getMinutes()
+                ).padStart(2, "0");
+
+                return hours + ":" + minutes;
+
+            }
+
+
+            function updateBookingDateTimeLimits() {
+
+                var today =
+                    getTodayLocalDate();
+
+                dateInput.min = today;
+
+                if (dateInput.value === today) {
+
+                    timeInput.min =
+                        getMinimumBookingTime();
+
+                } else {
+
+                    timeInput.removeAttribute("min");
+
+                }
+
+            }
+
+
             function openBirthdayBooking(
                 packageName,
                 price
@@ -1303,6 +1358,8 @@
 
                 errorText.textContent =
                     "";
+
+                updateBookingDateTimeLimits();
 
                 modal.classList.remove(
                     "hidden"
@@ -1353,6 +1410,25 @@
                 );
 
 
+            dateInput.addEventListener(
+                "change",
+                function () {
+                    updateBookingDateTimeLimits();
+                }
+            );
+
+
+            dateInput.addEventListener(
+                "input",
+                function () {
+                    updateBookingDateTimeLimits();
+                }
+            );
+
+
+            updateBookingDateTimeLimits();
+
+
             closeButton.addEventListener(
                 "click",
                 closeBirthdayBookingModal
@@ -1394,6 +1470,36 @@
 
                     var guests =
                         guestInput.value;
+
+
+                    var today =
+                        getTodayLocalDate();
+
+                    var minimumTime =
+                        getMinimumBookingTime();
+
+
+                    if (bookingDate && bookingDate < today) {
+
+                        errorText.textContent =
+                            "Past dates cannot be selected. Please choose today or a future date.";
+
+                        return;
+
+                    }
+
+
+                    if (
+                        bookingDate === today &&
+                        bookingTime < minimumTime
+                    ) {
+
+                        errorText.textContent =
+                            "Please select a time at least 1 hour from now.";
+
+                        return;
+
+                    }
 
 
                     if (
