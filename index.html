@@ -18,33 +18,19 @@
 
 <script>
     /*
-     * Always start the normal/base URL at the very top of the page.
-     * A URL containing a category hash (for example #pizza) is still
-     * allowed to open that specific category intentionally.
+     * Prevent browser from restoring an old scroll position.
      */
     if ("scrollRestoration" in history) {
         history.scrollRestoration = "manual";
     }
 
-    function resetToTopForBaseUrl() {
-        if (!window.location.hash) {
-            window.scrollTo({
-                top: 0,
-                left: 0,
-                behavior: "auto"
-            });
-        }
+    /*
+     * Only reset to top when there is no category hash.
+     * This means the normal QR URL opens at the top.
+     */
+    if (!window.location.hash) {
+        window.scrollTo(0, 0);
     }
-
-    /* Do it immediately and again after the page is laid out.
-       This prevents browser scroll restoration / image layout from
-       opening the page somewhere below the logo. */
-    resetToTopForBaseUrl();
-
-    window.addEventListener("load", resetToTopForBaseUrl);
-    window.addEventListener("pageshow", function () {
-        resetToTopForBaseUrl();
-    });
 </script>
 
 
@@ -134,8 +120,8 @@
             🌮 Nachos
         </a>
 
-        <a href="#maggie" data-section="maggie">
-            🍜 maggie
+        <a href="#maggi" data-section="maggi">
+            🍜 Maggi
         </a>
 
         <a href="#pasta" data-section="pasta">
@@ -717,27 +703,27 @@
 
 
 <!-- =====================================================
-     maggie
+     MAGGI
 ===================================================== -->
 
-<section id="maggie" class="section">
+<section id="maggi" class="section">
 
-    <h2>🍜 maggie</h2>
+    <h2>🍜 Maggi</h2>
 
     <div class="grid">
 
         <div class="card wide">
 
             <ul>
-                <li>Plain maggie <b>₹50</b></li>
-                <li>Plain Masala maggie <b>₹70</b></li>
-                <li>Plain Cheese maggie <b>₹80</b></li>
-                <li>Vegetable maggie <b>₹80</b></li>
-                <li>Schezwan Cheese maggie <b>₹90</b></li>
-                <li>Peri Peri Cheese maggie <b>₹100</b></li>
-                <li>Butter & Cheese maggie <b>₹100</b></li>
-                <li>Corn & Cheese maggie <b>₹90</b></li>
-                <li>Alfredo Cheese maggie <b>₹120</b></li>
+                <li>Plain Maggi <b>₹50</b></li>
+                <li>Plain Masala Maggi <b>₹70</b></li>
+                <li>Plain Cheese Maggi <b>₹80</b></li>
+                <li>Vegetable Maggi <b>₹80</b></li>
+                <li>Schezwan Cheese Maggi <b>₹90</b></li>
+                <li>Peri Peri Cheese Maggi <b>₹100</b></li>
+                <li>Butter & Cheese Maggi <b>₹100</b></li>
+                <li>Corn & Cheese Maggi <b>₹90</b></li>
+                <li>Alfredo Cheese Maggi <b>₹120</b></li>
             </ul>
 
         </div>
@@ -973,13 +959,17 @@
             CELEBRATE WITH US
         </span>
 
-        <h2>🎂 Birthday Party Hall</h2>
+        <h2>
+            🎂 Birthday Party Hall
+        </h2>
 
         <p class="birthday-intro">
-            Make your special day memorable at Skylight Cafe & Restro.
+            Make your special day memorable at
+            Skylight Cafe & Restro.
         </p>
 
         <div class="birthday-video-card">
+
             <video
                 class="birthday-video"
                 controls
@@ -987,17 +977,32 @@
                 preload="metadata"
                 poster="birthday-hall-packages.jpg"
             >
-                <source src="birthday-hall.mp4" type="video/mp4">
+                <source
+                    src="birthday-hall.mp4"
+                    type="video/mp4"
+                >
+
                 Your browser does not support the video tag.
+
             </video>
+
         </div>
+
 
         <div class="birthday-packages">
 
             <article class="birthday-package">
+
                 <div class="birthday-package-header">
-                    <span class="birthday-package-label">PACKAGE 1</span>
-                    <strong>₹1300</strong>
+
+                    <span class="birthday-package-label">
+                        PACKAGE 1
+                    </span>
+
+                    <strong>
+                        ₹1300
+                    </strong>
+
                 </div>
 
                 <div class="birthday-package-guests">
@@ -1005,10 +1010,12 @@
                 </div>
 
                 <ul class="birthday-features">
+
                     <li>❄️ Fully AC decorated hall for 2 hrs</li>
                     <li>🎂 250GM premium ice cake</li>
                     <li>🎁 Surprise gift</li>
                     <li>🔊 Sound system</li>
+
                 </ul>
 
                 <button
@@ -1019,14 +1026,26 @@
                 >
                     🎉 Book Now
                 </button>
+
             </article>
 
+
             <article class="birthday-package featured">
-                <div class="birthday-popular">⭐ POPULAR</div>
+
+                <div class="birthday-popular">
+                    ⭐ POPULAR
+                </div>
 
                 <div class="birthday-package-header">
-                    <span class="birthday-package-label">PACKAGE 2</span>
-                    <strong>₹1800</strong>
+
+                    <span class="birthday-package-label">
+                        PACKAGE 2
+                    </span>
+
+                    <strong>
+                        ₹1800
+                    </strong>
+
                 </div>
 
                 <div class="birthday-package-guests">
@@ -1034,11 +1053,13 @@
                 </div>
 
                 <ul class="birthday-features">
+
                     <li>❄️ Fully AC decorated hall for 2 hrs</li>
                     <li>🎂 500GM premium ice cake with crown & sash</li>
                     <li>🎁 Surprise gift</li>
                     <li>🍽️ Free food up to ₹200</li>
                     <li>🔊 Sound system</li>
+
                 </ul>
 
                 <button
@@ -1049,25 +1070,51 @@
                 >
                     🎉 Book Now
                 </button>
+
             </article>
 
         </div>
 
+
         <div class="birthday-extra-hour">
-            <span>⏱️ Extra Hour</span>
-            <strong>₹300</strong>
+
+            <span>
+                ⏱️ Extra Hour
+            </span>
+
+            <strong>
+                ₹300
+            </strong>
+
         </div>
 
+
         <div class="birthday-actions">
-            <a class="call" href="tel:8007138763">
+
+            <a
+                class="call"
+                href="tel:8007138763"
+            >
                 📞 Call Now
             </a>
+
         </div>
 
     </div>
+
 </section>
 
-<div id="birthdayBookingModal" class="birthday-booking-modal hidden" aria-hidden="true">
+
+<!-- =====================================================
+     BIRTHDAY BOOKING MODAL
+===================================================== -->
+
+<div
+    id="birthdayBookingModal"
+    class="birthday-booking-modal hidden"
+    aria-hidden="true"
+>
+
     <div
         class="birthday-booking-box"
         role="dialog"
@@ -1080,10 +1127,17 @@
             class="birthday-booking-close"
             type="button"
             aria-label="Close"
-        >✕</button>
+        >
+            ✕
+        </button>
 
-        <span class="eyebrow">BIRTHDAY HALL BOOKING</span>
-        <h2>🎂 Book Your Celebration</h2>
+        <span class="eyebrow">
+            BIRTHDAY HALL BOOKING
+        </span>
+
+        <h2>
+            🎂 Book Your Celebration
+        </h2>
 
         <div class="birthday-selected-package">
             <span id="birthdaySelectedPackage">Package 1</span>
@@ -1092,15 +1146,25 @@
 
         <label class="birthday-form-field">
             <span>Your Name</span>
-            <input id="birthdayCustomerName" type="text" maxlength="80"
-                   placeholder="Enter your name" autocomplete="name">
+            <input
+                id="birthdayCustomerName"
+                type="text"
+                maxlength="80"
+                placeholder="Enter your name"
+                autocomplete="name"
+            >
         </label>
 
         <label class="birthday-form-field">
             <span>Mobile Number</span>
-            <input id="birthdayCustomerPhone" type="tel" maxlength="10"
-                   placeholder="Enter 10 digit mobile number"
-                   inputmode="numeric" autocomplete="tel">
+            <input
+                id="birthdayCustomerPhone"
+                type="tel"
+                maxlength="10"
+                placeholder="Enter 10 digit mobile number"
+                inputmode="numeric"
+                autocomplete="tel"
+            >
         </label>
 
         <label class="birthday-form-field">
@@ -1132,129 +1196,300 @@
             </select>
         </label>
 
-        <p id="birthdayBookingError" class="birthday-booking-error"></p>
+        <p
+            id="birthdayBookingError"
+            class="birthday-booking-error"
+        ></p>
 
-        <button id="birthdayWhatsAppBtn" type="button" class="birthday-whatsapp-btn">
+        <button
+            id="birthdayWhatsAppBtn"
+            type="button"
+            class="birthday-whatsapp-btn"
+        >
             💬 Book on WhatsApp
         </button>
 
     </div>
+
 </div>
+
 
 <script>
 (function () {
     "use strict";
 
-    document.addEventListener("DOMContentLoaded", function () {
+    document.addEventListener(
+        "DOMContentLoaded",
+        function () {
 
-        var modal = document.getElementById("birthdayBookingModal");
-        var closeButton = document.getElementById("closeBirthdayBooking");
-        var whatsappButton = document.getElementById("birthdayWhatsAppBtn");
-
-        var selectedPackage = document.getElementById("birthdaySelectedPackage");
-        var selectedPrice = document.getElementById("birthdaySelectedPrice");
-
-        var nameInput = document.getElementById("birthdayCustomerName");
-        var phoneInput = document.getElementById("birthdayCustomerPhone");
-        var dateInput = document.getElementById("birthdayBookingDate");
-        var timeInput = document.getElementById("birthdayBookingTime");
-        var guestInput = document.getElementById("birthdayGuestCount");
-        var errorText = document.getElementById("birthdayBookingError");
-
-        var currentPackage = "Package 1";
-        var currentPrice = "₹1300";
-
-        function openBirthdayBooking(packageName, price) {
-            currentPackage = packageName;
-            currentPrice = price;
-            selectedPackage.textContent = packageName;
-            selectedPrice.textContent = price;
-            errorText.textContent = "";
-            modal.classList.remove("hidden");
-            modal.setAttribute("aria-hidden", "false");
-            document.body.classList.add("modal-open");
-        }
-
-        function closeBirthdayBookingModal() {
-            modal.classList.add("hidden");
-            modal.setAttribute("aria-hidden", "true");
-
-            var cartOverlay = document.getElementById("cartOverlay");
-            var pizzaModal = document.getElementById("pizzaModal");
-            var waiterMode = document.getElementById("waiterMode");
-
-            if (
-                (!cartOverlay || cartOverlay.classList.contains("hidden")) &&
-                (!pizzaModal || pizzaModal.classList.contains("hidden")) &&
-                (!waiterMode || waiterMode.classList.contains("hidden"))
-            ) {
-                document.body.classList.remove("modal-open");
-            }
-        }
-
-        document.querySelectorAll(".birthday-book-btn").forEach(function (button) {
-            button.addEventListener("click", function () {
-                openBirthdayBooking(
-                    button.dataset.package,
-                    button.dataset.price
+            var modal =
+                document.getElementById(
+                    "birthdayBookingModal"
                 );
-            });
-        });
 
-        closeButton.addEventListener("click", closeBirthdayBookingModal);
+            var closeButton =
+                document.getElementById(
+                    "closeBirthdayBooking"
+                );
 
-        modal.addEventListener("click", function (event) {
-            event.stopPropagation();
-        });
+            var whatsappButton =
+                document.getElementById(
+                    "birthdayWhatsAppBtn"
+                );
 
-        whatsappButton.addEventListener("click", function () {
+            var selectedPackage =
+                document.getElementById(
+                    "birthdaySelectedPackage"
+                );
 
-            var customerName = nameInput.value.trim();
-            var customerPhone = phoneInput.value.trim();
-            var bookingDate = dateInput.value;
-            var bookingTime = timeInput.value;
-            var guests = guestInput.value;
+            var selectedPrice =
+                document.getElementById(
+                    "birthdaySelectedPrice"
+                );
 
-            if (!customerName || !customerPhone || !bookingDate || !bookingTime || !guests) {
-                errorText.textContent = "Please fill all booking details.";
-                return;
+            var nameInput =
+                document.getElementById(
+                    "birthdayCustomerName"
+                );
+
+            var phoneInput =
+                document.getElementById(
+                    "birthdayCustomerPhone"
+                );
+
+            var dateInput =
+                document.getElementById(
+                    "birthdayBookingDate"
+                );
+
+            var timeInput =
+                document.getElementById(
+                    "birthdayBookingTime"
+                );
+
+            var guestInput =
+                document.getElementById(
+                    "birthdayGuestCount"
+                );
+
+            var errorText =
+                document.getElementById(
+                    "birthdayBookingError"
+                );
+
+            var currentPackage =
+                "Package 1";
+
+            var currentPrice =
+                "₹1300";
+
+
+            function openBirthdayBooking(
+                packageName,
+                price
+            ) {
+
+                currentPackage =
+                    packageName;
+
+                currentPrice =
+                    price;
+
+                selectedPackage.textContent =
+                    packageName;
+
+                selectedPrice.textContent =
+                    price;
+
+                errorText.textContent =
+                    "";
+
+                modal.classList.remove(
+                    "hidden"
+                );
+
+                modal.setAttribute(
+                    "aria-hidden",
+                    "false"
+                );
+
             }
 
-            if (!/^\d{10}$/.test(customerPhone)) {
-                errorText.textContent = "Please enter a valid 10 digit mobile number.";
-                return;
+
+            function closeBirthdayBookingModal() {
+
+                modal.classList.add(
+                    "hidden"
+                );
+
+                modal.setAttribute(
+                    "aria-hidden",
+                    "true"
+                );
+
             }
 
-            var message =
-                "Hello Skylight Cafe & Restro,\n\n" +
-                "I want to book the Birthday Party Hall.\n\n" +
-                "Package: " + currentPackage + "\n" +
-                "Price: " + currentPrice + "\n" +
-                "Name: " + customerName + "\n" +
-                "Mobile: " + customerPhone + "\n" +
-                "Date: " + bookingDate + "\n" +
-                "Preferred Time: " + bookingTime + "\n" +
-                "Guests: " + guests + "\n\n" +
-                "Please confirm availability.";
 
-            var whatsappUrl =
-                "https://wa.me/918007138763?text=" +
-                encodeURIComponent(message);
+            document
+                .querySelectorAll(
+                    ".birthday-book-btn"
+                )
+                .forEach(
+                    function (button) {
 
-            window.open(
-                whatsappUrl,
-                "_blank",
-                "noopener,noreferrer"
+                        button.addEventListener(
+                            "click",
+                            function () {
+
+                                openBirthdayBooking(
+                                    button.dataset.package,
+                                    button.dataset.price
+                                );
+
+                            }
+                        );
+
+                    }
+                );
+
+
+            closeButton.addEventListener(
+                "click",
+                closeBirthdayBookingModal
             );
-        });
 
-        document.addEventListener("keydown", function (event) {
-            if (event.key === "Escape" && !modal.classList.contains("hidden")) {
-                closeBirthdayBookingModal();
-            }
-        });
 
-    });
+            modal.addEventListener(
+                "click",
+                function (event) {
+
+                    if (
+                        event.target ===
+                        modal
+                    ) {
+
+                        closeBirthdayBookingModal();
+
+                    }
+
+                }
+            );
+
+
+            whatsappButton.addEventListener(
+                "click",
+                function () {
+
+                    var customerName =
+                        nameInput.value.trim();
+
+                    var customerPhone =
+                        phoneInput.value.trim();
+
+                    var bookingDate =
+                        dateInput.value;
+
+                    var bookingTime =
+                        timeInput.value;
+
+                    var guests =
+                        guestInput.value;
+
+
+                    if (
+                        !customerName ||
+                        !customerPhone ||
+                        !bookingDate ||
+                        !bookingTime ||
+                        !guests
+                    ) {
+
+                        errorText.textContent =
+                            "Please fill all booking details.";
+
+                        return;
+
+                    }
+
+
+                    if (
+                        !/^\d{10}$/.test(
+                            customerPhone
+                        )
+                    ) {
+
+                        errorText.textContent =
+                            "Please enter a valid 10 digit mobile number.";
+
+                        return;
+
+                    }
+
+
+                    var message =
+                        "Hello Skylight Cafe & Restro,\n\n" +
+                        "I want to book the Birthday Party Hall.\n\n" +
+                        "Package: " +
+                        currentPackage +
+                        "\n" +
+                        "Price: " +
+                        currentPrice +
+                        "\n" +
+                        "Name: " +
+                        customerName +
+                        "\n" +
+                        "Mobile: " +
+                        customerPhone +
+                        "\n" +
+                        "Date: " +
+                        bookingDate +
+                        "\n" +
+                        "Preferred Time: " +
+                        bookingTime +
+                        "\n" +
+                        "Guests: " +
+                        guests +
+                        "\n\n" +
+                        "Please confirm availability.";
+
+
+                    var whatsappUrl =
+                        "https://wa.me/918007138763?text=" +
+                        encodeURIComponent(
+                            message
+                        );
+
+
+                    window.open(
+                        whatsappUrl,
+                        "_blank",
+                        "noopener,noreferrer"
+                    );
+
+                }
+            );
+
+
+            document.addEventListener(
+                "keydown",
+                function (event) {
+
+                    if (
+                        event.key === "Escape" &&
+                        !modal.classList.contains(
+                            "hidden"
+                        )
+                    ) {
+
+                        closeBirthdayBookingModal();
+
+                    }
+
+                }
+            );
+
+        }
+    );
 })();
 </script>
 
@@ -1406,571 +1641,6 @@
 >
     💬
 </a>
-
-
-
-
-<!-- =====================================================
-     CART / ADD BUTTON FUNCTIONALITY
-     Added without removing existing page sections.
-===================================================== -->
-
-<div id="cartBar" class="cart-bar hidden">
-    <div class="cart-summary">
-        <span class="cart-icon">🛒</span>
-        <span><strong id="cartCount">0</strong> Items</span>
-        <span class="cart-total">₹<span id="cartTotal">0</span></span>
-    </div>
-    <button id="viewCartBtn" class="view-cart-btn" type="button">View Cart</button>
-</div>
-
-<div id="cartOverlay" class="cart-overlay hidden" aria-hidden="true">
-    <div class="cart-panel" role="dialog" aria-modal="true" aria-label="Selected items">
-        <div class="cart-header">
-            <div>
-                <span class="eyebrow">YOUR SELECTION</span>
-                <h2>🛒 Selected Items</h2>
-            </div>
-            <button id="closeCartBtn" class="close-cart" type="button" aria-label="Close cart">✕</button>
-        </div>
-
-        <div id="cartItems" class="cart-items"></div>
-
-        <div class="cart-footer">
-            <div class="cart-total-row">
-                <span>Total Items</span>
-                <strong id="panelCartCount">0</strong>
-            </div>
-            <div class="cart-total-row total-price">
-                <span>Estimated Total</span>
-                <strong>₹<span id="panelCartTotal">0</span></strong>
-            </div>
-            <div class="cart-actions">
-                <button id="clearCartBtn" class="clear-cart-btn" type="button">Clear All</button>
-                <button id="showWaiterBtn" class="show-waiter-btn" type="button">👋 Show Captain</button>
-            </div>
-        </div>
-    </div>
-</div>
-
-<div id="pizzaModal" class="pizza-modal hidden" aria-hidden="true">
-    <div class="pizza-modal-box" role="dialog" aria-modal="true" aria-label="Choose pizza size">
-        <button id="closePizzaModal" class="close-pizza" type="button" aria-label="Close">✕</button>
-        <span class="eyebrow">CHOOSE SIZE</span>
-        <h2 id="pizzaName">Pizza</h2>
-        <div class="pizza-size-options">
-            <button id="smallPizzaBtn" class="pizza-size" type="button">
-                <span>Small</span>
-                <strong>6&quot;</strong>
-                <b>₹0</b>
-            </button>
-            <button id="mediumPizzaBtn" class="pizza-size" type="button">
-                <span>Medium</span>
-                <strong>8&quot;</strong>
-                <b>₹0</b>
-            </button>
-        </div>
-    </div>
-</div>
-
-<div id="waiterMode" class="waiter-mode hidden" aria-hidden="true">
-    <div class="waiter-box" role="dialog" aria-modal="true" aria-label="Selection for captain">
-        <div class="waiter-header">
-            <div>
-                <span class="eyebrow">SHOW TO CAPTAIN</span>
-                <h2>Your Selection</h2>
-            </div>
-            <button id="closeWaiterBtn" class="close-cart" type="button" aria-label="Close">✕</button>
-        </div>
-        <div id="waiterItems"></div>
-        <div class="waiter-total">
-            <span>Total Items: <strong id="waiterCount">0</strong></span>
-            <span>Estimated Total: <strong>₹<span id="waiterTotal">0</span></strong></span>
-        </div>
-        <p class="waiter-note">Please show this screen to your captain.</p>
-    </div>
-</div>
-
-<script>
-(function () {
-    "use strict";
-
-    document.addEventListener("DOMContentLoaded", function () {
-        var cart = [];
-        var selectedPizza = null;
-
-        var cartBar = document.getElementById("cartBar");
-        var cartOverlay = document.getElementById("cartOverlay");
-        var cartItems = document.getElementById("cartItems");
-        var cartCount = document.getElementById("cartCount");
-        var cartTotal = document.getElementById("cartTotal");
-        var panelCartCount = document.getElementById("panelCartCount");
-        var panelCartTotal = document.getElementById("panelCartTotal");
-
-        var pizzaModal = document.getElementById("pizzaModal");
-        var pizzaName = document.getElementById("pizzaName");
-        var smallPizzaBtn = document.getElementById("smallPizzaBtn");
-        var mediumPizzaBtn = document.getElementById("mediumPizzaBtn");
-
-        var waiterMode = document.getElementById("waiterMode");
-        var waiterItems = document.getElementById("waiterItems");
-
-        function escapeHtml(value) {
-            return String(value)
-                .replace(/&/g, "&amp;")
-                .replace(/</g, "&lt;")
-                .replace(/>/g, "&gt;")
-                .replace(/\"/g, "&quot;")
-                .replace(/'/g, "&#039;");
-        }
-
-        function numberFromPrice(text) {
-            var match = String(text).replace(/,/g, "").match(/\d+(?:\.\d+)?/);
-            return match ? Number(match[0]) : 0;
-        }
-
-        function pricesFromText(text) {
-            return String(text)
-                .split("/")
-                .map(function (part) {
-                    return numberFromPrice(part);
-                })
-                .filter(function (value) {
-                    return value > 0;
-                });
-        }
-
-        function getMenuItemName(li) {
-            var clone = li.cloneNode(true);
-            var price = clone.querySelector("b");
-            if (price) {
-                price.remove();
-            }
-            clone.querySelectorAll(".badge, .add-btn, .item-action").forEach(function (element) {
-                element.remove();
-            });
-            return clone.textContent.replace(/\s+/g, " ").trim();
-        }
-
-        function makeItemAction(li, name, prices, isPizza) {
-            var existing = li.querySelector(".item-action");
-            if (existing) {
-                return;
-            }
-
-            var action = document.createElement("div");
-            action.className = "item-action";
-            action.dataset.name = name;
-            action.dataset.pizza = isPizza ? "true" : "false";
-            action.dataset.small = prices[0] || "0";
-            action.dataset.medium = prices[1] || "0";
-
-            var addButton = document.createElement("button");
-            addButton.type = "button";
-            addButton.className = "add-btn";
-            addButton.textContent = "+ Add";
-
-            addButton.addEventListener("click", function () {
-                if (isPizza && prices.length >= 2) {
-                    openPizzaModal(name, prices[0], prices[1]);
-                } else {
-                    addToCart(name, prices[0], "");
-                }
-            });
-
-            action.appendChild(addButton);
-            li.appendChild(action);
-        }
-
-        function addButtonToMenuItem(li, isPizza) {
-            if (li.querySelector(".item-action")) {
-                return;
-            }
-
-            var priceElement = li.querySelector("b");
-            if (!priceElement) {
-                return;
-            }
-
-            var prices = pricesFromText(priceElement.textContent);
-            if (prices.length === 0) {
-                return;
-            }
-
-            var name = getMenuItemName(li);
-            makeItemAction(li, name, prices, isPizza);
-        }
-
-        function addButtonToSpecialCard(card) {
-            if (card.querySelector(".item-action")) {
-                return;
-            }
-
-            var title = card.querySelector("h3");
-            var price = card.querySelector("strong");
-            if (!title || !price) {
-                return;
-            }
-
-            var prices = pricesFromText(price.textContent);
-            if (prices.length === 0) {
-                return;
-            }
-
-            var name = title.textContent.replace(/\s+/g, " ").trim();
-            var action = document.createElement("div");
-            action.className = "item-action special-item-action";
-            action.dataset.name = name;
-            action.dataset.pizza = prices.length >= 2 ? "true" : "false";
-            action.dataset.small = prices[0] || "0";
-            action.dataset.medium = prices[1] || "0";
-
-            var button = document.createElement("button");
-            button.type = "button";
-            button.className = "add-btn";
-            button.textContent = "+ Add";
-            button.addEventListener("click", function () {
-                if (prices.length >= 2) {
-                    openPizzaModal(name, prices[0], prices[1]);
-                } else {
-                    addToCart(name, prices[0], "");
-                }
-            });
-
-            action.appendChild(button);
-            title.parentElement.appendChild(action);
-        }
-
-        function setupAddButtons() {
-            document.querySelectorAll("main section.section").forEach(function (section) {
-                var isPizza = section.id === "pizza";
-                section.querySelectorAll("li").forEach(function (li) {
-                    addButtonToMenuItem(li, isPizza);
-                });
-            });
-
-            document.querySelectorAll(".special-card").forEach(function (card) {
-                addButtonToSpecialCard(card);
-            });
-        }
-
-        function updateMenuActions() {
-            document.querySelectorAll(".item-action").forEach(function (action) {
-                var name = action.dataset.name;
-                var isPizza = action.dataset.pizza === "true";
-                var smallPrice = Number(action.dataset.small || 0);
-                var mediumPrice = Number(action.dataset.medium || 0);
-
-                var items = cart.filter(function (item) {
-                    if (isPizza) {
-                        return item.name === name;
-                    }
-                    return item.name === name && item.variant === "";
-                });
-
-                action.innerHTML = "";
-
-                if (items.length === 0) {
-                    var add = document.createElement("button");
-                    add.type = "button";
-                    add.className = "add-btn";
-                    add.textContent = "+ Add";
-                    add.addEventListener("click", function () {
-                        if (isPizza && mediumPrice > 0) {
-                            openPizzaModal(name, smallPrice, mediumPrice);
-                        } else {
-                            addToCart(name, smallPrice, "");
-                        }
-                    });
-                    action.appendChild(add);
-                    return;
-                }
-
-                if (isPizza) {
-                    items.forEach(function (item) {
-                        var control = document.createElement("div");
-                        control.className = "selected-control";
-                        control.innerHTML =
-                            '<span class="selected-variant">' + escapeHtml(item.variant || "Selected") + '</span>' +
-                            '<button type="button" class="inline-qty" data-key="' + escapeHtml(item.key) + '" data-action="decrease">−</button>' +
-                            '<span class="inline-count">' + item.quantity + '</span>' +
-                            '<button type="button" class="inline-qty" data-key="' + escapeHtml(item.key) + '" data-action="increase">+</button>';
-                        action.appendChild(control);
-                    });
-                    return;
-                }
-
-                var item = items[0];
-                var control = document.createElement("div");
-                control.className = "selected-control";
-                control.innerHTML =
-                    '<button type="button" class="inline-qty" data-key="' + escapeHtml(item.key) + '" data-action="decrease">−</button>' +
-                    '<span class="inline-count">' + item.quantity + '</span>' +
-                    '<button type="button" class="inline-qty" data-key="' + escapeHtml(item.key) + '" data-action="increase">+</button>';
-                action.appendChild(control);
-            });
-        }
-
-        function openPizzaModal(name, smallPrice, mediumPrice) {
-            selectedPizza = {
-                name: name,
-                small: smallPrice,
-                medium: mediumPrice
-            };
-
-            pizzaName.textContent = name;
-            smallPizzaBtn.querySelector("b").textContent = "₹" + smallPrice;
-            mediumPizzaBtn.querySelector("b").textContent = "₹" + mediumPrice;
-
-            pizzaModal.classList.remove("hidden");
-            pizzaModal.setAttribute("aria-hidden", "false");
-        }
-
-        function closePizzaModal() {
-            selectedPizza = null;
-            pizzaModal.classList.add("hidden");
-            pizzaModal.setAttribute("aria-hidden", "true");
-        }
-
-        function addToCart(name, price, variant) {
-            var key = name + "|" + variant;
-            var existing = cart.find(function (item) {
-                return item.key === key;
-            });
-
-            if (existing) {
-                existing.quantity += 1;
-            } else {
-                cart.push({
-                    key: key,
-                    name: name,
-                    price: price,
-                    variant: variant,
-                    quantity: 1
-                });
-            }
-
-            updateCart();
-        }
-
-        function updateCart() {
-            var count = 0;
-            var total = 0;
-
-            cart.forEach(function (item) {
-                count += item.quantity;
-                total += item.price * item.quantity;
-            });
-
-            cartCount.textContent = count;
-            cartTotal.textContent = total;
-            panelCartCount.textContent = count;
-            panelCartTotal.textContent = total;
-
-            if (count > 0) {
-                cartBar.classList.remove("hidden");
-            } else {
-                cartBar.classList.add("hidden");
-                cartOverlay.classList.add("hidden");
-            }
-
-            renderCart();
-            updateMenuActions();
-        }
-
-        function renderCart() {
-            cartItems.innerHTML = "";
-
-            if (cart.length === 0) {
-                cartItems.innerHTML =
-                    '<div class="empty-cart"><div class="empty-cart-icon">🛒</div>' +
-                    '<h3>Your selection is empty</h3>' +
-                    '<p>Add your favourite items from the menu.</p></div>';
-                return;
-            }
-
-            cart.forEach(function (item, index) {
-                var row = document.createElement("div");
-                row.className = "cart-item";
-
-                row.innerHTML =
-                    '<div class="cart-item-info">' +
-                        '<strong>' + escapeHtml(item.name) + '</strong>' +
-                        (item.variant ? '<small>' + escapeHtml(item.variant) + '</small>' : '') +
-                        '<span>₹' + item.price + ' × ' + item.quantity + '</span>' +
-                    '</div>' +
-                    '<div class="cart-item-right">' +
-                        '<strong>₹' + (item.price * item.quantity) + '</strong>' +
-                        '<div class="quantity-control">' +
-                            '<button class="quantity-btn" type="button" data-index="' + index + '" data-action="decrease">−</button>' +
-                            '<span>' + item.quantity + '</span>' +
-                            '<button class="quantity-btn" type="button" data-index="' + index + '" data-action="increase">+</button>' +
-                        '</div>' +
-                        '<button class="remove-item" type="button" data-index="' + index + '">Remove</button>' +
-                    '</div>';
-
-                cartItems.appendChild(row);
-            });
-        }
-
-        function openCart() {
-            cartOverlay.classList.remove("hidden");
-            cartOverlay.setAttribute("aria-hidden", "false");
-        }
-
-        function closeCart() {
-            cartOverlay.classList.add("hidden");
-            cartOverlay.setAttribute("aria-hidden", "true");
-        }
-
-        function renderWaiter() {
-            waiterItems.innerHTML = "";
-            var count = 0;
-            var total = 0;
-
-            cart.forEach(function (item) {
-                count += item.quantity;
-                total += item.price * item.quantity;
-
-                var row = document.createElement("div");
-                row.className = "waiter-item";
-                row.innerHTML =
-                    '<div><strong>' + escapeHtml(item.name) + '</strong>' +
-                    (item.variant ? '<small>' + escapeHtml(item.variant) + '</small>' : '') +
-                    '</div><strong>× ' + item.quantity + '</strong>';
-                waiterItems.appendChild(row);
-            });
-
-            document.getElementById("waiterCount").textContent = count;
-            document.getElementById("waiterTotal").textContent = total;
-        }
-
-        document.getElementById("viewCartBtn").addEventListener("click", openCart);
-        document.getElementById("closeCartBtn").addEventListener("click", closeCart);
-        document.getElementById("closePizzaModal").addEventListener("click", closePizzaModal);
-
-        cartOverlay.addEventListener("click", function (event) {
-            if (event.target === cartOverlay) {
-                closeCart();
-            }
-        });
-
-        pizzaModal.addEventListener("click", function (event) {
-            if (event.target === pizzaModal) {
-                closePizzaModal();
-            }
-        });
-
-        smallPizzaBtn.addEventListener("click", function () {
-            if (selectedPizza) {
-                addToCart(selectedPizza.name, selectedPizza.small, "Small (6\")");
-                closePizzaModal();
-            }
-        });
-
-        mediumPizzaBtn.addEventListener("click", function () {
-            if (selectedPizza) {
-                addToCart(selectedPizza.name, selectedPizza.medium, "Medium (8\")");
-                closePizzaModal();
-            }
-        });
-
-        document.getElementById("clearCartBtn").addEventListener("click", function () {
-            if (cart.length && window.confirm("Remove all selected items?")) {
-                cart = [];
-                updateCart();
-            }
-        });
-
-        document.getElementById("showWaiterBtn").addEventListener("click", function () {
-            if (!cart.length) {
-                return;
-            }
-
-            renderWaiter();
-            cartOverlay.classList.add("hidden");
-            waiterMode.classList.remove("hidden");
-            waiterMode.setAttribute("aria-hidden", "false");
-        });
-
-        document.getElementById("closeWaiterBtn").addEventListener("click", function () {
-            waiterMode.classList.add("hidden");
-            waiterMode.setAttribute("aria-hidden", "true");
-        });
-
-        document.addEventListener("click", function (event) {
-            var button = event.target.closest(".inline-qty");
-            if (!button) {
-                return;
-            }
-
-            var key = button.dataset.key;
-            var item = cart.find(function (entry) {
-                return entry.key === key;
-            });
-
-            if (!item) {
-                return;
-            }
-
-            if (button.dataset.action === "increase") {
-                item.quantity += 1;
-            } else {
-                item.quantity -= 1;
-                if (item.quantity <= 0) {
-                    cart = cart.filter(function (entry) {
-                        return entry.key !== key;
-                    });
-                }
-            }
-
-            updateCart();
-        });
-
-        cartItems.addEventListener("click", function (event) {
-            var button = event.target.closest("button");
-            if (!button) {
-                return;
-            }
-
-            var index = Number(button.dataset.index);
-            if (!Number.isInteger(index) || !cart[index]) {
-                return;
-            }
-
-            if (button.classList.contains("remove-item")) {
-                cart.splice(index, 1);
-                updateCart();
-                return;
-            }
-
-            if (button.classList.contains("quantity-btn")) {
-                if (button.dataset.action === "increase") {
-                    cart[index].quantity += 1;
-                } else {
-                    cart[index].quantity -= 1;
-                    if (cart[index].quantity <= 0) {
-                        cart.splice(index, 1);
-                    }
-                }
-                updateCart();
-            }
-        });
-
-        document.addEventListener("keydown", function (event) {
-            if (event.key === "Escape") {
-                closePizzaModal();
-                closeCart();
-                waiterMode.classList.add("hidden");
-                waiterMode.setAttribute("aria-hidden", "true");
-            }
-        });
-
-        setupAddButtons();
-        updateCart();
-    });
-})();
-</script>
 
 
 <!-- =====================================================
