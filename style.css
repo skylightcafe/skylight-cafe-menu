@@ -2206,3 +2206,41 @@ footer .call:hover {
         flex-direction: column;
     }
 }
+
+/* =====================================================
+   BIRTHDAY HALL - CALL NOW BUTTON (FINAL OVERRIDE)
+===================================================== */
+.birthday-actions .birthday-call-btn {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: min(280px, 90%) !important;
+    min-width: 150px !important;
+    min-height: 42px !important;
+    margin: 0 auto !important;
+    padding: 11px 22px !important;
+    box-sizing: border-box !important;
+    border: 0 !important;
+    border-radius: 999px !important;
+    background: linear-gradient(135deg, #e1bd82, #bd8c48) !important;
+    color: #1a140e !important;
+    text-decoration: none !important;
+    font-family: Montserrat, Arial, sans-serif !important;
+    font-size: 12px !important;
+    font-weight: 700 !important;
+    line-height: 1.2 !important;
+    text-align: center !important;
+    box-shadow: 0 6px 16px rgba(0,0,0,.24) !important;
+    cursor: pointer !important;
+    -webkit-appearance: none !important;
+    appearance: none !important;
+}
+
+.birthday-actions .birthday-call-btn:hover,
+.birthday-actions .birthday-call-btn:focus,
+.birthday-actions .birthday-call-btn:active,
+.birthday-actions .birthday-call-btn:visited {
+    background: linear-gradient(135deg, #e1bd82, #bd8c48) !important;
+    color: #1a140e !important;
+    text-decoration: none !important;
+}
